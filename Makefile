@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/17 14:24:25 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/17 15:58:54 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ MLX_ARC = libmlx.a
 MLX = $(MLX_DIR)$(MLX_ARC)
 API_FLAGS = -framework OpenGL -framework AppKit
 
-# complication
+# flags and options
 COMPILE_FLAGS = $(CC) $(DBFLAGS) $(CFLAGS) $(INC_FLAGS) -I $(MLX_DIR)
 LINKING_FLAGS = $(CC) $(MLX) $(MY_LIB) $(API_FLAGS)
 
@@ -65,7 +65,6 @@ MAIN_OBJ = $(OBJ_DIR)$(MAIN_FILE).o
 OBJS += $(MAIN_OBJ)
 
 # utils
-
 UTILS_DIR = utils/
 UTILS_SRC_DIR = $(SRC_DIR)$(UTILS_DIR)
 UTILS_OBJ_DIR = $(OBJ_DIR)$(UTILS_DIR)
@@ -73,8 +72,8 @@ UTILS_OBJ_DIR = $(OBJ_DIR)$(UTILS_DIR)
 UTILS_FILE = \
 		hello_world
 
-UTILS_SRCS = $(addprefix $(addprefix $(UTILS_SRC_DIR), $(UTILS_FILE)), .c)
-UTILS_OBJS = $(addprefix $(addprefix $(UTILS_OBJ_DIR), $(UTILS_FILE)), .o)
+UTILS_SRCS = 
+UTILS_OBJS = 
 OBJS += $(UTILS_OBJS)
 
 # **************************************************************************** #
@@ -84,12 +83,9 @@ OBJS += $(UTILS_OBJS)
 all : $(NAME)
 
 #	linking
-$(NAME) : $(OBJS)
-	@make mylib
-	@make minilibx
-	@printf "$(Green)\n[ mylib & minilibx compile finished!!] \n$(Color_Off)"
+$(NAME) : mylib minilibx $(OBJS)
 	$(LINKING_FLAGS) -o $@ $^
-	@printf "$(Blue)\n[ ENJOY FDF!! ]\n$(Color_Off)"
+	@printf "$(Blue)\n[ Shut up and Ray Trace!! ]\n$(Color_Off)"
 
 #	compiling
 $(MAIN_OBJ_DIR)%.o : $(MAIN_SRC_DIR)%.c
