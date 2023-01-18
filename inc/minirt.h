@@ -3,36 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/18 12:45:39 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/18 20:33:57 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
+/* ************************************************************************** */
+
 # include <stdio.h>  // for test
 # include "../my_lib/inc/improved_libft.h"
 # include "../mlx/mlx.h"
 
-void	hello_world(int n);
+/* ************************************************************************** */
 
-# define WINDOW_WIDTH_
-# define WINDOW_HEIGHT_
+# define WINDOW_WIDTH_	1920
+# define WINDOW_HEIGHT_	1080
 
-typedef struct s_mlx_pointer
+enum e_x_events {
+	x_key_press_ = 2,
+	x_key_release_
+};
+
+enum e_key_code {
+	key_esc_ = 53
+};
+
+/* ************************************************************************** */
+
+typedef struct s_mlx
 {
-	void	*mlx_id_;
-	void	*window_;
-}	t_mlx_ptr;
+	void	*mlx_ptr_;
+	void	*win_ptr_;
+}	t_mlx;
 
+typedef struct s_image
+{
+	void	*mlx_ptr_;
+	char	*addr_;
+	int		bits_per_pixel_;
+	int		size_line_;
+	int		endian_;
+}	t_img;
 
 typedef struct s_minirt_ptrs
 {
-	t_mlx_ptr	mlx_;
+	t_mlx	mlx_;
+	t_img	img_;
 }	t_ptrs;
 
+/* ************************************************************************** */
+
+//	hello_world.c
+void	hello_world(int n);
+
+//	initialization.c
+void	init_mlx(t_ptrs *ptrs);
+int		handle_key_press_event(int key_code, t_ptrs *ptrs);
+
+/* ************************************************************************** */
 
 #endif

@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 13:48:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/18 22:08:04 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/18 20:35:30 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/18 21:44:24 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#ifndef VECTOR_H
+# define VECTOR_H
 
-int	main(int argc, char **argv)
+typedef struct s_vector
 {
-	t_ptrs	ptrs;
+	/* TODO */
+}   t_vec;
 
-	(void)argc;
-	(void)argv;
 
-	// parse_input();
-	init_mlx(&ptrs);
-	return (0);
-}
+#endif

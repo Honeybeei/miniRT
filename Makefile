@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/18 11:24:32 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/18 13:15:37 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,8 @@ UTILS_SRC_DIR = $(SRC_DIR)$(UTILS_DIR)
 UTILS_OBJ_DIR = $(OBJ_DIR)$(UTILS_DIR)
 
 UTILS_FILE = \
-		hello_world
+		hello_world \
+		initialization
 
 UTILS_SRCS = $(addsuffix .c, $(addprefix $(UTILS_SRC_DIR), $(UTILS_FILE)))
 UTILS_OBJS = $(addsuffix .o, $(addprefix $(UTILS_OBJ_DIR), $(UTILS_FILE)))

@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   figures.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 13:48:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/18 22:08:04 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/18 20:34:37 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/18 21:20:20 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#ifndef FIGURES_H
+# define FIGURES_H
 
-int	main(int argc, char **argv)
+typedef struct s_sphere
 {
-	t_ptrs	ptrs;
+	/* data */
+}	t_sp;
 
-	(void)argc;
-	(void)argv;
+typedef struct s_plane
+{
+	/* data */
+}	t_pl;
 
-	// parse_input();
-	init_mlx(&ptrs);
-	return (0);
-}
+typedef struct s_cylinder
+{
+	/* data */
+}	t_cy;
+
+#endif
