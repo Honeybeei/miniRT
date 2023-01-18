@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
+#    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/17 15:58:54 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/18 11:24:32 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,31 +72,32 @@ UTILS_OBJ_DIR = $(OBJ_DIR)$(UTILS_DIR)
 UTILS_FILE = \
 		hello_world
 
-UTILS_SRCS = 
-UTILS_OBJS = 
+UTILS_SRCS = $(addsuffix .c, $(addprefix $(UTILS_SRC_DIR), $(UTILS_FILE)))
+UTILS_OBJS = $(addsuffix .o, $(addprefix $(UTILS_OBJ_DIR), $(UTILS_FILE)))
 OBJS += $(UTILS_OBJS)
 
 # **************************************************************************** #
 
 # main rules
 
-all : $(NAME)
+all : mylib minilibx mkobjdir $(NAME)
 
 #	linking
-$(NAME) : mylib minilibx $(OBJS)
+$(NAME) : $(OBJS)
 	$(LINKING_FLAGS) -o $@ $^
-	@printf "$(Blue)\n[ Shut up and Ray Trace!! ]\n$(Color_Off)"
+	@printf "$(Blue)\n[ Shut up and Ray Trace!! ]\n\n$(Color_Off)"
 
 #	compiling
 $(MAIN_OBJ_DIR)%.o : $(MAIN_SRC_DIR)%.c
-	@mkdir -p $(MAIN_OBJ_DIR)
 	$(COMPILE_FLAGS) -c $< -o $@
 
 $(UTILS_OBJ_DIR)%.o : $(UTILS_SRC_DIR)%.c
-	@mkdir -p $(UTILS_OBJ_DIR)
 	$(COMPILE_FLAGS) -c $< -o $@
 
 # **************************************************************************** #
+
+mkobjdir :
+	@mkdir -p $(MAIN_OBJ_DIR) $(UTILS_OBJ_DIR)
 
 clean :
 	rm -rf $(OBJ_DIR)
@@ -110,6 +111,9 @@ re : fclean all
 
 ree : clean all
 
+run : ree
+	@./$(NAME)
+
 mylib :
 	@make -C $(MY_LIB_DIR)
 
@@ -119,4 +123,4 @@ minilibx :
 norm :
 	@norminette src inc my_lib | grep Error
 
-.PONEY : all clean fclean re ree mylib minilibx norm
+.PONEY : all mkobjdir clean fclean re ree run mylib minilibx norm
