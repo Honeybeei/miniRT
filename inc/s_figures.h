@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   figures.h                                          :+:      :+:    :+:   */
+/*   s_figures.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 20:34:37 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/18 21:20:20 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/19 00:22:26 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIGURES_H
-# define FIGURES_H
+#ifndef S_FIGURES_H
+# define S_FIGURES_H
 
 typedef struct s_sphere
 {

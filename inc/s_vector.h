@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   s_vector.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 13:48:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/19 00:18:54 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/18 20:35:30 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/19 17:50:05 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#ifndef S_VECTOR_H
+# define S_VECTOR_H
 
-int	main(int argc, char **argv)
+typedef struct s_3d_coordinate t_3dc;
+typedef struct s_vector t_vec;
+
+struct s_3d_coordinate
 {
-	t_ptrs	ptrs;
+	double p_[3];
+};
 
-	(void)argc;
-	(void)argv;
+struct s_vector
+{
+	t_3dc	starting_point_;
+	t_3dc	direction_;
+	double	size_;
+};
 
-	parse_input();
-	init_mlx(&ptrs);
-	return (0);
-}
+struct s_vector2
+{
+	t_3dc	starting_point_;
+	t_3dc	ending_point_;
+};
+
+
+#endif

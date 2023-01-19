@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/18 20:33:57 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/19 14:08:26 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include <stdio.h>  // for test
 # include "../my_lib/inc/improved_libft.h"
 # include "../mlx/mlx.h"
+
+# include "s_vector.h"
+# include "s_figures.h"
+# include "s_object.h"
 
 /* ************************************************************************** */
 
