@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:55:48 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 18:22:47 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/20 17:19:50 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@ void	*my_malloc(size_t size)
 	ret = malloc(size);
 	if (ret == NULL)
 	{
-		if (CAN_USE_PERROR_F_)
-			perror(NULL);
-		if (CAN_USE_EXIT_F_)
-			exit(EXIT_FAILURE);
+		perror(NULL);
+		exit(EXIT_FAILURE);
 	}
 	return (ret);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
+#    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/18 13:15:37 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/23 18:31:36 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,8 @@ API_FLAGS = -framework OpenGL -framework AppKit
 COMPILE_FLAGS = $(CC) $(DBFLAGS) $(CFLAGS) $(INC_FLAGS) -I $(MLX_DIR)
 LINKING_FLAGS = $(CC) $(MLX) $(MY_LIB) $(API_FLAGS)
 
+# **************************************************************************** #
+
 # main
 MAIN_SRC_DIR = $(SRC_DIR)
 MAIN_OBJ_DIR = $(OBJ_DIR)
@@ -64,12 +66,28 @@ MAIN_SRC = $(SRC_DIR)$(MAIN_FILE).c
 MAIN_OBJ = $(OBJ_DIR)$(MAIN_FILE).o
 OBJS += $(MAIN_OBJ)
 
+# input_parsing
+INPUT_PARSING_DIR = input_parsing/
+INPUT_PARSING_SRC_DIR = $(SRC_DIR)$(INPUT_PARSING_DIR)
+INPUT_PARSING_OBJ_DIR = $(OBJ_DIR)$(INPUT_PARSING_DIR)
+
+INPUT_PARSING_FILE = \
+		parse_input \
+		parsing_utils1 \
+		parsing_utils2 \
+		scan_formats1
+
+INPUT_PARSING_SRCS = $(addsuffix .c, $(addprefix $(INPUT_PARSING_SRC_DIR), $(INPUT_PARSING_FILE)))
+INPUT_PARSING_OBJS = $(addsuffix .o, $(addprefix $(INPUT_PARSING_OBJ_DIR), $(INPUT_PARSING_FILE)))
+OBJS += $(INPUT_PARSING_OBJS)
+
 # utils
 UTILS_DIR = utils/
 UTILS_SRC_DIR = $(SRC_DIR)$(UTILS_DIR)
 UTILS_OBJ_DIR = $(OBJ_DIR)$(UTILS_DIR)
 
 UTILS_FILE = \
+		error_management \
 		hello_world \
 		initialization
 
@@ -98,7 +116,10 @@ $(UTILS_OBJ_DIR)%.o : $(UTILS_SRC_DIR)%.c
 # **************************************************************************** #
 
 mkobjdir :
-	@mkdir -p $(MAIN_OBJ_DIR) $(UTILS_OBJ_DIR)
+	@mkdir -p \
+	$(MAIN_OBJ_DIR) \
+	$(INPUT_PARSING_OBJ_DIR) \
+	$(UTILS_OBJ_DIR)
 
 clean :
 	rm -rf $(OBJ_DIR)

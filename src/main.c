@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/19 22:27:22 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/23 18:23:09 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@ int	main(int argc, char **argv)
 {
 	t_ptrs	ptrs;
 
-	parse_input(argv);
-	init_mlx(&ptrs);
+	if (argc < 2)
+		error_management(true, err_no_file_, NULL, true);
+	else if (argc > 2)
+		error_management(true, err_too_much_file_, NULL, true);
+	init_ptrs(&ptrs);
+	parse_input(&ptrs.input_, argv[1]);
+	// input_transformation(&ptrs);  // TODO
+	// init_mlx(&ptrs);  // HANDLE LATER
 	return (0);
 }

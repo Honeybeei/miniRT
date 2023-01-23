@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:52:29 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/19 22:27:30 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/22 12:37:03 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
+
+void	init_ptrs(t_ptrs *ptrs)
+{
+	ft_memset(ptrs->input_.obj_cnt_, 0, sizeof(ptrs->input_.obj_cnt_));
+	init_mlx(ptrs);
+}
 
 void	init_mlx(t_ptrs *ptrs)
 {
