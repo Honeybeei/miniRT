@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minimath.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchoi <jchoi@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 20:32:57 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/24 20:22:41 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/01/24 21:22:00 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "minimath.h"
+
+#include "../inc/minimath.h"
 
 void	escape(void)
 {

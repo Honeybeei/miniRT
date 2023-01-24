@@ -3,37 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   minimath.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchoi <jchoi@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 20:32:57 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/24 20:44:48 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/01/24 21:02:51 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <math.h>
+#ifndef MINIMATH_H
+# define MINIMATH_H
+
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <math.h>
+
+# include "struct_vec3.h"
 
 #define ZERO 0
 #define IDENTITY 1
 #define STD_X 1
 #define STD_Y 2
 #define STD_Z 3
-
-
-typedef double	t_vec3[3];
-typedef	t_vec3	t_pvec3;
-typedef	t_vec3	t_dvec3;
-
-typedef t_vec3	t_mtx3[3];
-
-typedef enum e_xyz
-{
-	x_ = 0,
-	y_ = 1,
-	z_ = 2
-}	t_xyz;
 
 //	minimath.c
 void	escape();
@@ -74,3 +65,4 @@ void	sub_mtx3(t_mtx3 dst, t_mtx3 m1, t_mtx3 m2);
 void	mul_mtx3(t_mtx3 dst, t_mtx3 m1, t_mtx3 m2);
 void	pow_mtx3(t_mtx3 dst, t_mtx3 m, int times);
 
+#endif

@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/24 17:02:11 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/24 21:29:28 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 # include "../my_lib/inc/improved_libft.h"
 # include "../my_lib/inc/get_next_line.h"
 # include "../mlx/mlx.h"
+# include "../minimath/inc/minimath.h"
 
 // etc
-# include "elements.h"
+# include "input.h"
 # include "mlx_related.h"
 # include "my_booleans.h"
 # include "my_errno.h"

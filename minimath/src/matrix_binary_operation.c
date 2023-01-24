@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_binary_operation.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchoi <jchoi@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:36:23 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/24 20:40:07 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/01/24 21:21:24 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "minimath.h"
+
+#include "../inc/minimath.h"
 
 void	add_mtx3(t_mtx3 dst, t_mtx3 m1, t_mtx3 m2)
 {

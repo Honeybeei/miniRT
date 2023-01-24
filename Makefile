@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/24 16:59:31 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/24 21:49:11 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,26 @@ Blue = \033[0;34m		# Blue
 Purple = \033[0;35m		# Purple
 Cyan = \033[0;36m		# Cyan
 White = \033[0;37m		# White
+
+# **************************************************************************** #
+
+# archive files
+
+# my_lib
+MY_LIB_DIR = ./my_lib/
+MY_LIB_ARC = my_lib.a
+MY_LIB = $(MY_LIB_DIR)$(MY_LIB_ARC)
+
+# mlx related
+MLX_DIR = ./mlx/
+MLX_ARC = libmlx.a
+MLX = $(MLX_DIR)$(MLX_ARC)
+API_FLAGS = -framework OpenGL -framework AppKit
+
+# MINI_MATH
+MINI_MATH_DIR = ./minimath/
+MINI_MATH_ARC = minimath.a
+MINI_MATH = $(MINI_MATH_DIR)$(MINI_MATH_ARC)
 
 # **************************************************************************** #
 
@@ -40,20 +60,9 @@ TEST_DIR = ./test/
 INC_DIR = ./inc/
 INC_FLAGS = -I $(INC_DIR)
 
-# my_lib
-MY_LIB_DIR = ./my_lib/
-MY_LIB_ARC = my_lib.a
-MY_LIB = $(MY_LIB_DIR)$(MY_LIB_ARC)
-
-# mlx related
-MLX_DIR = ./mlx/
-MLX_ARC = libmlx.a
-MLX = $(MLX_DIR)$(MLX_ARC)
-API_FLAGS = -framework OpenGL -framework AppKit
-
 # flags and options
 COMPILE_FLAGS = $(CC) $(DBFLAGS) $(CFLAGS) $(INC_FLAGS) -I $(MLX_DIR)
-LINKING_FLAGS = $(CC) $(MLX) $(MY_LIB) $(API_FLAGS)
+LINKING_FLAGS = $(CC) $(MLX) $(MY_LIB) $(MINI_MATH) $(API_FLAGS)
 
 # **************************************************************************** #
 
@@ -65,6 +74,8 @@ MAIN_FILE = main
 MAIN_SRC = $(SRC_DIR)$(MAIN_FILE).c
 MAIN_OBJ = $(OBJ_DIR)$(MAIN_FILE).o
 OBJS += $(MAIN_OBJ)
+
+# **************************************************************************** #
 
 # input_parsing
 INPUT_PARSING_DIR = input_parsing/
@@ -81,6 +92,8 @@ INPUT_PARSING_FILE = \
 INPUT_PARSING_SRCS = $(addsuffix .c, $(addprefix $(INPUT_PARSING_SRC_DIR), $(INPUT_PARSING_FILE)))
 INPUT_PARSING_OBJS = $(addsuffix .o, $(addprefix $(INPUT_PARSING_OBJ_DIR), $(INPUT_PARSING_FILE)))
 OBJS += $(INPUT_PARSING_OBJS)
+
+# **************************************************************************** #
 
 # utils
 UTILS_DIR = utils/
@@ -99,8 +112,7 @@ OBJS += $(UTILS_OBJS)
 # **************************************************************************** #
 
 # main rules
-
-all : mylib minilibx mkobjdir $(NAME)
+all : minilibx mylib mini_math mkobjdir $(NAME)
 
 #	linking
 $(NAME) : $(OBJS)
@@ -127,6 +139,7 @@ clean :
 
 fclean : clean
 	@make fclean -C $(MY_LIB_DIR)
+	@make fclean -C $(MINI_MATH_DIR)
 	@make clean -C $(MLX_DIR)
 	rm -f $(NAME)
 
@@ -143,7 +156,10 @@ mylib :
 minilibx : 
 	@make -C $(MLX_DIR)
 
+mini_math :
+	@make -C $(MINI_MATH_DIR)
+
 norm :
 	@norminette src inc my_lib | grep Error
 
-.PONEY : all mkobjdir clean fclean re ree run mylib minilibx norm
+.PONEY : all mkobjdir clean fclean re ree run mylib minilibx MINI_MATH norm

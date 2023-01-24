@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchoi <jchoi@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:34:51 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/24 20:35:40 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/01/24 21:21:43 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minimath.h"
+#include "../inc/minimath.h"
 
 void	input_mtx3(t_mtx3 dst, t_vec3 v0, t_vec3 v1, t_vec3 v2)
 {

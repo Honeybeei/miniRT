@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_unary_operation.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchoi <jchoi@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:37:13 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/24 20:46:12 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/01/24 21:22:07 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "minimath.h"
+
+#include "../inc/minimath.h"
 
 void	add_inverse_vec3(t_vec3 dst, t_vec3 v0)
 {

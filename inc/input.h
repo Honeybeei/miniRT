@@ -1,39 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   elements.h                                         :+:      :+:    :+:   */
+/*   input.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 23:49:57 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/24 14:47:44 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/24 21:51:42 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ELEMENTS_H
-# define ELEMENTS_H
+#ifndef INPUT_H
+# define INPUT_H
 
 # include "my_flag.h"
-
-/* ************************************************************************** */
-
-// WARNING!! THIS PART WILL BE REDEFINED IN JCHOI'S MATH LIBRARY. ERASE THIS 
-// PART AFTER ADDING HEADER FILE OF THE NEW MATH LIBRARY. 
-
-typedef double  t_vec3[3];
-typedef t_vec3  t_pvec3;
-typedef t_vec3  t_dvec3;
-
-typedef t_vec3  t_mtx3[3];
-
-typedef enum e_xyz
-{
-    x_ = 0,
-    y_ = 1,
-    z_ = 2
-}   t_xyz;
-
-/* ************************************************************************** */
+# include "../minimath/inc/struct_vec3.h"
 
 // INPUT
 

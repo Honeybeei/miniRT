@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_binary_operation.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchoi <jchoi@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:37:33 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/24 20:37:37 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/01/24 21:22:03 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "minimath.h"
+
+#include "../inc/minimath.h"
 
 void	add_vec3(t_vec3 dst, t_vec3 v1, t_vec3 v2)
 {
