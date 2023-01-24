@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:53:33 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/24 14:18:14 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/24 16:11:27 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,3 +75,4 @@ t_bool	parse_vec3(t_vec3 *dst, bool is_orientation_vec, char *vec_data)
 		free(splitted_vec[i++]);
 	return (success_);
 }
+

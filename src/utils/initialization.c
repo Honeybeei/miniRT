@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:52:29 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/23 20:36:48 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/24 17:01:08 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	init_mlx(t_ptrs *ptrs)
 
 	mlx = &ptrs->mlx_;
 	mlx->mlx_ptr_ = mlx_init();
-	mlx->win_ptr_ = mlx_new_window(mlx->mlx_ptr_, WINDOW_WIDTH_, WINDOW_HEIGHT_, "miniRT");
+	mlx->win_ptr_ = mlx_new_window(mlx->mlx_ptr_, WINDOW_WIDTH_, \
+	WINDOW_HEIGHT_, "miniRT");
 	mlx_hook(mlx->win_ptr_, x_key_press_, 0, handle_key_press_event, &ptrs);
 	// mlx_key_hook(mlx->win_ptr_, handle_key_press_event, ptrs);
 	mlx_loop(mlx->mlx_ptr_);
@@ -44,5 +45,5 @@ int	handle_key_press_event(int key_code, t_ptrs *ptrs)
 		ft_putnbr_fd(key_code, STDOUT_FILENO);
 		ft_putstr_fd(" - Try another keys\n", STDOUT_FILENO);
 	}
-	return 0;
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/24 15:19:02 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/24 16:59:31 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,8 @@ INPUT_PARSING_FILE = \
 		parse_input \
 		parsing_utils1 \
 		parsing_utils2 \
-		scan_formats1
+		scan_formats1 \
+		scan_formats2
 
 INPUT_PARSING_SRCS = $(addsuffix .c, $(addprefix $(INPUT_PARSING_SRC_DIR), $(INPUT_PARSING_FILE)))
 INPUT_PARSING_OBJS = $(addsuffix .o, $(addprefix $(INPUT_PARSING_OBJ_DIR), $(INPUT_PARSING_FILE)))
@@ -88,7 +89,6 @@ UTILS_OBJ_DIR = $(OBJ_DIR)$(UTILS_DIR)
 
 UTILS_FILE = \
 		error_management \
-		hello_world \
 		initialization \
 		utils_for_test
 

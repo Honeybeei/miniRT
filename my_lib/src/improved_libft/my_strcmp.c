@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:39:23 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/17 01:12:01 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/24 17:02:52 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	my_strcmp(const char *str1, const char *str2)
 		return (ft_strncmp(str1, str2, len1));
 	else
 		return ((int)(len1 - len2));
-		
 }
 
 /* ************************************************************************** */

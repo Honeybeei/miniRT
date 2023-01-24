@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/24 15:18:41 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/24 17:02:11 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,12 @@ t_bool	parse_vec3(t_vec3 *dst, bool is_orientation_vec, char *vec_data);
 
 //		scan_formats1.c
 void	scan_single_line(t_input *input, char *input_str);
+t_bool	is_valid_spec_cnt(char **str_arr, int expected_cnt);
 void	scan_ambient_format(t_input_a *ambient, char **str_arr);
 void	scan_camera_format(t_input_c *camera, char **str_arr);
 void	scan_light_format(t_input_l *light, char **str_arr);
+
+//		scan_formats2.c
 void	scan_sphere_format(t_input_sp *sphere_arr, char **str_arr);
 void	scan_plane_format(t_input_pl *plane_arr, char **str_arr);
 void	scan_cylinder_format(t_input_cy *cylinder_arr, char **str_arr);
@@ -75,16 +78,13 @@ void	scan_cylinder_format(t_input_cy *cylinder_arr, char **str_arr);
 void	error_management(bool is_customized_err, t_errno customized_errno, \
 		char *additional_err_msg, bool should_exit);
 
-//		hello_world.c -> only for test. THIS should be deleted.
-void	hello_world(int n);
-
 //		initialization.c
 void	init_ptrs(t_ptrs *ptrs);
 void	init_mlx(t_ptrs *ptrs);
 int		handle_key_press_event(int key_code, t_ptrs *ptrs);
 
 //		utils_for_test.c
-void    test_print_inputs(t_input *input);
+void	test_print_inputs(t_input *input);
 
 /* ************************************************************************** */
 
