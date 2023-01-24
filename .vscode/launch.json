@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/miniRT",
-            "args": ["/Users/juneee/GitRepo/miniRT/samples/sample1.rt"],
+            "args": ["${workspaceFolder}/samples/sample1.rt"],
             "stopAtEntry": true,
             "cwd": "${fileDirname}",
             "environment": [],

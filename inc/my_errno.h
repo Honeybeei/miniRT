@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   my_errno.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 13:48:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/24 15:42:43 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/24 14:45:49 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/24 14:46:12 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#ifndef MY_ERRNO_H
+# define MY_ERRNO_H
 
-int	main(int argc, char *argv[])
+/**
+ * customized error number. It will be pared up with error_msg defined in 
+ * error_management.c
+ */
+typedef enum e_customized_errno
 {
-	t_ptrs	ptrs;
+	err_no_file_ = 0,
+	err_too_much_file_,
+	err_invalid_input_data_
+}	t_errno;
 
-	if (argc < 2)
-		error_management(true, err_no_file_, NULL, true);
-	else if (argc > 2)
-		error_management(true, err_too_much_file_, NULL, true);
-	init_ptrs(&ptrs);
-	parse_input(&ptrs.input_, argv[1]);
-	test_print_inputs(&ptrs.input_);
-	// input_transformation(&ptrs);  // TODO
-	// init_mlx(&ptrs);
-	return (0);
-}
+#endif

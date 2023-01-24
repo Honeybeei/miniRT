@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scan_formats1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:13:14 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/23 18:18:11 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/24 15:14:42 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	scan_single_line(t_input *input, char *input_str)
 	else if (my_strcmp(str_arr[0], "L") == 0)
 		scan_light_format(&input->light_, str_arr);
 	else if (my_strcmp(str_arr[0], "sp") == 0)
-		scan_sphere_format(&input->sphere_, str_arr);
+		scan_sphere_format(input->sphere_, str_arr);
 	else if (my_strcmp(str_arr[0], "pl") == 0)
-		scan_plane_format(&input->plane_, str_arr);
+		scan_plane_format(input->plane_, str_arr);
 	else if (my_strcmp(str_arr[0], "cy") == 0)
-		scan_cylinder_format(&input->cylinder_, str_arr);
+		scan_cylinder_format(input->cylinder_, str_arr);
 	else
 		error_management(true, err_invalid_input_data_, \
 		"Invalid type identifier", true);
@@ -79,15 +79,16 @@ void	scan_light_format(t_input_l *light, char **str_arr)
 	printf("Light data scan complete!!\n");
 }
 
-void	scan_sphere_format(t_input_sp **sphere_arr, char **str_arr)
+void	scan_sphere_format(t_input_sp *sphere_arr, char **str_arr)
 {
 	int			i;
 	t_input_sp	*target;
 
 	i = 0;
-	while (sphere_arr[i] != NULL)
+	while (sphere_arr[i].scanned_flag_ == up_)
 		i++;
-	target = sphere_arr[i];
+	target = &sphere_arr[i];
+	target->scanned_flag_ = up_;
 	if (parse_vec3(&target->center_, false, str_arr[1]) == false)
 		error_management(true, err_invalid_input_data_, "Invalid sphere center data", true);
 	if (is_valid_double_format(str_arr[2]) == true)
@@ -101,15 +102,16 @@ void	scan_sphere_format(t_input_sp **sphere_arr, char **str_arr)
 	printf("Sphere[%d] data scan complete!!\n", i + 1);
 }
 
-void	scan_plane_format(t_input_pl **plane_arr, char **str_arr)
+void	scan_plane_format(t_input_pl *plane_arr, char **str_arr)
 {
 	int			i;
 	t_input_pl	*target;
 
 	i = 0;
-	while (plane_arr[i] != NULL)
+	while (plane_arr[i].scanned_flag_ == up_)
 		i++;
-	target = plane_arr[i];
+	target = &plane_arr[i];
+	target->scanned_flag_ = up_;
 	if (parse_vec3(&target->coordinate_, false, str_arr[1]) == false)
 		error_management(true, err_invalid_input_data_, "Invalid plane coordinate data", true);
 	if (parse_vec3(&target->orientation_, true, str_arr[2]) == false)
@@ -120,15 +122,16 @@ void	scan_plane_format(t_input_pl **plane_arr, char **str_arr)
 }
 
 
-void	scan_cylinder_format(t_input_cy **cylinder_arr, char **str_arr)
+void	scan_cylinder_format(t_input_cy *cylinder_arr, char **str_arr)
 {
 	int			i;
 	t_input_cy	*target;
 
 	i = 0;
-	while (cylinder_arr[i] != NULL)
+	while (cylinder_arr[i].scanned_flag_ == up_)
 		i++;
-	target = cylinder_arr[i];
+	target = &cylinder_arr[i];
+	target->scanned_flag_ = up_;
 	if (parse_vec3(&target->coordinate_, false, str_arr[1]) == false)
 		error_management(true, err_invalid_input_data_, "Invalid cylinder coordinate data", true);
 	if (parse_vec3(&target->orientation_, true, str_arr[2]) == false)

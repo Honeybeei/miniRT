@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 21:24:26 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/23 21:50:16 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/24 14:35:53 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	count_elements(t_input *input, int fd);
 static void	check_element_cnt(int *obj_cnt);
 static void	set_element_info(t_input *input, int fd);
+static void	init_additional_elements(t_input *input);
 
 void	parse_input(t_input *input, char *src)
 {
@@ -81,19 +82,35 @@ static void	set_element_info(t_input *input, int fd)
 	char	*gnl_result;
 
 	if (input->obj_cnt_[type_sphere_] > 0)
-		my_calloc(input->obj_cnt_[type_sphere_] + 1, sizeof(t_input_sp));
+		input->sphere_ = my_calloc(input->obj_cnt_[type_sphere_] + 1, sizeof(t_input_sp));
 	if (input->obj_cnt_[type_plane_] > 0)
-		my_calloc(input->obj_cnt_[type_plane_] + 1, sizeof(t_input_pl));
+		input->plane_ = my_calloc(input->obj_cnt_[type_plane_] + 1, sizeof(t_input_pl));
 	if (input->obj_cnt_[type_cylinder_] > 0)
-		my_calloc(input->obj_cnt_[type_cylinder_] + 1, sizeof(t_input_cy));
+		input->cylinder_ = my_calloc(input->obj_cnt_[type_cylinder_] + 1, sizeof(t_input_cy));
+	init_additional_elements(input);
 	while (true)
 	{
-		gnl_result = get_next_line(fd);
+		gnl_result = get_next_line_without_new_line(fd);
 		if (gnl_result == NULL)
 			break ;
-		else if (*gnl_result != '\n')
+		else if (*gnl_result != 0)
 			scan_single_line(input, gnl_result);
 		free(gnl_result);
 	}
 	return ;
+}
+
+static void	init_additional_elements(t_input *input)
+{
+	int	i;
+
+	i = 0;
+	while (i < input->obj_cnt_[type_sphere_])
+		input->sphere_[i++].scanned_flag_ = down_;
+	i = 0;
+	while (i < input->obj_cnt_[type_plane_])
+		input->plane_[i++].scanned_flag_ = down_;
+	i = 0;
+	while (i < input->obj_cnt_[type_cylinder_])
+		input->cylinder_[i++].scanned_flag_ = down_;
 }

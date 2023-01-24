@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:29:46 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/23 20:44:10 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/24 15:46:37 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 // error messages pair up with t_errno. 
 static char	*error_msg[] = {
-	"Where is my file you idot!!! 😡 😡" ,
-	"Its too much for me 🤢 🤮 ......"
-	"Your input data sucks 🙁 🤷‍♂️"
+	"Where is my file you idot!!!" ,
+	"Its too much for me...... " ,
+	"Your input data sucks"
 };
 
 /**

@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   elements.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 23:49:57 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/23 18:33:20 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/24 14:47:44 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ELEMENTS_H
 # define ELEMENTS_H
+
+# include "my_flag.h"
 
 /* ************************************************************************** */
 
@@ -58,13 +60,13 @@ enum e_rgb
 	b_
 };
 
-typedef struct s_input_data_ambient_lightning
+typedef struct s_input_ambient_lightning
 {
 	double	ratio_;
 	t_rgb	rgb_;
 }	t_input_a;
 
-typedef struct s_input_data_camera
+typedef struct s_input_camera
 {
 	t_pvec3	view_point_;
 	t_dvec3	orientation_;
@@ -79,6 +81,7 @@ typedef struct s_input_light
 
 typedef struct s_input_sphere
 {
+	t_flag	scanned_flag_;
 	t_pvec3	center_;
 	double	diameter_;
 	t_rgb	rgb_;
@@ -86,6 +89,7 @@ typedef struct s_input_sphere
 
 typedef struct s_input_plane
 {
+	t_flag	scanned_flag_;
 	t_pvec3	coordinate_;
 	t_dvec3	orientation_;
 	t_rgb	rgb_;
@@ -93,6 +97,7 @@ typedef struct s_input_plane
 
 typedef struct s_input_cylinder
 {
+	t_flag	scanned_flag_;
 	t_pvec3	coordinate_;
 	t_dvec3	orientation_;
 	double	diameter_;

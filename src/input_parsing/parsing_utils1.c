@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:53:33 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/24 01:52:43 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/24 13:56:22 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,21 @@
 char	*get_next_line_without_new_line(int fd)
 {
 	char	*gnl_result;
+	size_t	str_len;
 	
 	char	*without_new_line;
 
 	gnl_result = get_next_line(fd);
-
-	// delete the next line character at the end of the string. 
+	if (gnl_result == NULL)
+		return (NULL);
+	str_len = ft_strlen(gnl_result);
+	if (str_len > 0 && gnl_result[str_len - 1] == '\n')
+	{
+		without_new_line = my_strndup(gnl_result, str_len - 1);
+		free(gnl_result);
+		return (without_new_line);
+	}
+	return (gnl_result);
 
 }
 
