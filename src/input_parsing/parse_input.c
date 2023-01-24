@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 21:24:26 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/23 18:32:12 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/23 21:50:16 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ void	parse_input(t_input *input, char *src)
 	count_elements(input, fd);
 	if (close(fd) < 0)
 		error_management(false, 0, NULL, true);
+	fd = open(src, O_RDONLY);
 	if (fd < 0)
 		error_management(false, 0, NULL, true);
 	check_element_cnt(input->obj_cnt_);
-	set_element_info(input, fd);  // TODO
+	set_element_info(input, fd);
 	if (close(fd) < 0)
 		error_management(false, 0, NULL, true);
 }
@@ -55,7 +56,7 @@ static void	count_elements(t_input *input, int fd)
 			if (first_char_ptr == NULL)
 				error_management(true, err_invalid_input_data_, \
 				"Invalid type identifier", true);
-			input->obj_cnt_[first_char_ptr - gnl_result + i]++;
+			input->obj_cnt_[first_char_ptr - INPUT_TYPE_FIRST_CHAR_ + i]++;
 		}
 		free(gnl_result);
 	}

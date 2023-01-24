@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:29:46 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/23 18:34:39 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/23 20:44:10 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	error_management(bool is_customized_err, t_errno customized_errno, \
 		char *additional_err_msg, bool should_exit)
 {
 	ft_putendl_fd("Error", STDERR_FILENO);
-	if (is_customized_err == true)
+	if (is_customized_err == false)
 		perror(NULL);
 	else
 		ft_putstr_fd(error_msg[customized_errno], STDERR_FILENO);

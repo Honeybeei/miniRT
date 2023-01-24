@@ -6,13 +6,13 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/23 18:23:09 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/23 20:48:14 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int	main(int argc, char **argv)
+int	main(int argc, char *argv[])
 {
 	t_ptrs	ptrs;
 
@@ -23,6 +23,6 @@ int	main(int argc, char **argv)
 	init_ptrs(&ptrs);
 	parse_input(&ptrs.input_, argv[1]);
 	// input_transformation(&ptrs);  // TODO
-	// init_mlx(&ptrs);  // HANDLE LATER
+	init_mlx(&ptrs);
 	return (0);
 }

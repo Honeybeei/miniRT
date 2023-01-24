@@ -6,11 +6,23 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:53:33 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/23 18:33:41 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/24 01:52:43 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
+
+char	*get_next_line_without_new_line(int fd)
+{
+	char	*gnl_result;
+	
+	char	*without_new_line;
+
+	gnl_result = get_next_line(fd);
+
+	// delete the next line character at the end of the string. 
+
+}
 
 double	my_strtod(const char *nptr)
 {
