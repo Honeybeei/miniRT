@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_related.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:16:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/19 23:19:16 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/25 18:03:01 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_mlx
 
 typedef struct s_image
 {
-	void	*mlx_ptr_;
+	void	*img_ptr_;
 	char	*addr_;
 	int		bits_per_pixel_;
 	int		size_line_;
