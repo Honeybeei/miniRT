@@ -3,114 +3,132 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 21:24:26 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/24 14:35:53 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/29 15:41:10 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/30 01:19:05 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "../../inc/minirt.h"
 
-static void	count_elements(t_input *input, int fd);
-static void	check_element_cnt(int *obj_cnt);
-static void	set_element_info(t_input *input, int fd);
-static void	init_additional_elements(t_input *input);
+static void	count_elements(t_objs *objs, int fd, int input_cnt[]);
+static void	plus_one_to_match(char *gnl_result, int input_cnt[]);
+static void	set_elements(t_objs *objs, int fd);
 
-void	parse_input(t_input *input, char *src)
+void	parse_input(t_objs *objs, char *src_file)
 {
 	int		fd;
+	int		input_cnt[INPUT_TYPE_CNT_];
 
-	fd = open(src, O_RDONLY);
+	fd = open(src_file, O_RDONLY);
 	if (fd < 0)
 		error_management(false, 0, NULL, true);
-	count_elements(input, fd);
+	count_elements(objs, fd, input_cnt);
 	if (close(fd) < 0)
 		error_management(false, 0, NULL, true);
-	fd = open(src, O_RDONLY);
+	fd = open(src_file, O_RDONLY);
 	if (fd < 0)
 		error_management(false, 0, NULL, true);
-	check_element_cnt(input->obj_cnt_);
-	set_element_info(input, fd);
+	set_elements(objs, fd);
 	if (close(fd) < 0)
 		error_management(false, 0, NULL, true);
 }
 
-static void	count_elements(t_input *input, int fd)
+static void	count_elements(t_objs *objs, int fd, int input_cnt[])
 {
 	char	*gnl_result;
-	char	*first_char_ptr;
-	int		i;
+	
+	ft_bzero(input_cnt, sizeof(int) * INPUT_TYPE_CNT_);
+	
+	// // TEST
+	// for (int i = 0; i < INPUT_TYPE_CNT_; i++)
+	// {
+	// 	printf("[%d] ", input_cnt[i]);
+	// }
+	// printf("\n");
+	// // TEST
 
-	gnl_result = NULL;
 	while (true)
 	{
 		gnl_result = get_next_line(fd);
 		if (gnl_result == NULL)
 			break ;
 		else if (*gnl_result != '\n')
-		{
-			i = 0;
-			while (gnl_result[i] == ' ')
-				i++;
-			first_char_ptr = ft_strchr(INPUT_TYPE_FIRST_CHAR_, gnl_result[i]);
-			if (first_char_ptr == NULL)
-				error_management(true, err_invalid_input_data_, \
-				"Invalid type identifier", true);
-			input->obj_cnt_[first_char_ptr - INPUT_TYPE_FIRST_CHAR_ + i]++;
-		}
+			plus_one_to_match(gnl_result, input_cnt);
 		free(gnl_result);
 	}
+
+	// // TEST
+	// for (int i = 0; i < INPUT_TYPE_CNT_; i++)
+	// {
+	// 	printf("[%d] ", input_cnt[i]);
+	// }
+	// printf("\n");
+	// // TEST
+	
+	if (input_cnt[input_ambient_] != 1)
+		error_management(true, err_invalid_input_data_, \
+		"Invalid ambient light element count", true);
+	if (input_cnt[input_camera_] != 1)
+		error_management(true, err_invalid_input_data_, \
+		"Invalid camera element count", true);
+	objs->light_cnt_ = input_cnt[input_light_];
+	objs->figure_cnt_ = input_cnt[input_sphere_] + input_cnt[input_plane_] + \
+	input_cnt[input_cylinder];
 	return ;
 }
 
-static void	check_element_cnt(int *obj_cnt)
+static void	plus_one_to_match(char *gnl_result, int input_cnt[])
 {
-	if (obj_cnt[type_ambient_] != 1 )
+	if (ft_strncmp(gnl_result, "A ", 2) == 0)
+		input_cnt[input_ambient_]++;
+	else if (ft_strncmp(gnl_result, "C ", 2) == 0)
+		input_cnt[input_camera_]++;
+	else if (ft_strncmp(gnl_result, "L ", 2) == 0)
+		input_cnt[input_light_]++;
+	else if (ft_strncmp(gnl_result, "sp ", 3) == 0)
+		input_cnt[input_sphere_]++;
+	else if (ft_strncmp(gnl_result, "pl ", 3) == 0)
+		input_cnt[input_plane_]++;
+	else if (ft_strncmp(gnl_result, "cy", 3) == 0)
+		input_cnt[input_cylinder]++;
+	else
 		error_management(true, err_invalid_input_data_, \
-		"Ambient lightning can only be declared once", true);
-	if (obj_cnt[type_camera_] != 1)
-		error_management(true, err_invalid_input_data_, \
-		"Camera can only be declared once", true);
-	if (obj_cnt[type_light_] != 1)
-		error_management(true, err_invalid_input_data_, \
-		"Light can only be declared once", true);
+		"Invalid type identifier", true);
+	
+	// // TEST
+	// for (int i = 0; i < INPUT_TYPE_CNT_; i++)
+	// {
+	// 	printf("[%d] ", input_cnt[i]);
+	// }
+	// printf("\n");
+	// // TEST
 }
 
-static void	set_element_info(t_input *input, int fd)
+static void	set_elements(t_objs *objs, int fd)
 {
-	char	*gnl_result;
+	char	**splitted_str;
+	int		light_index;
+	int		figure_index;
 
-	if (input->obj_cnt_[type_sphere_] > 0)
-		input->sphere_ = my_calloc(input->obj_cnt_[type_sphere_] + 1, sizeof(t_input_sp));
-	if (input->obj_cnt_[type_plane_] > 0)
-		input->plane_ = my_calloc(input->obj_cnt_[type_plane_] + 1, sizeof(t_input_pl));
-	if (input->obj_cnt_[type_cylinder_] > 0)
-		input->cylinder_ = my_calloc(input->obj_cnt_[type_cylinder_] + 1, sizeof(t_input_cy));
-	init_additional_elements(input);
+	objs->lights_ = my_calloc(objs->light_cnt_, sizeof(t_light));
+	objs->figures_ = my_calloc(objs->figure_cnt_, sizeof(t_figure));
+	light_index = 0;
+	figure_index = 0;
 	while (true)
 	{
-		gnl_result = get_next_line_without_new_line(fd);
-		if (gnl_result == NULL)
-			break ;
-		else if (*gnl_result != 0)
-			scan_single_line(input, gnl_result);
-		free(gnl_result);
+		splitted_str = my_split(get_next_line_without_new_line(fd), ' ');
+		if (splitted_str == NULL)
+			break;
+		else if (my_strcmp(splitted_str[0], "A") == 0)
+			scan_ambient_lightning(&objs->ambient_, splitted_str);
+		else if (my_strcmp(splitted_str[0], "C") == 0)
+			scan_camera(&objs->camera_, splitted_str);
+		else if (my_strcmp(splitted_str[0], "L") == 0)
+			scan_light(&objs->lights_[light_index++], splitted_str);
+		else
+			scan_figures(&objs->figures_[figure_index++], splitted_str);
+		free_str_arr(splitted_str);
 	}
-	return ;
-}
-
-static void	init_additional_elements(t_input *input)
-{
-	int	i;
-
-	i = 0;
-	while (i < input->obj_cnt_[type_sphere_])
-		input->sphere_[i++].scanned_flag_ = down_;
-	i = 0;
-	while (i < input->obj_cnt_[type_plane_])
-		input->plane_[i++].scanned_flag_ = down_;
-	i = 0;
-	while (i < input->obj_cnt_[type_cylinder_])
-		input->cylinder_[i++].scanned_flag_ = down_;
 }

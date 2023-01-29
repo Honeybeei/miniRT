@@ -1,7 +1,18 @@
 {
     "files.associations": {
         "stdio.h": "c",
-        "minirt.h": "c"
+        "minirt.h": "c",
+        "objects.h": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "vector": "c",
+        "__availability": "cpp",
+        "exception": "cpp",
+        "ios": "cpp",
+        "system_error": "cpp",
+        "type_traits": "cpp",
+        "algorithm": "cpp"
     },
     "cSpell.words": [
         "minirt"

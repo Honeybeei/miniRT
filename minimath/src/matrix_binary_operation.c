@@ -3,87 +3,81 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_binary_operation.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 20:36:23 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/24 21:21:24 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/29 21:48:22 by jchoi             #+#    #+#             */
+/*   Updated: 2023/01/30 00:21:11 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minimath.h"
 
-void	add_mtx3(t_mtx3 dst, t_mtx3 m1, t_mtx3 m2)
+t_mtx3	add_mtx3(t_mtx3 m1, t_mtx3 m2)
 {
-	if (!(dst && m1 && m2))
-		escape();
-	add_vec3(dst[0], m1[0], m2[0]);
-	add_vec3(dst[1], m1[1], m2[1]);
-	add_vec3(dst[2], m1[2], m2[2]);
+	t_mtx3	m;
+
+	m.r[0] = add_vec3(m1.r[0], m2.r[0]);
+	m.r[1] = add_vec3(m1.r[1], m2.r[1]);
+	m.r[2] = add_vec3(m1.r[2], m2.r[2]);
+	return (m);
 }
 
-void	times_mtx3(t_mtx3 dst, t_mtx3 m, const double scalar)
+t_mtx3	add_inverse_mtx3(t_mtx3 m)
 {
-	if (!(dst && m))
-		escape();
-	times_vec3(dst[0], m[0], scalar);
-	times_vec3(dst[1], m[1], scalar);
-	times_vec3(dst[2], m[2], scalar);
+	return (times_mtx3(m, -1.0));
 }
 
-void	sub_mtx3(t_mtx3 dst, t_mtx3 m1, t_mtx3 m2)
+t_mtx3	sub_mtx3(t_mtx3 m1, t_mtx3 m2)
 {
-	t_mtx3	sub;
-
-	add_inverse_mtx3(sub, m2);
-	add_mtx3(dst, m1, sub);
+	return (add_mtx3(m1, add_inverse_mtx3(m2)));
 }
 
-void	mul_mtx3(t_mtx3 dst, t_mtx3 m1, t_mtx3 m2)
+t_mtx3	mul_mtx3(t_mtx3 m1, t_mtx3 m2)
 {
 	t_mtx3	tmp;
+	double	e[3];
 	size_t	i;
 	size_t	j;
 	size_t	k;
 
-	if (!(dst && m1 && m2))
-		escape();
 	i = 0;
 	while (i < 3)
 	{
 		j = 0;
 		while (j < 3)
 		{
-			tmp[i][j] = 0;
+			e[j] = 0;
 			k = 0;
 			while (k < 3)
 			{
-				tmp[i][j] += (m1[i][k] * m2[k][j]);
+				e[j] += (m1.r[i].e[k] * m2.r[k].e[j]);
 				k++;
 			}
 			j++;
 		}
+		tmp.r[i] = init_vec3(e[x_], e[y_], e[z_]);
 		i++;
 	}
-	input_mtx3(dst, tmp[0], tmp[1], tmp[2]);
+	return (tmp);
 }
 
-void	pow_mtx3(t_mtx3 dst, t_mtx3 m, int times)
+t_mtx3	pow_mtx3(t_mtx3 m, int times)
 {
 	t_mtx3	tmp;
 	t_mtx3	exp;
 
-	regular_mtx3(tmp, IDENTITY);
-	input_mtx3(exp, m[0], m[1], m[2]);
+	tmp = regular_mtx3(IDENTITY);
+	exp = m;
 	if (times < 0)
 	{
 		if (!det_mtx3(m) && printf("param matrix is not inversible\n"))
-			return ;
-		inverse_mtx3(exp, exp);
+			return (m);
+		exp = inverse_mtx3(exp);
 	}
 	while (times != 0)
 	{
-		mul_mtx3(tmp, tmp, exp);
+		tmp = mul_mtx3(tmp, exp);
 		times += ((times < 0) - (0 < times));
 	}
-	input_mtx3(dst, tmp[0], tmp[1], tmp[2]);
+	return (tmp);
 }

@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimath.c                                         :+:      :+:    :+:   */
+/*   vector_projection.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/21 20:32:57 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/24 21:22:00 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/29 21:47:39 by jchoi             #+#    #+#             */
+/*   Updated: 2023/01/30 00:21:26 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minimath.h"
 
-void	escape(void)
+t_vec3	tangent_vec3(t_vec3 src, t_vec3 dir)
 {
-	printf("error occur : exit code(-1)\n");
-	exit(-1);
+	return (times_vec3(dir, dot_product(src, normalize_vec3(dir))));
+}
+
+t_vec3	normal_vec3(t_vec3 src, t_vec3 dir)
+{
+	return (sub_vec3(src, tangent_vec3(src, dir)));
 }

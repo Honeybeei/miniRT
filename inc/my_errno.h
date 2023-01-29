@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_errno.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:45:49 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/24 14:46:12 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/29 18:14:40 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ typedef enum e_customized_errno
 {
 	err_no_file_ = 0,
 	err_too_much_file_,
-	err_invalid_input_data_
+	err_invalid_input_data_,
+	err_invalid_color_type_
 }	t_errno;
+
 
 #endif

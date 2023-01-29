@@ -3,35 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 20:36:57 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/24 21:22:11 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/29 21:46:50 by jchoi             #+#    #+#             */
+/*   Updated: 2023/01/30 00:21:34 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minimath.h"
 
-void	input_vec3(t_vec3 dst, double x, double y, double z)
+t_vec3	init_vec3(double x, double y, double z)
 {
-	if (!dst)
-		escape();
-	dst[x_] = x;
-	dst[y_] = y;
-	dst[z_] = z;
+	t_vec3	v;
+
+	v.e[x_] = x;
+	v.e[y_] = y;
+	v.e[z_] = z;
+	return (v);
+}
+
+t_vec3	regular_vec3(int type)
+{
+	if (type < ZERO || STD_Z < type)
+		printf("invalid type\n");
+	return (init_vec3(type == STD_X, type == STD_Y, type == STD_Z));
 }
 
 void	print_vec3(t_vec3 v)
 {
-	printf("x : %f\t", v[x_]);
-	printf("y : %f\t", v[y_]);
-	printf("z : %f\t", v[z_]);
+	printf("x : %f\t", v.e[x_]);
+	printf("y : %f\t", v.e[y_]);
+	printf("z : %f\t", v.e[z_]);
 	printf("\n");
-}
-
-void	regular_vec3(t_vec3 v, const int type)
-{
-	if ((type < ZERO || STD_Z < type) && printf("invalid type\n"))
-		return ;
-	input_vec3(v, type == STD_X, type == STD_Y, type == STD_Z);
 }

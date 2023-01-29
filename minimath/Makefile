@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
+#    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 21:03:19 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/24 21:49:59 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/30 00:23:57 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,9 +50,9 @@ SRC_FILE = \
 		matrix.c \
 		matrix_binary_operation.c \
 		matrix_unary_operation.c \
-		minimath.c \
 		vector.c \
 		vector_binary_operation.c \
+		vector_projection.c \
 		vector_unary_operation.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILE))

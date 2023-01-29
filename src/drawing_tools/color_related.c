@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   color_related.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 13:48:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/29 15:40:35 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/26 19:55:17 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/29 18:12:37 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "../../inc/minirt.h"
 
-int	main(int argc, char *argv[])
+t_color	rgb_to_color(int r, int g, int b)
 {
-	t_ptrs	ptrs;
+	return (r << 16 | g << 8 | b);
+}
 
-	if (argc < 2)
-		error_management(true, err_no_file_, NULL, true);
-	else if (argc > 2)
-		error_management(true, err_too_much_file_, NULL, true);
-	init_mlx(&ptrs);
-	parse_input(&ptrs.objs_, argv[1]);
-	// draw_all(&ptrs.mlx_, &ptrs.img_, &ptrs.objs_);
-	mlx_loop(ptrs.mlx_.mlx_ptr_);
-	return (0);
+int	color_to_rgb(t_color color, char type)
+{
+	if (type == 'r')
+		return (color & (0xFF << 16));
+	else if (type == 'g')
+		return (color & (0xFF << 8));
+	else if (type == 'b')
+		return (color & 0xFF);
+	else
+		error_management(true, err_invalid_color_type_, NULL, true);
+	return (-1);
 }

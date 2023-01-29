@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:29:46 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/24 15:46:37 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/29 15:39:48 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 static char	*error_msg[] = {
 	"Where is my file you idot!!!" ,
 	"Its too much for me...... " ,
-	"Your input data sucks"
+	"Your input data sucks" ,
+	"Invalid color type......"
 };
 
 /**

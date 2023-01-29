@@ -3,43 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 20:34:51 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/24 21:21:43 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/29 21:47:58 by jchoi             #+#    #+#             */
+/*   Updated: 2023/01/30 00:21:18 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minimath.h"
 
-void	input_mtx3(t_mtx3 dst, t_vec3 v0, t_vec3 v1, t_vec3 v2)
+t_mtx3	init_mtx3(t_vec3 v0, t_vec3 v1, t_vec3 v2)
 {
-	if (!(dst && v0 && v1 && v2))
-		escape();
-	input_vec3(dst[0], v0[x_], v0[y_], v0[z_]);
-	input_vec3(dst[1], v1[x_], v1[y_], v1[z_]);
-	input_vec3(dst[2], v2[x_], v2[y_], v2[z_]);
+	t_mtx3	m;
+
+	m.r[0] = v0;
+	m.r[1] = v1;
+	m.r[2] = v2;
+	return (m);
+}
+
+t_mtx3	regular_mtx3(int type)
+{
+	t_mtx3	m;
+
+	m.r[0] = init_vec3(type == IDENTITY, 0, 0);
+	m.r[1] = init_vec3(0, type == IDENTITY, 0);
+	m.r[2] = init_vec3(0, 0, type == IDENTITY);
+	return (m);
 }
 
 void	print_mtx3(t_mtx3 m)
 {
-	if (!m)
-		escape();
-	print_vec3(m[0]);
-	print_vec3(m[1]);
-	print_vec3(m[2]);
-}
-
-void	regular_mtx3(t_mtx3 m, const int type)
-{
-	t_vec3	v[3];
-
-	if (!m)
-		escape();
-	else if ((type < ZERO || IDENTITY < type) && printf("invalid type\n"))
-		return ;
-	input_vec3(v[0], type == IDENTITY, 0, 0);
-	input_vec3(v[1], 0, type == IDENTITY, 0);
-	input_vec3(v[2], 0, 0, type == IDENTITY);
-	input_mtx3(m, v[0], v[1], v[2]);
+	print_vec3(m.r[0]);
+	print_vec3(m.r[1]);
+	print_vec3(m.r[2]);
 }

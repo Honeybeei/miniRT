@@ -3,66 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   minimath.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/21 20:32:57 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/24 21:02:51 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/29 21:45:59 by jchoi             #+#    #+#             */
+/*   Updated: 2023/01/30 00:20:16 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIMATH_H
 # define MINIMATH_H
 
+# include "struct_vec.h"
 # include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
 # include <math.h>
 
-# include "struct_vec3.h"
-
-#define ZERO 0
-#define IDENTITY 1
-#define STD_X 1
-#define STD_Y 2
-#define STD_Z 3
-
-//	minimath.c
-void	escape();
-
-// vector.c 
-void	input_vec3(t_vec3 dst, double x, double y, double z);
-void	print_vec3(t_vec3 v);
-void	regular_vec3(t_vec3 v, const int type);
-
-//	vector_unary_operation.c
-double	sqrsum_vec3(t_vec3 v);
-double	length_vec3(t_vec3 v);
-void	add_inverse_vec3(t_vec3 dst, t_vec3 v0);
-void	normalize_vec3(t_vec3 dst, t_vec3 v);
-
-//	vector_binary_operation.c
-void	times_vec3(t_vec3 dst, t_vec3 v0, const double scalar);
-void	add_vec3(t_vec3 dst, t_vec3 v1, t_vec3 v2);
-void	sub_vec3(t_vec3 v, t_vec3 v1, t_vec3 v2);
-double	dot_product(t_vec3 v1, t_vec3 v2);
-void	cross_product(t_vec3 dst, t_vec3 v1, t_vec3 v2);
+# define ZERO 0
+# define IDENTITY 1
+# define STD_X 1
+# define STD_Y 2
+# define STD_Z 3
 
 //	matrix.c
-void	input_mtx3(t_mtx3 dst, t_vec3 v0, t_vec3 v1 , t_vec3 v2);
-void	regular_mtx3(t_mtx3 v, const int type);
+t_mtx3	init_mtx3(t_vec3 v0, t_vec3 v1, t_vec3 v2);
+t_mtx3	regular_mtx3(int type);
 void	print_mtx3(t_mtx3 m);
 
 //	matrix_unary_operation.c
+t_mtx3	times_mtx3(t_mtx3 m, double scalar);
+t_mtx3	transpose_mtx3(t_mtx3 m);
 double	det_mtx3(t_mtx3 m);
-void	add_inverse_mtx3(t_mtx3 dst, t_mtx3 m);
-void	transpose_mtx3(t_mtx3 dst, t_mtx3 m);
-void	inverse_mtx3(t_mtx3 dst, t_mtx3 m);
+t_mtx3	inverse_mtx3(t_mtx3 m);	
 
 //	matrix_binary_operation.c
-void	add_mtx3(t_mtx3 dst, t_mtx3 m1, t_mtx3 m2);
-void	times_mtx3(t_mtx3 dst, t_mtx3 m, const double scalar);
-void	sub_mtx3(t_mtx3 dst, t_mtx3 m1, t_mtx3 m2);
-void	mul_mtx3(t_mtx3 dst, t_mtx3 m1, t_mtx3 m2);
-void	pow_mtx3(t_mtx3 dst, t_mtx3 m, int times);
+t_mtx3	add_mtx3(t_mtx3 m1, t_mtx3 m2);
+t_mtx3	add_inverse_mtx3(t_mtx3 m);
+t_mtx3	sub_mtx3(t_mtx3 m1, t_mtx3 m2);
+t_mtx3	mul_mtx3(t_mtx3 m1, t_mtx3 m2);
+t_mtx3	pow_mtx3(t_mtx3 m, int times);
+
+//	vector.c
+t_vec3	init_vec3(double x, double y, double z);
+t_vec3	regular_vec3(int type);
+void	print_vec3(t_vec3 v);
+
+//	vector_unary_operation.c
+t_vec3	times_vec3(t_vec3 v, double scalar);
+t_vec3	inverse_vec3(t_vec3 v);
+double	sqrsum_vec3(t_vec3 v);
+double	length_vec3(t_vec3 v);
+t_vec3	normalize_vec3(t_vec3 v);
+
+//	vector_binary_operation.c
+t_vec3	add_vec3(t_vec3 v, t_vec3 v2);
+t_vec3	sub_vec3(t_vec3 v, t_vec3 v2);
+double	dot_product(t_vec3 v1, t_vec3 v2);
+t_vec3	cross_product(t_vec3 v1, t_vec3 v2);
+
+//	vector_projection.c
+t_vec3	tangent_vec3(t_vec3 src, t_vec3 dir);
+t_vec3	normal_vec3(t_vec3 src, t_vec3 dir);
 
 #endif

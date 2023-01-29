@@ -3,23 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   vector_unary_operation.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 20:37:13 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/24 21:22:07 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/29 21:47:26 by jchoi             #+#    #+#             */
+/*   Updated: 2023/01/30 00:21:30 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minimath.h"
 
-void	add_inverse_vec3(t_vec3 dst, t_vec3 v0)
+t_vec3	times_vec3(t_vec3 v, double scalar)
 {
-	times_vec3(dst, v0, -1);
+	v.e[x_] *= scalar;
+	v.e[y_] *= scalar;
+	v.e[z_] *= scalar;
+	return (v);
+}
+
+t_vec3	inverse_vec3(t_vec3 v)
+{
+	return (times_vec3(v, -1.0));
 }
 
 double	sqrsum_vec3(t_vec3 v)
 {
-	return (pow(v[x_], 2) + pow(v[y_], 2) + pow(v[z_], 2));
+	return (pow(v.e[x_], 2) + pow(v.e[y_], 2) + pow(v.e[z_], 2));
 }
 
 double	length_vec3(t_vec3 v)
@@ -27,19 +35,16 @@ double	length_vec3(t_vec3 v)
 	return (sqrt(sqrsum_vec3(v)));
 }
 
-void	normalize_vec3(t_vec3 dst, t_vec3 v)
+t_vec3	normalize_vec3(t_vec3 v)
 {
 	double	len;
 
-	if (!(dst && v))
-		escape();
 	len = length_vec3(v);
-	if (0 < len)
+	if (len == 0.0)
 	{
-		dst[x_] = v[x_] / len;
-		dst[y_] = v[y_] / len;
-		dst[z_] = v[z_] / len;
+		printf("[normalize fail] : length of param vector is 0\n");
+		return (v);
 	}
 	else
-		printf("[normalize fail] : length of param vector is 0\n");
+		return (times_vec3(v, 1.0 / len));
 }

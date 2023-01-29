@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:52:29 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/25 18:01:30 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/29 15:40:22 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-
-void	init_ptrs(t_ptrs *ptrs)
-{
-	ft_memset(ptrs->input_.obj_cnt_, 0, sizeof(ptrs->input_.obj_cnt_));
-}
 
 void	init_mlx(t_ptrs *ptrs)
 {
@@ -25,9 +20,11 @@ void	init_mlx(t_ptrs *ptrs)
 	mlx->mlx_ptr_ = mlx_init();
 	mlx->win_ptr_ = mlx_new_window(mlx->mlx_ptr_, WINDOW_WIDTH_, \
 	WINDOW_HEIGHT_, "miniRT");
-	// mlx_hook(mlx->win_ptr_, x_key_press_, 0, handle_key_press_event, &ptrs);
 	mlx_key_hook(mlx->win_ptr_, handle_key_press_event, ptrs);
-	
+	ptrs->img_.img_ptr_ = mlx_new_image(ptrs->mlx_.mlx_ptr_, \
+	WINDOW_WIDTH_, WINDOW_HEIGHT_);
+	ptrs->img_.addr_ = mlx_get_data_addr(ptrs->img_.img_ptr_, \
+	&ptrs->img_.bits_per_pixel_, &ptrs->img_.size_line_, &ptrs->img_.endian_);
 }
 
 int	handle_key_press_event(int key_code, t_ptrs *ptrs)

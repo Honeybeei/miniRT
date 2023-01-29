@@ -1,58 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scan_formats1.c                                    :+:      :+:    :+:   */
+/*   scan_essentials.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 17:13:14 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/24 16:51:57 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/29 18:42:52 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/29 23:38:15 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-void	scan_single_line(t_input *input, char *input_str)
+void	scan_ambient_lightning(t_ambient *ambient, char **str_arr)
 {
-	char	**str_arr;
-	int		i;
-
-	str_arr = my_split(input_str, ' ');
-	if (my_strcmp(str_arr[0], "A") == 0)
-		scan_ambient_format(&input->ambient_, str_arr);
-	else if (my_strcmp(str_arr[0], "C") == 0)
-		scan_camera_format(&input->camera_, str_arr);
-	else if (my_strcmp(str_arr[0], "L") == 0)
-		scan_light_format(&input->light_, str_arr);
-	else if (my_strcmp(str_arr[0], "sp") == 0)
-		scan_sphere_format(input->sphere_, str_arr);
-	else if (my_strcmp(str_arr[0], "pl") == 0)
-		scan_plane_format(input->plane_, str_arr);
-	else if (my_strcmp(str_arr[0], "cy") == 0)
-		scan_cylinder_format(input->cylinder_, str_arr);
-	else
-		error_management(true, err_invalid_input_data_, \
-		"Invalid type identifier", true);
-	i = 0;
-	while (str_arr[i] != NULL)
-		free(str_arr[i++]);
-}
-
-t_bool	is_valid_spec_cnt(char **str_arr, int expected_cnt)
-{
-	int	i;
-
-	i = 0;
-	while (str_arr[i] != NULL)
-		i++;
-	if (i == expected_cnt)
-		return (valid_);
-	return (invalid_);
-}
-
-void	scan_ambient_format(t_input_a *ambient, char **str_arr)
-{
-	if (is_valid_spec_cnt(str_arr, 3) == invalid_)
+    if (is_valid_spec_cnt(str_arr, 3) == invalid_)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid ambient lightning specific information count.", true);
 	if (is_valid_double_format(str_arr[1]) == true)
@@ -63,15 +25,15 @@ void	scan_ambient_format(t_input_a *ambient, char **str_arr)
 	if (is_in_range(ambient->ratio_, 0, 1) == false)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid ambient lightning ratio data.", true);
-	if (parse_rgb(&ambient->rgb_, str_arr[2]) == fail_)
+	if (parse_rgb(&ambient->color_, str_arr[2]) == fail_)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid ambient lightning color data.", true);
 	printf("Ambient lightning data scan complete!!\n");
 }
 
-void	scan_camera_format(t_input_c *camera, char **str_arr)
+void	scan_camera(t_camera *camera, char **str_arr)
 {
-	if (is_valid_spec_cnt(str_arr, 4) == invalid_)
+    if (is_valid_spec_cnt(str_arr, 4) == invalid_)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid camera specific information count.", true);
 	if (parse_vec3(&camera->view_point_, false, str_arr[1]) == fail_)
@@ -91,9 +53,9 @@ void	scan_camera_format(t_input_c *camera, char **str_arr)
 	printf("Camera data scan complete!!\n");
 }
 
-void	scan_light_format(t_input_l *light, char **str_arr)
+void	scan_light(t_light *light, char **str_arr)
 {
-	if (is_valid_spec_cnt(str_arr, 3) == invalid_)
+	if (is_valid_spec_cnt(str_arr, 4) == invalid_)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid light specific information count.", true);
 	if (parse_vec3(&light->light_point_, false, str_arr[1]) == fail_)
@@ -107,5 +69,8 @@ void	scan_light_format(t_input_l *light, char **str_arr)
 	if (is_in_range(light->ratio_, 0, 1) == false)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid light brightness ratio data", true);
+	if (parse_rgb(&light->color_, str_arr[3]) == fail_)
+		error_management(true, err_invalid_input_data_, \
+		"Invalid light color data.", true);
 	printf("Light data scan complete!!\n");
 }

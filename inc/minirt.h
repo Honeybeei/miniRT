@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/26 12:37:14 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/29 23:01:57 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,38 +39,47 @@ typedef struct s_minirt_ptrs
 {
 	t_mlx	mlx_;
 	t_img	img_;
-	t_input	input_;
+	t_objs	objs_;
 }	t_ptrs;
 
 /* ************************************************************************** */
 
-// input_management
+//	drawing_tools
+
+//		color_related.c
+t_color	rgb_to_color(int r, int g, int b);
+int		color_to_rgb(t_color color, char type);
+
+//		put.c
+void	put_pixel(t_img *img, int x, int y, t_color color);
+
+/* ************************************************************************** */
+
+//	input_parsing
 
 //		parse_input.c
-void	parse_input(t_input *input, char *src);
+void	parse_input(t_objs *objs, char *src_file);
 
 //		parsing_utils1.c
 char	*get_next_line_without_new_line(int fd);
-double	my_strtod(const char *nptr);  // Currently using strtod from stdlib. Need to be fixed. 
+double	my_strtod(const char *nptr);
 bool	is_valid_double_format(char *num_str);
 bool	is_valid_int_format(char *num_str);
 bool	is_in_range(double target, double min, double max);
 
 //		parsing_utils2.c
-t_bool	parse_rgb(t_rgb *dst, char *rgb_data);
+t_bool	parse_rgb(t_color *dst, char *rgb_data);
 t_bool	parse_vec3(t_vec3 *dst, bool is_orientation_vec, char *vec_data);
-
-//		scan_formats1.c
-void	scan_single_line(t_input *input, char *input_str);
 t_bool	is_valid_spec_cnt(char **str_arr, int expected_cnt);
-void	scan_ambient_format(t_input_a *ambient, char **str_arr);
-void	scan_camera_format(t_input_c *camera, char **str_arr);
-void	scan_light_format(t_input_l *light, char **str_arr);
+void	free_str_arr(char **str_arr);
 
-//		scan_formats2.c
-void	scan_sphere_format(t_input_sp *sphere_arr, char **str_arr);
-void	scan_plane_format(t_input_pl *plane_arr, char **str_arr);
-void	scan_cylinder_format(t_input_cy *cylinder_arr, char **str_arr);
+//		scan_essentials.c
+void	scan_ambient_lightning(t_ambient *ambient, char **str_arr);
+void	scan_camera(t_camera *camera, char **str_arr);
+void	scan_light(t_light *light, char **str_arr);
+
+//		scan_optionals.c
+void	scan_figures(t_figure *figure, char **splitted_str);
 
 /* ************************************************************************** */
 
@@ -81,12 +90,8 @@ void	error_management(bool is_customized_err, t_errno customized_errno, \
 		char *additional_err_msg, bool should_exit);
 
 //		initialization.c
-void	init_ptrs(t_ptrs *ptrs);
 void	init_mlx(t_ptrs *ptrs);
 int		handle_key_press_event(int key_code, t_ptrs *ptrs);
-
-//		utils_for_test.c
-void	test_print_inputs(t_input *input);
 
 /* ************************************************************************** */
 
