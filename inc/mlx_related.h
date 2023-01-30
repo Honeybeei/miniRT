@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_related.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:16:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/30 15:26:43 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/30 23:51:17 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ enum e_x_events {
 
 // add key code here 
 enum e_key_code {
-	key_esc_ = 53
-	key_w_ = 13
-	key_a_ = 0
-	key_s_ = 1
+	key_esc_ = 53,
+	key_w_ = 13,
+	key_a_ = 0,
+	key_s_ = 1,
 	key_d_ = 2
 };
 
