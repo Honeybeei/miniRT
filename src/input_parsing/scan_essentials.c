@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:42:52 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/29 23:38:15 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/30 15:14:42 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	scan_ambient_lightning(t_ambient *ambient, char **str_arr)
 {
-    if (is_valid_spec_cnt(str_arr, 3) == invalid_)
+	if (is_valid_spec_cnt(str_arr, 3) == invalid_)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid ambient lightning specific information count.", true);
 	if (is_valid_double_format(str_arr[1]) == true)
@@ -33,13 +33,13 @@ void	scan_ambient_lightning(t_ambient *ambient, char **str_arr)
 
 void	scan_camera(t_camera *camera, char **str_arr)
 {
-    if (is_valid_spec_cnt(str_arr, 4) == invalid_)
+	if (is_valid_spec_cnt(str_arr, 4) == invalid_)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid camera specific information count.", true);
-	if (parse_vec3(&camera->view_point_, false, str_arr[1]) == fail_)
+	if (parse_vec3(&camera->pos_, false, str_arr[1]) == fail_)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid camera view point data", true);
-	if (parse_vec3(&camera->orientation_, true, str_arr[2]) == fail_)
+	if (parse_vec3(&camera->dir_, true, str_arr[2]) == fail_)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid camera orientation vector data", true);
 	if (is_valid_double_format(str_arr[3]) == true)
@@ -47,9 +47,9 @@ void	scan_camera(t_camera *camera, char **str_arr)
 	else
 		error_management(true, err_invalid_input_data_, \
 		"Invalid camera FOV data", true);
-	if (is_in_range(camera->fov_, 0, 180) == false)
+	if (is_in_range(camera->fov_, 0.001, 179.999) == false)
 		error_management(true, err_invalid_input_data_, \
-		"Invalid camera FOV data", true);
+		"Invalid camera FOV data out of range", true);
 	printf("Camera data scan complete!!\n");
 }
 

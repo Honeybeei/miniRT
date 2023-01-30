@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:53:33 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/24 13:56:22 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/30 13:46:46 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*get_next_line_without_new_line(int fd)
 {
 	char	*gnl_result;
 	size_t	str_len;
-	
 	char	*without_new_line;
 
 	gnl_result = get_next_line(fd);
@@ -30,7 +29,6 @@ char	*get_next_line_without_new_line(int fd)
 		return (without_new_line);
 	}
 	return (gnl_result);
-
 }
 
 double	my_strtod(const char *nptr)

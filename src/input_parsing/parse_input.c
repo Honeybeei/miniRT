@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:41:10 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/30 01:19:05 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/30 13:44:39 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,8 @@ void	parse_input(t_objs *objs, char *src_file)
 static void	count_elements(t_objs *objs, int fd, int input_cnt[])
 {
 	char	*gnl_result;
-	
-	ft_bzero(input_cnt, sizeof(int) * INPUT_TYPE_CNT_);
-	
-	// // TEST
-	// for (int i = 0; i < INPUT_TYPE_CNT_; i++)
-	// {
-	// 	printf("[%d] ", input_cnt[i]);
-	// }
-	// printf("\n");
-	// // TEST
 
+	ft_bzero(input_cnt, sizeof(int) * INPUT_TYPE_CNT_);
 	while (true)
 	{
 		gnl_result = get_next_line(fd);
@@ -58,15 +49,6 @@ static void	count_elements(t_objs *objs, int fd, int input_cnt[])
 			plus_one_to_match(gnl_result, input_cnt);
 		free(gnl_result);
 	}
-
-	// // TEST
-	// for (int i = 0; i < INPUT_TYPE_CNT_; i++)
-	// {
-	// 	printf("[%d] ", input_cnt[i]);
-	// }
-	// printf("\n");
-	// // TEST
-	
 	if (input_cnt[input_ambient_] != 1)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid ambient light element count", true);
@@ -91,19 +73,11 @@ static void	plus_one_to_match(char *gnl_result, int input_cnt[])
 		input_cnt[input_sphere_]++;
 	else if (ft_strncmp(gnl_result, "pl ", 3) == 0)
 		input_cnt[input_plane_]++;
-	else if (ft_strncmp(gnl_result, "cy", 3) == 0)
+	else if (ft_strncmp(gnl_result, "cy ", 3) == 0)
 		input_cnt[input_cylinder]++;
 	else
 		error_management(true, err_invalid_input_data_, \
 		"Invalid type identifier", true);
-	
-	// // TEST
-	// for (int i = 0; i < INPUT_TYPE_CNT_; i++)
-	// {
-	// 	printf("[%d] ", input_cnt[i]);
-	// }
-	// printf("\n");
-	// // TEST
 }
 
 static void	set_elements(t_objs *objs, int fd)
@@ -120,7 +94,7 @@ static void	set_elements(t_objs *objs, int fd)
 	{
 		splitted_str = my_split(get_next_line_without_new_line(fd), ' ');
 		if (splitted_str == NULL)
-			break;
+			break ;
 		else if (my_strcmp(splitted_str[0], "A") == 0)
 			scan_ambient_lightning(&objs->ambient_, splitted_str);
 		else if (my_strcmp(splitted_str[0], "C") == 0)

@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:59:27 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/22 14:07:00 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/30 13:33:22 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	**my_split(char const *s, char c)
 	char	**str_arr;
 	size_t	str_count;
 
+	if (s == NULL)
+		return (NULL);
 	src = (char *)s;
 	str_count = string_counter(src, c);
 	str_arr = my_malloc(sizeof(char *) * (str_count + 1));

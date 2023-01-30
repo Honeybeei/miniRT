@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_booleans.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:44:11 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/24 14:45:24 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/30 14:46:32 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 typedef enum e_my_boolean
 {
 	fail_ = 0,
-	success_,
+	success_ = 1,
 	invalid_ = 0,
-	valid_
+	valid_ = 1
 }	t_bool;
 
 #endif

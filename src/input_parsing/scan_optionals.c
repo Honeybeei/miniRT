@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:57:19 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/30 00:03:53 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/30 13:45:33 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	scan_figures(t_figure *figure, char **splitted_str)
 		scan_sphere(figure, splitted_str);
 	else if (my_strcmp(splitted_str[0], "pl") == 0)
 		scan_plane(figure, splitted_str);
-	else if (my_strcmp(splitted_str[0], "cy"))
+	else if (my_strcmp(splitted_str[0], "cy") == 0)
 		scan_cylinder(figure, splitted_str);
 	else
 		error_management(true, err_invalid_input_data_, \
@@ -32,19 +32,19 @@ void	scan_figures(t_figure *figure, char **splitted_str)
 static void	scan_sphere(t_figure *figure, char **str_arr)
 {
 	if (is_valid_spec_cnt(str_arr, 4) == invalid_)
-		error_management(true, err_invalid_input_data_, 
+		error_management(true, err_invalid_input_data_, \
 		"Invalid sphere specific information count.", true);
 	figure->type_ = type_sp_;
 	if (parse_vec3(&figure->pos_, false, str_arr[1]) == false)
-		error_management(true, err_invalid_input_data_, 
+		error_management(true, err_invalid_input_data_, \
 		"Invalid sphere center data", true);
 	if (is_valid_double_format(str_arr[2]) == true)
 		figure->r_ = fabs(my_strtod(str_arr[2]) / 2);
 	else
-		error_management(true, err_invalid_input_data_, 
+		error_management(true, err_invalid_input_data_, \
 		"Invalid sphere diameter data", true);
 	if (parse_rgb(&figure->clr_, str_arr[3]) == fail_)
-		error_management(true, err_invalid_input_data_, 
+		error_management(true, err_invalid_input_data_, \
 		"Invalid sphere color data", true);
 	printf("Sphere data scan complete!!\n");
 }

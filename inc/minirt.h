@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/29 23:01:57 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/30 14:39:34 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ t_bool	parse_rgb(t_color *dst, char *rgb_data);
 t_bool	parse_vec3(t_vec3 *dst, bool is_orientation_vec, char *vec_data);
 t_bool	is_valid_spec_cnt(char **str_arr, int expected_cnt);
 void	free_str_arr(char **str_arr);
+
+//		print_inputs.c
+void	print_inputs(t_objs *objs);
 
 //		scan_essentials.c
 void	scan_ambient_lightning(t_ambient *ambient, char **str_arr);

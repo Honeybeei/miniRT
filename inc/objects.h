@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:20:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/29 23:41:19 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/30 15:14:42 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 /* ************************************************************************** */
 
-typedef int t_color;
+typedef int	t_color;
 
 typedef struct s_ambient
 {
@@ -38,12 +38,12 @@ typedef struct s_ray
 
 typedef struct s_camera
 {
-	t_pvec3	view_point_;
-	t_dvec3	orientation_;
-	int		fov_;
+	t_pvec3	pos_;
+	t_dvec3	dir_;
+	double	fov_;
 }	t_camera;
 
-typedef	struct	s_screen
+typedef struct s_screen
 {
 	t_pvec3	center_;
 	t_pvec3	start_;

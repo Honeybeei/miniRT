@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:51:16 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/29 16:45:04 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/30 13:43:44 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 enum e_input_type
 {
 	input_ambient_ = 0,
-    input_camera_,
-    input_light_,
-    input_sphere_,
-    input_plane_,
-    input_cylinder
+	input_camera_,
+	input_light_,
+	input_sphere_,
+	input_plane_,
+	input_cylinder
 };
 
 #endif

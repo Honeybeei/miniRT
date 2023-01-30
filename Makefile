@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/30 00:25:42 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/30 14:49:20 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,6 +103,7 @@ INPUT_PARSING_FILE = \
 		parse_input \
 		parsing_utils1 \
 		parsing_utils2 \
+		print_inputs \
 		scan_essentials \
 		scan_optionals
 
@@ -172,6 +173,6 @@ mini_math :
 	@make -C $(MINI_MATH_DIR)
 
 norm :
-	@norminette src inc my_lib | grep Error
+	@norminette src inc minimath my_lib | grep Error
 
 .PONEY : all mkobjdir clean fclean re ree run mylib minilibx MINI_MATH norm

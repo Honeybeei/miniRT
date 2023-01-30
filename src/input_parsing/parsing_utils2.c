@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:53:33 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/29 23:21:57 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/30 14:48:16 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,17 @@ t_bool	parse_vec3(t_vec3 *dst, bool is_orientation_vec, char *vec_data)
 		if (is_valid_double_format(splitted_vec[i]) == true)
 		{
 			dst->e[i] = my_strtod(splitted_vec[i]);
-			if (is_orientation_vec == true && is_in_range(dst->e[i], -1, 1) \
-			== false)
+			if (is_orientation_vec == true && is_in_range(dst->e[i], -1, 1) == \
+			false)
 				return (parse_fail(splitted_vec));
 			i++;
 		}
 		else
 			return (parse_fail(splitted_vec));
 	}
-	i = 0;
-	while (splitted_vec[i] != NULL)
-		free(splitted_vec[i++]);
+	if (is_orientation_vec == true)
+		*dst = normalize_vec3(*dst);
+	free_str_arr(splitted_vec);
 	return (success_);
 }
 
