@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:20:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/31 20:30:09 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/31 20:56:44 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ enum e_mode_type
 	mode_camera_cntl_ = 3,
 	mode_light_cntl_ = 4,
 	mode_ambient_cntl_ = 5
-}
+};
 
 typedef struct s_objects
 {

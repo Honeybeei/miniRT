@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:38:48 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/31 20:39:32 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/31 21:38:26 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,25 @@ void	change_mode(t_ptrs *ptrs, int key_code)
 	else if (key_code == key_5_)
 		ptrs->objs_.mode_ = mode_ambient_cntl_;
 	// print mode sign
+}
+
+void	change_designation(t_ptrs *ptrs, int key_code)
+{
+	int	current_idx;
+	if (ptrs->objs_.mode_ == mode_light_cntl_)
+	{
+		current_idx = 0;
+		while (ptrs->objs_.lights_[current_idx].is_pointed_ == false)
+			current_idx++;
+		if (key_code == key_comma_)
+			current_idx = (current_idx - 1) % ptrs->objs_.light_cnt_;
+	}
+	else if (ptrs->objs_.mode_ == mode_figure_cntl_)
+	{
+
+	}
+	else
+		printf("Keycode: %03d Nothing to designate in this mode\n", key_code);
 }
 
 void	parallel_translation(t_ptrs *ptrs, int key_code)
@@ -49,5 +68,5 @@ void	parallel_translation(t_ptrs *ptrs, int key_code)
 		// translate designated light
 	}
 	else
-		printf("Keycode: %03dNothing to move in this mode\n", key_code);
+		printf("Keycode: %03d Nothing to move in this mode\n", key_code);
 }
