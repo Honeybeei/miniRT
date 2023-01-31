@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:45:59 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/30 00:20:16 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/31 15:50:11 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,21 @@
 # define STD_X 1
 # define STD_Y 2
 # define STD_Z 3
+
+typedef	t_vec3	t_dot3;
+
+typedef struct s_3d_line
+{
+	t_dot3	pos_;
+	t_vec3	dir_;
+}	t_line3;
+	
+typedef struct s_3d_plane
+{
+	t_dot3	origin;
+	t_vec3	normal;
+	double	term;
+}	t_plane3;
 
 //	matrix.c
 t_mtx3	init_mtx3(t_vec3 v0, t_vec3 v1, t_vec3 v2);
@@ -62,5 +77,14 @@ t_vec3	cross_product(t_vec3 v1, t_vec3 v2);
 //	vector_projection.c
 t_vec3	tangent_vec3(t_vec3 src, t_vec3 dir);
 t_vec3	normal_vec3(t_vec3 src, t_vec3 dir);
+
+//	utils.c
+double	rad_to_deg(double radian);
+double	deg_to_rad(double degree);
+int		positive_solution(t_vec3 co_, double *tval);
+
+//	line.c
+t_line3	init_line3(t_dot3 origin_, t_dvec3 dir_);
+t_line3	line3_by_dots(t_dot3 origin_, t_dot3 dst_);
 
 #endif

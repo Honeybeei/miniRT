@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 21:03:19 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/30 00:23:57 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/31 15:38:23 by jchoi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,8 +53,9 @@ SRC_FILE = \
 		vector.c \
 		vector_binary_operation.c \
 		vector_projection.c \
-		vector_unary_operation.c
-
+		vector_unary_operation.c\
+		utils.c\
+		line.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILE))
 
 # object
