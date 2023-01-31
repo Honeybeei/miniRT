@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:20:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/31 12:57:45 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/31 20:30:09 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_light
 	t_pvec3	light_point_;
 	double	ratio_;
 	t_color	color_;
+	bool	is_pointed_;
 }	t_light;
 
 typedef struct s_sphere
@@ -92,9 +93,21 @@ typedef struct s_figure
 	double	r_;
 	double	h_;
 	void	*obj_;
+	bool	is_pointed_;
 }	t_figure;
 
 /* ************************************************************************** */
+
+#define MODE_CNT_ 5
+
+enum e_mode_type
+{
+	mode_normal_ = 1,
+	mode_figure_cntl_ = 2,
+	mode_camera_cntl_ = 3,
+	mode_light_cntl_ = 4,
+	mode_ambient_cntl_ = 5
+}
 
 typedef struct s_objects
 {
@@ -105,7 +118,7 @@ typedef struct s_objects
 	size_t		light_cnt_;
 	t_figure	*figures_;
 	size_t		figure_cnt_;
-	size_t		highlight_;
+	int			mode_;
 }	t_objs;
 
 /* ************************************************************************** */
