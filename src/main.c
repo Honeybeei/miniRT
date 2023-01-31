@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/31 16:58:23 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/01/31 21:58:16 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	check_plane(t_figure *fg_, t_line3 sight_, t_cpnt *ct_);
 void	check_sphere(t_figure *fg_, t_line3 sight_, t_cpnt *ct_);
 void	tmin_update(t_figure *fg_, t_line3 sight_, t_cpnt *ct_, double tval);
 
+/* ************************************************************************** */
 
 int	main(int argc, char *argv[])
 {
@@ -123,18 +124,18 @@ void	draw_all(t_mlx *mlx_, t_img *img_, t_objs *objs_)
 	size_t		idx[2];
 
 	onscreen_ = set_screen(&screen_, objs_->camera_);
-	idx[0] = 0;
-	while (idx[0] < WINDOW_HEIGHT_)
+	idx[y_] = 0;
+	while (idx[y_] < WINDOW_HEIGHT_)
 	{
-		idx[1] = 0;
-		while (idx[1] < WINDOW_WIDTH_)
+		idx[x_] = 0;
+		while (idx[x_] < WINDOW_WIDTH_)
 		{
 			sight_ = line3_by_dots(objs_->camera_.pos_, onscreen_);
-			put_pixel(img_, idx[0], idx[1], process_pixel(objs_, sight_));
+			put_pixel(img_, idx[y_], idx[x_], process_pixel(objs_, sight_));
 			onscreen_ = add_vec3(onscreen_, screen_.hor_unit_);
-			idx[1]++;
+			idx[x_]++;
 		}
-		onscreen_ = times_vec3(screen_.ver_unit_, ++idx[0]);
+		onscreen_ = times_vec3(screen_.ver_unit_, ++idx[y_]);
 		onscreen_ = add_vec3(screen_.start_, onscreen_);
 	}
 	mlx_put_image_to_window(mlx_->mlx_ptr_, mlx_->win_ptr_, img_->img_ptr_, 0, 0);
@@ -181,7 +182,7 @@ t_color	process_pixel(t_objs *objs_, t_line3 sight_)
 	if (contact_.fg_)
 		return (contact_.fg_->clr_); // 광 알고리즘 안들어간 임시조치입니당.
 	else
-		return (0x00FFFFFF); // 이상 배경값일때의 임시조치입니당.
+		return (BACK_GROUND_COLOR_); // 이상 배경값일때의 임시조치입니당.
 
 }
 

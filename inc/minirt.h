@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/30 14:39:34 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/31 21:50:44 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_color	rgb_to_color(int r, int g, int b);
 int		color_to_rgb(t_color color, char type);
 
 //		put.c
-void	put_pixel(t_img *img, int x, int y, t_color color);
+void	put_pixel(t_img *img, int i, int j, t_color color);
 
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_related.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:16:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/30 23:51:17 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/31 21:57:48 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 // window size
 # define WINDOW_WIDTH_	1920
 # define WINDOW_HEIGHT_	1080
+
+// define popular color
+# define COLOR_WHITE_ 0xffffff
+# define JCHOI_PICK_COLOR_ 0xd5eef7
+# define BACK_GROUND_COLOR_ JCHOI_PICK_COLOR_
 
 // events used in this projects
 enum e_x_events {
