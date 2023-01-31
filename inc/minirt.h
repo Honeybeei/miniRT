@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/30 14:39:34 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/31 00:13:14 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,16 @@ void	scan_figures(t_figure *figure, char **splitted_str);
 
 //	utils
 
+//		action_handling.c
+void	mlx_hooks(t_ptrs *ptrs);
+void	mlx_termination_protocol(t_mlx *mlx, t_img *img);
+
 //		error_management.c
 void	error_management(bool is_customized_err, t_errno customized_errno, \
 		char *additional_err_msg, bool should_exit);
 
 //		initialization.c
-void	init_mlx(t_ptrs *ptrs);
-int		handle_key_press_event(int key_code, t_ptrs *ptrs);
+void	init_ptrs(t_ptrs *ptrs);
 
 /* ************************************************************************** */
 

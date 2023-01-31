@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/30 14:49:20 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/31 00:13:59 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,6 +120,7 @@ UTILS_SRC_DIR = $(SRC_DIR)$(UTILS_DIR)
 UTILS_OBJ_DIR = $(OBJ_DIR)$(UTILS_DIR)
 
 UTILS_FILE = \
+		action_handling \
 		error_management \
 		initialization
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/30 15:37:34 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/31 00:09:36 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int	main(int argc, char *argv[])
 		error_management(true, err_no_file_, NULL, true);
 	else if (argc > 2)
 		error_management(true, err_too_much_file_, NULL, true);
-	init_mlx(&ptrs);
+	init_ptrs(&ptrs);
 	parse_input(&ptrs.objs_, argv[1]);
 	print_inputs(&ptrs.objs_);
-	// draw_all(&ptrs.mlx_, &ptrs.img_, &ptrs.objs_);
+	mlx_hooks(&ptrs);
 	mlx_loop(ptrs.mlx_.mlx_ptr_);
 	return (0);
 }

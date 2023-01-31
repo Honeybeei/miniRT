@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:20:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/30 15:14:42 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/31 12:57:45 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct s_objects
 	size_t		light_cnt_;
 	t_figure	*figures_;
 	size_t		figure_cnt_;
+	size_t		highlight_;
 }	t_objs;
 
 /* ************************************************************************** */
