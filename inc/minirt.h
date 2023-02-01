@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 13:47:26 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 20:51:36 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,11 @@ void	change_mode(t_ptrs *ptrs, int key_code);
 t_color	rgb_to_color(int r, int g, int b);
 int		color_to_rgb(t_color color, char type);
 
-//		put.c
+//		print.c
 void	print_screen(t_ptrs *ptrs, bool should_rerender);
+char    *vec3_to_str(t_vec3 vec, int precision);
+
+//		put.c
 void	put_pixel(t_img *img, int x, int y, t_color color);
 
 /* ************************************************************************** */
@@ -108,6 +111,9 @@ void	error_management(bool is_customized_err, t_errno customized_errno, \
 
 //		initialization.c
 void	init_ptrs(t_ptrs *ptrs);
+
+//		my_doubles.c
+char 	*my_dtostr(double n, int precision);
 
 /* ************************************************************************** */
 

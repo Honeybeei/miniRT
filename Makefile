@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/02/01 13:21:21 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/02/01 20:52:11 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,6 +102,7 @@ DRAWING_TOOLS_OBJ_DIR = $(OBJ_DIR)$(DRAWING_TOOLS_DIR)
 
 DRAWING_TOOLS_FILE = \
         color_related \
+		print \
 		put
 
 DRAWING_TOOLS_SRCS = $(addsuffix .c, $(addprefix $(DRAWING_TOOLS_SRC_DIR), $(DRAWING_TOOLS_FILE)))
@@ -138,7 +139,8 @@ UTILS_OBJ_DIR = $(OBJ_DIR)$(UTILS_DIR)
 
 UTILS_FILE = \
 		error_management \
-		initialization
+		initialization \
+		my_doubles
 
 UTILS_SRCS = $(addsuffix .c, $(addprefix $(UTILS_SRC_DIR), $(UTILS_FILE)))
 UTILS_OBJS = $(addsuffix .o, $(addprefix $(UTILS_OBJ_DIR), $(UTILS_FILE)))

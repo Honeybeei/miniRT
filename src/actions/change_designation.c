@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 12:41:21 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 14:58:28 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 19:28:04 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	change_designation(t_ptrs *ptrs, int key_code)
 	else
 		printf("Keycode: %03d Nothing to designate in this mode\n", key_code);
 	print_screen(ptrs, false);
-	// TODO : discuss how to highlight figure
+	// TODO : discuss how to highlight figure -> draw highlight directly at the window
 }
 
 static void change_light_designation(t_objs *objs, int key_code)

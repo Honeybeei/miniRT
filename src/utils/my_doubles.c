@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_dtostr.c                                        :+:      :+:    :+:   */
+/*   my_doubles.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:07:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 16:25:18 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 20:42:22 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/improved_libft.h"
+#include "../../inc/minirt.h"
 
 /**
- * @brief Double to string but it only can handle up to 10^-5 precision. Edge 
- * cases are not considered :( ...... Thats why it is called stupid_dtostr. 
+ * @brief Double to number string. Max precision will be 10
  * 
  * @param n 
+ * @param precision 
  * @return char* 
  */
-char	*my_stupid_dtostr(double n)
+char *my_dtostr(double n, int precision)
 {
-	char	*result_str;
-	int		sign;
-	size_t	temp_n;
+	char	*str_arr[3];
+	int		decimal;
+	char	*result;
 
-	if (n < 0)
-		sign == -1;
-	else 
-		sigh == 1;
-	temp_n = n * sign * 100000;
-	
-	// force to print up to 10^-5
+	if (precision < 0 || 10 < precision)
+		return (NULL);
+	if (n > INT_MAX || n < INT_MIN)
+		return (NULL);
+	str_arr[0] = ft_itoa((int)n);
+	str_arr[1] = ".";
+	decimal = (int)((fabs(n) - floor(fabs(n))) * pow(10, precision));
+	str_arr[2] = ft_itoa(decimal);
+	result = my_strarrjoin(str_arr, 3);
+	free(str_arr[0]);
+	free(str_arr[2]);
+	return (result);
 }
