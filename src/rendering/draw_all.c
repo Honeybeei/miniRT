@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:30:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 18:18:16 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/02 02:52:15 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,54 +123,67 @@ t_color	process_pixel(t_objs *objs_, t_line3 sight_)
 {
 	t_cpnt	contact_;
 	t_rgb	delta_;
-//	size_t	i;
+	size_t	i;
+	double	tval;
 
-	
-	delta_ = objs_->ambient_.increment_;
-	contact_.rgb_ = regular_vec3(ZERO);
+	// albedo가 아니라 그냥 그게 figure_clr 이었어 시발..
 	if (object_traverse(objs_, sight_, &contact_))
 	{
+		contact_.rgb_ = regular_vec3(ZERO);
 		contact_.normal_ = get_normal(contact_.pos_, sight_, contact_.fg_);
-//		i = 0;
-//		while (i < objs_->light_cnt_)
-//			get_light(objs_->lights[i++], sight_, &contact_);
-		delta_ = times_vec3(objs_->ambient_.increment_, contact_.fg_->albedo);
-		return (rgb_to_color(add_vec3(contact_.rgb_, delta_)));
+		i = 0;
+		while (i < objs_->light_cnt_)
+			get_light(objs_->lights_[i++], sight_, &contact_);
+		delta_ = add_vec3(contact_.rgb_, objs_->ambient_.increment_);
+		contact_.rgb_ = mul_vec3(delta_, color_to_rgb(contact_.fg_->clr_));
+		contact_.rgb_ = times_vec3(contact_.rgb_, 1 / 256.0);
+		return (rgb_to_color(contact_.rgb_));
 	}
 	else
-		return (rgb_to_color(objs_->ambient_.increment_));
+	{
+		tval = 0.5 * (sight_.dir_.e[y_] + 1.0);
+		printf("tval : %f\n", tval);
+		//return (0xFFFFFF * (1 - tval) + 0x80B3FF * tval);
+		return (0xFFFFFF * (1 - tval) + 0x000000 * tval);
+	}//		return (empty_air(tval, objs_->bgclr1_ objs_->bgclr2_));
 }
 
+
+// init_vec3(1, 1, 1), init_vec3(0.5, 0.7, 1.0) 이 두가지 색깔은 obj에 들어있는것으로 하자.
 /*
-void	get_light_(t_light light_, t_line3 sight_, t_cpnt *contact_)
+   t_color	empty_air(double t, t_rgb clr1_, t_rgb clr2_)
 {
+	t_rgb	gradation_;
+	return (rgb_to_color(add_vec3(times_vec3(clr1_, 1 - t), times_vec3(clr2_, t))));
 
-
-	// 1.1.1을 넘어가면 1.1.1로 두는 연산을 계속해줘야해
-	// 즉, fmin(255.0)을 해조야 한다는 것이지.
-	// 근데 마지막에 어차피 하긴 하는데, 중간 과정에서도 사이사이 내림이 드가야할까?
-	// 고민해봐야하는 지점임.
-	//
-	// 닥치고 일단 normal 공식부터 짜 
+//return (vplus(vmult(color3(1, 1, 1), 1.0 - t), vmult(color3(0.5, 0.7, 1.0), t)));
+	return ();
 }
 */
-//t_vec3	phong_light_process(t_light light_, t_line3 sight_, t_cpnt *contact_)
-//{
 
-	// 2. 빛을 반영한 color를 구한다.
-		// 0. albedo
-		// a. ambient
-		// b. diffuse
-		// c. specular
-	// 3. shadow는 아직 잘 모르겠어.
-	//	ambient_process(&contact_, objs_->ambient_);
-	//	diffuse_process(&contact_, objs);
-	//	specular_process(&contact_, objs_);
-	//	shadow_process(&contact_, objs_);
+# define KSN_ 64
+# define KS_ 0.5
+# define LUMEN 3
 
+void	get_light(t_light light_, t_line3 sight_, t_cpnt *contact_)
+{
+	t_vec3	raydir_;
+	t_vec3	tmp_;
+	t_rgb	light_rgb_;
+	double	diffuse;
+    double	specular;
+	double	increment;
 
-	// 2. ksn
-	// ks : specular constant setting[0,1] (maybe from objs_ struct, world own trait)
-	// ksn : shininess value of object (256)
-//}
-
+    raydir_ = normalize_vec3(sub_vec3(light_.light_point_, contact_->pos_));
+	diffuse = fmax(dot_product(contact_->normal_, raydir_), 0.0);
+	// 여기까지가 diffuse입니다.
+	
+	tmp_ = times_vec3(normal_vec3(raydir_, contact_->normal_), -2);
+	raydir_ = add_vec3(raydir_, tmp_);
+	specular = pow(fmax(dot_product(sight_.dir_, raydir_), 0.0), KSN_);
+	// 여기까지가 specular입니다.	
+	increment = (specular * KS_ + diffuse) * light_.ratio_ * LUMEN;
+	// 광도를 곱해줍니다.
+	light_rgb_ = times_vec3(color_to_rgb(light_.color_), increment);
+	contact_->rgb_ = add_vec3(contact_->rgb_, light_rgb_);
+}
