@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:41:10 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/31 13:00:39 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 12:02:23 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static void	count_elements(t_objs *objs, int fd, int input_cnt[])
 	objs->light_cnt_ = input_cnt[input_light_];
 	objs->figure_cnt_ = input_cnt[input_sphere_] + input_cnt[input_plane_] + \
 	input_cnt[input_cylinder];
-	objs->highlight_ = objs->figure_cnt_ + 1;
 	return ;
 }
 

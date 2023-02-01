@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/31 20:07:02 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 11:56:26 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ typedef struct s_minirt_ptrs
 
 //		action_handling.c
 void	mlx_hooks(t_ptrs *ptrs);
+
+//		change_mode.c
+void	change_mode(t_ptrs *ptrs, int key_code);
 
 /* ************************************************************************** */
 

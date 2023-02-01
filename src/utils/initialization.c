@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:52:29 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/31 21:00:31 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 12:04:02 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void init_objs(t_objs *objs)
 		objs->lights_[0].is_pointed_ = true;
 	i = 0;
 	while (i < objs->figure_cnt_)
-		objs->figures_[i].is_pointed_ = false;
+		objs->figures_[i++].is_pointed_ = false;
 	if (objs->figure_cnt_ > 0)
 		objs->figures_[0].is_pointed_ = true;
 }

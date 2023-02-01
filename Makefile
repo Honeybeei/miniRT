@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/31 00:13:59 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/02/01 12:01:05 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,22 @@ OBJ_DIRS += $(MAIN_OBJ_DIR)
 
 # **************************************************************************** #
 
+# actions
+ACTIONS_DIR = actions/
+ACTIONS_SRC_DIR = $(SRC_DIR)$(ACTIONS_DIR)
+ACTIONS_OBJ_DIR = $(OBJ_DIR)$(ACTIONS_DIR)
+
+ACTIONS_FILE = \
+		action_handling \
+		change_mode
+
+ACTIONS_SRCS = $(addsuffix .c, $(addprefix $(ACTIONS_SRC_DIR), $(ACTIONS_FILE)))
+ACTIONS_OBJS = $(addsuffix .o, $(addprefix $(ACTIONS_OBJ_DIR), $(ACTIONS_FILE)))
+OBJS += $(ACTIONS_OBJS)
+OBJ_DIRS += $(ACTIONS_OBJ_DIR)
+
+# **************************************************************************** #
+
 # drawing_tools
 DRAWING_TOOLS_DIR = drawing_tools/
 DRAWING_TOOLS_SRC_DIR = $(SRC_DIR)$(DRAWING_TOOLS_DIR)
@@ -120,7 +136,6 @@ UTILS_SRC_DIR = $(SRC_DIR)$(UTILS_DIR)
 UTILS_OBJ_DIR = $(OBJ_DIR)$(UTILS_DIR)
 
 UTILS_FILE = \
-		action_handling \
 		error_management \
 		initialization
 
