@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 00:05:32 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 14:08:44 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,10 @@ typedef	struct s_contacting_point
 //	drawing_tools
 
 //		color_related.c
-t_color	rgb_to_color(int r, int g, int b);
-int		color_to_rgb(t_color color, char type);
+t_color	element_to_color(double r, double g, double b);
+int		color_to_element(t_color clr, char type);
+t_color	rgb_to_color(t_rgb rgb_);
+t_rgb	color_to_rgb(t_color clr);
 
 //		put.c
 void	put_pixel(t_img *img, int i, int j, t_color color);
