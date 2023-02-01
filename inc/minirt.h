@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/31 21:50:44 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 00:05:32 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,22 @@ typedef struct s_minirt_ptrs
 	t_img	img_;
 	t_objs	objs_;
 }	t_ptrs;
+
+/* ************************************************************************** */
+
+// structs and define for rendering
+typedef	struct s_contacting_point
+{
+	t_dot3		pos_;
+	double		tmin;
+	t_bool		ismeet_;
+	t_figure	*fg_;
+//	t_color		endclr_;
+	// albedo라든지...	// color라든지....	// nearest light라든지..
+	// ultimate environment에 대한 참조포인터라든지..
+}	t_cpnt;
+
+#define SCALE_ 0.1
 
 /* ************************************************************************** */
 
@@ -83,6 +99,21 @@ void	scan_light(t_light *light, char **str_arr);
 
 //		scan_optionals.c
 void	scan_figures(t_figure *figure, char **splitted_str);
+
+/* ************************************************************************** */
+
+//	rendering
+
+//		draw_all.c
+void	draw_all(t_mlx *mlx_, t_img *img_, t_objs *objs_);
+t_dot3	set_screen(t_screen *screen_, t_camera camera_);
+t_color process_pixel(t_objs *objs_, t_line3 sight_);
+
+//		traverse.c
+t_cpnt	object_traverse(t_objs *objs_, t_line3 sight_);
+void	check_plane(t_figure *fg_, t_line3 sight_, t_cpnt *ct_);
+void	check_sphere(t_figure *fg_, t_line3 sight_, t_cpnt *ct_);
+void	tmin_update(t_figure *fg_, t_line3 sight_, t_cpnt *ct_, double tval);
 
 /* ************************************************************************** */
 
