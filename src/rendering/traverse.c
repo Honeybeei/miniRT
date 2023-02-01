@@ -6,32 +6,29 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 00:06:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 10:32:29 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 18:00:11 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-t_cpnt	object_traverse(t_objs *objs_, t_line3 sight_)
+t_bool	object_traverse(t_objs *objs_, t_line3 sight_, t_cpnt *contact_)
 {
 	t_figure	*fg_;
-	t_cpnt		contact_;
 	size_t		i;
-	
-	contact_.ismeet_ = false_;
-	contact_.fg_ = NULL;
+
 	i = 0;
 	while (i < objs_->figure_cnt_)
 	{
 		fg_ = objs_->figures_ + i++;
 		if (fg_->type_ == type_pl_)
-			check_plane(fg_, sight_, &contact_);
+			check_plane(fg_, sight_, contact_);
 		else if (fg_->type_ == type_sp_)
-			check_sphere(fg_, sight_, &contact_);
+			check_sphere(fg_, sight_, contact_);
 		//else if (fgr->type_ == type_cy_)
 		//	cylinder_traverse();
 	}
-	return (contact_);
+	return (contact_->ismeet_);
 }
 
 void	check_plane(t_figure *fg_, t_line3 sight_, t_cpnt *ct_)

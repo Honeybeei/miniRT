@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:20:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 13:36:57 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/01 17:31:35 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ typedef struct s_ambient
 {
 	double	ratio_;
 	int		color_;
+	t_rgb	increment_;
+	// 프로그램 시작 혹은 ambient 바뀔 때마다 여기에 계산 올려주는 절차 있으면 좋을것 같습니당.
+	// init_ = times_vec3(color_to_rgb(color_), ratio_); 이렇게 계산하면 되는
 }	t_ambient;
 
 typedef struct s_ray
@@ -92,6 +95,7 @@ typedef struct s_figure
 	t_dvec3	dir_;
 	double	r_;
 	double	h_;
+	double	albedo;
 	void	*obj_;
 }	t_figure;
 

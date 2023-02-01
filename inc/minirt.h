@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 14:08:44 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/01 17:58:03 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,15 @@ typedef	struct s_contacting_point
 	double		tmin;
 	t_bool		ismeet_;
 	t_figure	*fg_;
-//	t_color		endclr_;
-	// albedo라든지...	// color라든지....	// nearest light라든지..
+	t_vec3		normal_;
+	t_rgb		rgb_;
+
+		// albedo라든지...	// color라든지....	// nearest light라든지..
 	// ultimate environment에 대한 참조포인터라든지..
 }	t_cpnt;
 
 #define SCALE_ 0.1
+#define ALBEDO_ 0.5
 
 /* ************************************************************************** */
 
@@ -110,9 +113,10 @@ void	scan_figures(t_figure *figure, char **splitted_str);
 void	draw_all(t_mlx *mlx_, t_img *img_, t_objs *objs_);
 t_dot3	set_screen(t_screen *screen_, t_camera camera_);
 t_color process_pixel(t_objs *objs_, t_line3 sight_);
+t_vec3	get_normal(t_pvec3 pos_, t_line3 sight_, t_figure *fg_);
 
 //		traverse.c
-t_cpnt	object_traverse(t_objs *objs_, t_line3 sight_);
+t_bool	object_traverse(t_objs *objs_, t_line3 sight_, t_cpnt *contact_);
 void	check_plane(t_figure *fg_, t_line3 sight_, t_cpnt *ct_);
 void	check_sphere(t_figure *fg_, t_line3 sight_, t_cpnt *ct_);
 void	tmin_update(t_figure *fg_, t_line3 sight_, t_cpnt *ct_, double tval);

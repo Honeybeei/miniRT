@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:55:17 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 14:09:09 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/01 18:17:10 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ t_color	rgb_to_color(t_rgb rgb_)
 
 t_rgb	color_to_rgb(t_color clr)
 {
-	return (init_vec3(clr & (0xFF << 16), clr & (0xFF << 8), clr & 0xFF));
+	return (init_vec3((clr >> 16) & 0xFF, (clr >> 8) & 0xFF, clr & 0xFF));
 }
 
 int	color_to_element(t_color clr, char type)
 {
 	if (type == 'r')
-		return (clr & (0xFF << 16));
+		return ((clr & (0xFF << 16) >> 16));
 	else if (type == 'g')
-		return (clr & (0xFF << 8));
+		return (clr & (0xFF << 8) >> 8);
 	else if (type == 'b')
 		return (clr & 0xFF);
 	else

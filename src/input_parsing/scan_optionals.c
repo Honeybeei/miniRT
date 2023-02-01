@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:57:19 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/30 13:45:33 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 17:43:10 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	scan_figures(t_figure *figure, char **splitted_str)
 	else
 		error_management(true, err_invalid_input_data_, \
 		"Invalid type identifier", true);
+	figure->albedo = ALBEDO_;
 }
 
 static void	scan_sphere(t_figure *figure, char **str_arr)
