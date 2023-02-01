@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 12:32:15 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 13:47:26 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ typedef struct s_minirt_ptrs
 //		action_handling.c
 void	mlx_hooks(t_ptrs *ptrs);
 
+//		change_designation.c
+void	change_designation(t_ptrs *ptrs, int key_code);
+
 //		change_mode.c
 void	change_mode(t_ptrs *ptrs, int key_code);
-void	print_mode_to_screen(t_ptrs *ptrs);
 
 /* ************************************************************************** */
 
@@ -62,8 +64,8 @@ t_color	rgb_to_color(int r, int g, int b);
 int		color_to_rgb(t_color color, char type);
 
 //		put.c
-void	put_pixel(t_img *img, int x, int y, t_color color);
 void	print_screen(t_ptrs *ptrs, bool should_rerender);
+void	put_pixel(t_img *img, int x, int y, t_color color);
 
 /* ************************************************************************** */
 

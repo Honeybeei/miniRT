@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/02/01 12:01:05 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/02/01 13:21:21 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,7 @@ ACTIONS_OBJ_DIR = $(OBJ_DIR)$(ACTIONS_DIR)
 
 ACTIONS_FILE = \
 		action_handling \
+		change_designation \
 		change_mode
 
 ACTIONS_SRCS = $(addsuffix .c, $(addprefix $(ACTIONS_SRC_DIR), $(ACTIONS_FILE)))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_inputs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 13:47:48 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/31 12:31:44 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 16:04:46 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ static void	print_light(t_light *light, int i)
 
 static void	print_figure(t_figure *figure, int i)
 {
+	if (figure->is_pointed_ == false)  // TEST
+		return ;		// TEST
 	printf("Figure [%d] | ", i);
 	printf("Type: ");
 	if (figure->type_ == type_pl_)

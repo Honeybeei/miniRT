@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_related.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:16:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 12:21:01 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 13:45:33 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 // mode text location 
 # define MODE_TEXT_LOC_X_ 30
 # define MODE_TEXT_LOC_Y_ 30
+
+// designated light text info location 
+# define LIGHT_INFO_TEXT_LOC_X_ WINDOW_WIDTH_ * 0.9
+# define LIGHT_INFO_TEXT_LOC_Y_ 30
+
+# define TEXT_COLOR_ 0xffffff  // white
 
 // events used in this projects
 enum e_x_events {
