@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/31 20:56:10 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 12:32:38 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char *argv[])
 	parse_input(&ptrs.objs_, argv[1]);
 	init_ptrs(&ptrs);
 	mlx_hooks(&ptrs);
+	print_screen(&ptrs, true);
 	mlx_loop(ptrs.mlx_.mlx_ptr_);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:16:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 12:06:59 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 12:21:01 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 # define MLX_RELATED_H
 
 // window size
-# define WINDOW_WIDTH_	160
-# define WINDOW_HEIGHT_	90
+# define WINDOW_WIDTH_	1600
+# define WINDOW_HEIGHT_	900
+
+// mode text location 
+# define MODE_TEXT_LOC_X_ 30
+# define MODE_TEXT_LOC_Y_ 30
 
 // events used in this projects
 enum e_x_events {

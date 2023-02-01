@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 11:56:26 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 12:32:15 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	mlx_hooks(t_ptrs *ptrs);
 
 //		change_mode.c
 void	change_mode(t_ptrs *ptrs, int key_code);
+void	print_mode_to_screen(t_ptrs *ptrs);
 
 /* ************************************************************************** */
 
@@ -62,6 +63,7 @@ int		color_to_rgb(t_color color, char type);
 
 //		put.c
 void	put_pixel(t_img *img, int x, int y, t_color color);
+void	print_screen(t_ptrs *ptrs, bool should_rerender);
 
 /* ************************************************************************** */
 
