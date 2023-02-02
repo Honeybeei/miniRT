@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_all.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 02:00:12 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 13:36:08 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/02 17:25:55 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ void	print_screen(t_ptrs *ptrs, bool should_rerender)
     ptrs->img_.img_ptr_, 0, 0);
     print_mode_info_to_screen(ptrs);
 	if (ptrs->objs_.mode_ == mode_normal_)
-		print_normal_mode_ui(ptrs);  // TODO
+		print_normal_mode_ui(ptrs);
 	else if (ptrs->objs_.mode_ == mode_figure_cntl_)
 		print_figure_cntl_mode_ui(ptrs);
 	else if (ptrs->objs_.mode_ == mode_camera_cntl_)
-		print_camera_cntl_mode_ui(ptrs);  // TODO
+		print_camera_cntl_mode_ui(ptrs);
 	else if (ptrs->objs_.mode_ == mode_light_cntl_)
-		print_light_cntl_mode_ui(ptrs);  // TODO
+		print_light_cntl_mode_ui(ptrs);
 	else if (ptrs->objs_.mode_ == mode_ambient_cntl_)
-		print_ambient_light_cntl_mode_ui(ptrs);  // TODO
+		print_ambient_light_cntl_mode_ui(ptrs);
 }
 
 static void	print_mode_info_to_screen(t_ptrs *ptrs)

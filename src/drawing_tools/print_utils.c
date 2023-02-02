@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:59:13 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 13:04:15 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/02 17:27:20 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,55 +73,3 @@ char	*get_bracketed_int(t_bracket_type type, int n)
 	free(arr[1]);
 	return (result);
 }
-
-// // hardcoded 3 is the line cnt of light information.
-// void print_light_info_to_screen(t_ptrs *ptrs)
-// {
-// 	int		i;
-// 	char	*temp_str;
-// 	char	*info_arr[3];
-
-// 	i = 0;
-// 	while (ptrs->objs_.lights_[i].is_pointed_ == false)
-// 		i++;
-// 	temp_str = ft_itoa(i + 1);
-// 	info_arr[0] = ft_strdup(ft_strjoin("Light no.", temp_str));
-// 	free(temp_str);
-// 	temp_str = vec3_to_str(ptrs->objs_.lights_[i].light_point_, 3);
-// 	info_arr[1] = ft_strdup(ft_strjoin("Light point : ", temp_str));
-// 	free(temp_str);
-// 	temp_str = my_dtostr(ptrs->objs_.lights_[i].ratio_, 3);
-// 	info_arr[2] = ft_strdup(ft_strjoin("Brightness  : ", temp_str));
-// 	free(temp_str);
-// 	i = 0;
-// 	while (i < 3)
-// 	{
-// 		mlx_string_put(ptrs->mlx_.mlx_ptr_, ptrs->mlx_.win_ptr_, \
-// 		LIGHT_INFO_TEXT_LOC_X_, LIGHT_INFO_TEXT_LOC_Y_ + i * \
-// 		LIGHT_INFO_STR_PADDING_, TEXT_COLOR_, info_arr[i]);
-// 		free(info_arr[i++]);
-// 	}
-// }
-
-// static void print_figure_info_to_screen(t_ptrs *ptrs)
-// {
-// 	int		i;
-// 	char	*temp_str;
-// 	char	*info_arr[3];
-
-// 	i = 0;
-// 	while (ptrs->objs_.figures_[i].is_pointed_ == false)
-// 		i++;
-// 	temp_str = ft_itoa(i + 1);
-// 	info_arr[0] = ft_strdup(ft_strjoin("Figure no.", temp_str));
-// 	free(temp_str);
-// 	info_arr[1] = ft_strdup(ft_strjoin("Type : ", temp_str));
-// 	i = 0;
-// 	while (i < 3)
-// 	{
-// 		mlx_string_put(ptrs->mlx_.mlx_ptr_, ptrs->mlx_.win_ptr_, \
-// 		LIGHT_INFO_TEXT_LOC_X_, LIGHT_INFO_TEXT_LOC_Y_ + i * \
-// 		LIGHT_INFO_STR_PADDING_, TEXT_COLOR_, info_arr[i]);
-// 		free(info_arr[i++]);
-// 	}
-// }

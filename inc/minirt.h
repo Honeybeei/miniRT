@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 13:32:11 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/02 21:42:20 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,14 @@ typedef struct s_minirt_ptrs
 //		action_handling.c
 void	mlx_hooks(t_ptrs *ptrs);
 
-//		change_designation.c
-void	change_designation(t_ptrs *ptrs, int key_code);
+//		camera_cntl_mode_actions.c
+void	camera_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs);
 
-//		change_mode.c
-void	change_mode(t_ptrs *ptrs, int key_code);
+//		figure_cntl_mode_actions.c
+void	figure_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs);
+
+//		normal_mode_actions.c
+void    normal_mode_key_press_event(int key_code, t_ptrs *ptrs);
 
 /* ************************************************************************** */
 
@@ -68,8 +71,20 @@ int		color_to_rgb(t_color color, char type);
 //		print_all.c
 void	print_screen(t_ptrs *ptrs, bool should_rerender);
 
+//		print_ambient_cntl.c
+void	print_ambient_light_cntl_mode_ui(t_ptrs *ptrs);
+
+//		print_camera_cntl.c
+void	print_camera_cntl_mode_ui(t_ptrs *ptrs);
+
 //		print_figure_cntl.c
 void	print_figure_cntl_mode_ui(t_ptrs *ptrs);
+
+//		print_light_cntl.c
+void    print_light_cntl_mode_ui(t_ptrs *ptrs);
+
+//		print_normal.c
+void	print_normal_mode_ui(t_ptrs *ptrs);
 
 //		print_utils.c
 char	*vec3_to_str(t_vec3 vec, int precision);

@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_normal.c                                     :+:      :+:    :+:   */
+/*   print_light_cntl.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 13:39:23 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 14:28:41 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/02/02 14:32:43 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/02/02 18:05:37 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-void	print_normal_mode_ui(t_ptrs *ptrs)
+void    print_light_cntl_mode_ui(t_ptrs *ptrs)
 {
 	int		i;
-	char	*info_arr[NORMAL_MODE_STR_CNT_];
+	char	*info_arr[LIGHT_CNTL_MODE_STR_CNT_];
 
 	i = 0;
-	while (ptrs->objs_.figures_[i].is_pointed_ == false)
+	while (ptrs->objs_.lights_[i].is_pointed_ == false)
 		i++;
-	info_arr[0] = ft_strdup("Press 1 ~ 5 to change mode");
+	info_arr[0] = join_str_and_double("Light no.", i + 1, 0);
+	info_arr[1] = join_str_and_vector("Light point : ", ptrs->objs_.lights_[i].light_point_, VECTOR_PRECISION_);
+    info_arr[2] = join_str_and_double("Brightness  : ", ptrs->objs_.lights_[i].ratio_, DOUBLE_PRECISION_);
 	i = 0;
-	while (i < NORMAL_MODE_STR_CNT_)
+	while (i < LIGHT_CNTL_MODE_STR_CNT_)
 	{
-		// draw_info_box(NORMAL_MODE_STR_CNT_);
+		// draw_info_box(line_cnt);
 		mlx_string_put(ptrs->mlx_.mlx_ptr_, ptrs->mlx_.win_ptr_, \
 		INFO_TEXT_LOC_X_, INFO_TEXT_LOC_Y_ + i * INFO_STR_VER_GAP_, \
 		INFO_TEXT_COLOR_, info_arr[i]);
