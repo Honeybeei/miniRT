@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 00:06:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 18:00:11 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/02 13:19:01 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	check_plane(t_figure *fg_, t_line3 sight_, t_cpnt *ct_)
 	t_vec3	eq_;
 	double	tval;
 
+	eq_.e[2] = 0;
 	eq_.e[1] = dot_product(fg_->dir_, sight_.dir_);
 	eq_.e[0] = dot_product(fg_->dir_, sub_vec3(sight_.pos_, fg_->pos_));
 	if (positive_solution(eq_, &tval))

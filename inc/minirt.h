@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 17:58:03 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/02 11:42:10 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,9 @@ void	scan_figures(t_figure *figure, char **splitted_str);
 //		draw_all.c
 void	draw_all(t_mlx *mlx_, t_img *img_, t_objs *objs_);
 t_dot3	set_screen(t_screen *screen_, t_camera camera_);
-t_color process_pixel(t_objs *objs_, t_line3 sight_);
+t_color process_pixel(t_objs *objs_, t_line3 sight_, size_t	y);
 t_vec3	get_normal(t_pvec3 pos_, t_line3 sight_, t_figure *fg_);
+void	get_light(t_light light_, t_line3 sight_, t_cpnt *contact_);
 
 //		traverse.c
 t_bool	object_traverse(t_objs *objs_, t_line3 sight_, t_cpnt *contact_);

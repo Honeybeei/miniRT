@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:45:59 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/31 15:50:11 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/02 02:31:47 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_vec3	normalize_vec3(t_vec3 v);
 //	vector_binary_operation.c
 t_vec3	add_vec3(t_vec3 v, t_vec3 v2);
 t_vec3	sub_vec3(t_vec3 v, t_vec3 v2);
+t_vec3	mul_vec3(t_vec3 v, t_vec3 v2);
 double	dot_product(t_vec3 v1, t_vec3 v2);
 t_vec3	cross_product(t_vec3 v1, t_vec3 v2);
 
