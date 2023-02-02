@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:20:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/31 20:56:44 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/02 02:13:53 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,14 @@ typedef struct s_figure
 
 #define MODE_CNT_ 5
 
-enum e_mode_type
+typedef enum e_mode_type
 {
 	mode_normal_ = 1,
 	mode_figure_cntl_ = 2,
 	mode_camera_cntl_ = 3,
 	mode_light_cntl_ = 4,
 	mode_ambient_cntl_ = 5
-};
+}	t_mode_type;
 
 typedef struct s_objects
 {

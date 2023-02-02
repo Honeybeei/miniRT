@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_doubles.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:07:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 20:42:22 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/02 12:54:15 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ char *my_dtostr(double n, int precision)
 	str_arr[1] = ".";
 	decimal = (int)((fabs(n) - floor(fabs(n))) * pow(10, precision));
 	str_arr[2] = ft_itoa(decimal);
-	result = my_strarrjoin(str_arr, 3);
+	if (precision == 0)
+		result = my_strarrjoin(str_arr, 1);
+	else
+		result = my_strarrjoin(str_arr, 3);
 	free(str_arr[0]);
 	free(str_arr[2]);
 	return (result);

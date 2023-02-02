@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 20:51:36 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/02 13:32:11 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@
 # include "../minimath/inc/minimath.h"
 
 // etc
+# include "defined_color.h"
 # include "input.h"
 # include "mlx_related.h"
 # include "my_booleans.h"
 # include "my_errno.h"
 # include "my_flag.h"
 # include "objects.h"
+# include "user_interface.h"
 
 /* ************************************************************************** */
 
@@ -63,9 +65,17 @@ void	change_mode(t_ptrs *ptrs, int key_code);
 t_color	rgb_to_color(int r, int g, int b);
 int		color_to_rgb(t_color color, char type);
 
-//		print.c
+//		print_all.c
 void	print_screen(t_ptrs *ptrs, bool should_rerender);
-char    *vec3_to_str(t_vec3 vec, int precision);
+
+//		print_figure_cntl.c
+void	print_figure_cntl_mode_ui(t_ptrs *ptrs);
+
+//		print_utils.c
+char	*vec3_to_str(t_vec3 vec, int precision);
+char	*join_str_and_vector(char *str, t_vec3 vec, int precision);
+char	*join_str_and_double(char *str, double n, int precision);
+char	*get_bracketed_int(t_bracket_type type, int n);
 
 //		put.c
 void	put_pixel(t_img *img, int x, int y, t_color color);
