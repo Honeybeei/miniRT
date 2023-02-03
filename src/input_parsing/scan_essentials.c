@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:42:52 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/30 15:14:42 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 18:13:46 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void	scan_ambient_lightning(t_ambient *ambient, char **str_arr)
 	if (parse_rgb(&ambient->color_, str_arr[2]) == fail_)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid ambient lightning color data.", true);
+	ambient->increment_ = \
+		times_vec3(color_to_rgb(ambient->color_), ambient->ratio_);
+	double	*eee = ambient->increment_.e;
+	printf("[r] : %f,  [g] : %f, [b] : %f\n", eee[0], eee[1], eee[2]);
+	// ===========just for test======================
 	printf("Ambient lightning data scan complete!!\n");
 }
 

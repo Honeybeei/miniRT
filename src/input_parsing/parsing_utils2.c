@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:53:33 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 12:02:59 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 14:10:22 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_bool	parse_rgb(t_color *dst, char *rgb_data)
 	i = 0;
 	while (splitted_rgb[i] != NULL)
 		free(splitted_rgb[i++]);
-	*dst = rgb_to_color(temp_rgb[0], temp_rgb[1], temp_rgb[2]);
+	*dst = element_to_color(temp_rgb[0], temp_rgb[1], temp_rgb[2]);
 	return (success_);
 }
 

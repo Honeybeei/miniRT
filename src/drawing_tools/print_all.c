@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_all.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 02:00:12 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 11:18:07 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 15:18:43 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_screen(t_ptrs *ptrs, bool should_rerender)
 	if (should_rerender == true)
 	{
 		printf("Rerendering img...\n");
-		// draw_all();
+		draw_all(&ptrs->mlx_, &ptrs->img_, &ptrs->objs_);
 		printf("Rendering complete!!\n");
 	}
 	mlx_put_image_to_window(ptrs->mlx_.mlx_ptr_, ptrs->mlx_.win_ptr_, \

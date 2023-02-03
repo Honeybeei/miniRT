@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 11:16:32 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 01:09:44 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 14:45:07 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
 # define COLOR_H
 
-typedef int	t_color;
+typedef int		t_color;
+typedef t_vec3	t_rgb;
 
 // Popular hex color codes
 # define COLOR_BLACK_	0x000000

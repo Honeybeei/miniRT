@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/02/03 13:12:49 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/02/03 14:55:48 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -139,6 +139,22 @@ INPUT_PARSING_SRCS = $(addsuffix .c, $(addprefix $(INPUT_PARSING_SRC_DIR), $(INP
 INPUT_PARSING_OBJS = $(addsuffix .o, $(addprefix $(INPUT_PARSING_OBJ_DIR), $(INPUT_PARSING_FILE)))
 OBJS += $(INPUT_PARSING_OBJS)
 OBJ_DIRS += $(INPUT_PARSING_OBJ_DIR)
+
+# **************************************************************************** #
+
+# rendering
+RENDERING_DIR = rendering/
+RENDERING_SRC_DIR = $(SRC_DIR)$(RENDERING_DIR)
+RENDERING_OBJ_DIR = $(OBJ_DIR)$(RENDERING_DIR)
+
+RENDERING_FILE = \
+		draw_all \
+		traverse
+
+RENDERING_SRCS = $(addsuffix .c, $(addprefix $(RENDERING_SRC_DIR), $(RENDERING_FILE)))
+RENDERING_OBJS = $(addsuffix .o, $(addprefix $(RENDERING_OBJ_DIR), $(RENDERING_FILE)))
+OBJS += $(RENDERING_OBJS)
+OBJ_DIRS += $(RENDERING_OBJ_DIR)
 
 # **************************************************************************** #
 

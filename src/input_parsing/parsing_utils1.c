@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:53:33 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/30 13:46:46 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 15:00:46 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ char	*get_next_line_without_new_line(int fd)
 		return (without_new_line);
 	}
 	return (gnl_result);
-}
-
-double	my_strtod(const char *nptr)
-{
-	// TODO : MAKE MY OWN 
-	return (strtod(nptr, NULL));
 }
 
 /**

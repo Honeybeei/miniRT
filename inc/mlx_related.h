@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_related.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:16:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 12:54:53 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 15:01:32 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define MLX_RELATED_H
 
 // window size
-# define WINDOW_WIDTH_	1280
-# define WINDOW_HEIGHT_	720
+# define WINDOW_WIDTH_	1920
+# define WINDOW_HEIGHT_	1080
 
 // events used in this projects
 enum e_x_events {

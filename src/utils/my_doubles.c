@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_doubles.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:07:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 12:54:15 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 14:41:50 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,3 +41,10 @@ char *my_dtostr(double n, int precision)
 	free(str_arr[2]);
 	return (result);
 }
+
+double	my_strtod(const char *nptr)
+{
+	// TODO : MAKE MY OWN 
+	return (strtod(nptr, NULL));
+}
+

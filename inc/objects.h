@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:20:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 01:09:58 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 14:58:39 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_ambient
 {
 	double	ratio_;
 	int		color_;
+	t_rgb	increment_;
 }	t_ambient;
 
 typedef struct s_ray
@@ -94,6 +95,7 @@ typedef struct s_figure
 	t_dvec3	dir_;
 	double	r_;
 	double	h_;
+	double	albedo;
 	void	*obj_;
 	bool	is_pointed_;
 }	t_figure;

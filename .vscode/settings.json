@@ -17,7 +17,8 @@
         "defined_color.h": "c",
         "get_next_line.h": "c",
         "user_interface.h": "c",
-        "color.h": "c"
+        "color.h": "c",
+        "rendering.h": "c"
     },
     "cSpell.words": [
         "minirt"
