@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:55:17 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 14:47:36 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 15:39:37 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,14 @@ t_color	element_to_color(double r, double g, double b)
 	return (r_ << 16 | g_ << 8 | b_);
 }
 
-t_color	rgb_to_color(t_rgb rgb_)
+t_color	rgb_to_color(t_rgb rgb)
 {
-	return (element_to_color(rgb_.e[0], rgb_.e[1], rgb_.e[2]));
+	return (element_to_color(rgb.e[0], rgb.e[1], rgb.e[2]));
+}
+
+t_rgb	color_to_rgb(t_color clr)
+{
+	return (init_vec3((clr >> 16) & 0xFF, (clr >> 8) & 0xFF, clr & 0xFF));
 }
 
 int	color_to_element(t_color clr, char type)
@@ -40,14 +45,4 @@ int	color_to_element(t_color clr, char type)
 	else
 		error_management(true, err_invalid_color_type_, NULL, true);
 	return (-1);
-}
-
-t_color	rgb_to_color(t_rgb rgb)
-{
-	return (element_to_color(rgb.e[0], rgb.e[1], rgb.e[2]));
-}
-
-t_rgb	color_to_rgb(t_color clr)
-{
-	return (init_vec3((clr >> 16) & 0xFF, (clr >> 8) & 0xFF, clr & 0xFF));
 }

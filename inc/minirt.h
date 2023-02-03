@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 14:50:55 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 15:39:12 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void    normal_mode_key_press_event(int key_code, t_ptrs *ptrs);
 
 //		color_related.c
 t_color	element_to_color(double r, double g, double b);
-int		color_to_element(t_color clr, char type);
 t_color	rgb_to_color(t_rgb rgb);
 t_rgb	color_to_rgb(t_color clr);
+int		color_to_element(t_color clr, char type);
 
 //		print_all.c
 void	print_screen(t_ptrs *ptrs, bool should_rerender);
