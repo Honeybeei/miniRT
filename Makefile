@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/02/01 10:34:33 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/02/03 14:55:48 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,13 +78,41 @@ OBJ_DIRS += $(MAIN_OBJ_DIR)
 
 # **************************************************************************** #
 
+# actions
+ACTIONS_DIR = actions/
+ACTIONS_SRC_DIR = $(SRC_DIR)$(ACTIONS_DIR)
+ACTIONS_OBJ_DIR = $(OBJ_DIR)$(ACTIONS_DIR)
+
+ACTIONS_FILE = \
+		action_handling \
+		ambient_cntl_mode_actions \
+		camera_cntl_mode_actions \
+		figure_cntl_mode_actions \
+		light_cntl_mode_actions \
+		normal_mode_actions
+
+ACTIONS_SRCS = $(addsuffix .c, $(addprefix $(ACTIONS_SRC_DIR), $(ACTIONS_FILE)))
+ACTIONS_OBJS = $(addsuffix .o, $(addprefix $(ACTIONS_OBJ_DIR), $(ACTIONS_FILE)))
+OBJS += $(ACTIONS_OBJS)
+OBJ_DIRS += $(ACTIONS_OBJ_DIR)
+
+# **************************************************************************** #
+
 # drawing_tools
 DRAWING_TOOLS_DIR = drawing_tools/
 DRAWING_TOOLS_SRC_DIR = $(SRC_DIR)$(DRAWING_TOOLS_DIR)
 DRAWING_TOOLS_OBJ_DIR = $(OBJ_DIR)$(DRAWING_TOOLS_DIR)
 
 DRAWING_TOOLS_FILE = \
-        color_related \
+		color_related \
+		print_all \
+		print_ambient_cntl \
+		print_box \
+		print_camera_cntl \
+		print_fugure_cntl \
+		print_light_cntl \
+		print_normal \
+		print_utils \
 		put
 
 DRAWING_TOOLS_SRCS = $(addsuffix .c, $(addprefix $(DRAWING_TOOLS_SRC_DIR), $(DRAWING_TOOLS_FILE)))
@@ -137,7 +165,8 @@ UTILS_OBJ_DIR = $(OBJ_DIR)$(UTILS_DIR)
 
 UTILS_FILE = \
 		error_management \
-		initialization
+		initialization \
+		my_doubles
 
 UTILS_SRCS = $(addsuffix .c, $(addprefix $(UTILS_SRC_DIR), $(UTILS_FILE)))
 UTILS_OBJS = $(addsuffix .o, $(addprefix $(UTILS_OBJ_DIR), $(UTILS_FILE)))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   improved_libft.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:56:53 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/22 14:07:33 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/01 20:34:26 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 void	*my_calloc(size_t count, size_t size);
 void	*my_malloc(size_t size);
 char	**my_split(char const *s, char c);
+char	*my_strarrjoin(char **str_arr, size_t str_cnt);
 int		my_strcmp(const char *str1, const char *str2);
 char	*my_strndup(const char *src, size_t len);
 

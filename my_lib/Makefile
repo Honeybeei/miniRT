@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 01:52:25 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/22 14:07:54 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/02/01 15:14:42 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,6 +117,7 @@ IMPROVED_LIBFT_SRC_FILE = \
 		my_calloc.c \
 		my_malloc.c \
 		my_split.c \
+		my_strarrjoin.c \
 		my_strcmp.c \
 		my_strndup.c
 

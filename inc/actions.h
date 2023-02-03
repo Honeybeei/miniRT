@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   actions.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 13:48:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 10:31:20 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/02/02 23:33:13 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/02/02 23:35:44 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#ifndef ACTIONS_H
+# define ACTIONS_H
 
-int	main(int argc, char *argv[])
-{
-	t_ptrs	ptrs;
+# define TRANSLATION_GAP_	1
+# define FOV_GAP_			10
+# define RATIO_GAP_			0.1
 
-	if (argc < 2)
-		error_management(true, err_no_file_, NULL, true);
-	else if (argc > 2)
-		error_management(true, err_too_much_file_, NULL, true);
-	parse_input(&ptrs.objs_, argv[1]);
-	init_ptrs(&ptrs);
-	mlx_hooks(&ptrs);
-	print_screen(&ptrs, true);
-	mlx_loop(ptrs.mlx_.mlx_ptr_);
-	return (0);
-}
+#endif

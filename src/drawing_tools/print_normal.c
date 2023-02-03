@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_normal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 13:48:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 10:31:20 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/02/02 13:39:23 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/02/03 13:14:39 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "../../inc/minirt.h"
 
-int	main(int argc, char *argv[])
+void	print_normal_mode_ui(t_ptrs *ptrs)
 {
-	t_ptrs	ptrs;
+	int		i;
+	char	*info_arr[NORMAL_MODE_STR_CNT_];
 
-	if (argc < 2)
-		error_management(true, err_no_file_, NULL, true);
-	else if (argc > 2)
-		error_management(true, err_too_much_file_, NULL, true);
-	parse_input(&ptrs.objs_, argv[1]);
-	init_ptrs(&ptrs);
-	mlx_hooks(&ptrs);
-	print_screen(&ptrs, true);
-	mlx_loop(ptrs.mlx_.mlx_ptr_);
-	return (0);
+	i = 0;
+	while (ptrs->objs_.figures_[i].is_pointed_ == false)
+		i++;
+	info_arr[0] = ft_strdup("Press 1 ~ 5 to change mode");
+	i = 0;
+	print_spec_with_box(&ptrs->mlx_, info_arr, NORMAL_MODE_STR_CNT_);
+	while (i < NORMAL_MODE_STR_CNT_)
+		free(info_arr[i++]);
 }

@@ -12,7 +12,13 @@
         "ios": "cpp",
         "system_error": "cpp",
         "type_traits": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "my_errno.h": "c",
+        "defined_color.h": "c",
+        "get_next_line.h": "c",
+        "user_interface.h": "c",
+        "color.h": "c",
+        "rendering.h": "c"
     },
     "cSpell.words": [
         "minirt"

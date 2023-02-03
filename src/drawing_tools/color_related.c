@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_related.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:55:17 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 18:17:10 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/03 14:47:36 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ t_color	rgb_to_color(t_rgb rgb_)
 	return (element_to_color(rgb_.e[0], rgb_.e[1], rgb_.e[2]));
 }
 
-t_rgb	color_to_rgb(t_color clr)
-{
-	return (init_vec3((clr >> 16) & 0xFF, (clr >> 8) & 0xFF, clr & 0xFF));
-}
-
 int	color_to_element(t_color clr, char type)
 {
 	if (type == 'r')
@@ -45,4 +40,14 @@ int	color_to_element(t_color clr, char type)
 	else
 		error_management(true, err_invalid_color_type_, NULL, true);
 	return (-1);
+}
+
+t_color	rgb_to_color(t_rgb rgb)
+{
+	return (element_to_color(rgb.e[0], rgb.e[1], rgb.e[2]));
+}
+
+t_rgb	color_to_rgb(t_color clr)
+{
+	return (init_vec3((clr >> 16) & 0xFF, (clr >> 8) & 0xFF, clr & 0xFF));
 }

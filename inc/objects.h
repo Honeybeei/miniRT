@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:20:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 17:31:35 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/03 14:58:39 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,18 @@
 
 # include "../minimath/inc/struct_vec.h"
 # include <stdlib.h>	// size_t
+# include "color.h"
 
 /* ************************************************************************** */
 
-typedef int	t_color;
-typedef	t_vec3	t_rgb;
+# define FOV_MAX_ 179.999
+# define FOV_MIN_ 000.001
 
 typedef struct s_ambient
 {
 	double	ratio_;
 	int		color_;
 	t_rgb	increment_;
-	// 프로그램 시작 혹은 ambient 바뀔 때마다 여기에 계산 올려주는 절차 있으면 좋을것 같습니당.
-	// init_ = times_vec3(color_to_rgb(color_), ratio_); 이렇게 계산하면 되는
 }	t_ambient;
 
 typedef struct s_ray
@@ -60,6 +59,7 @@ typedef struct s_light
 	t_pvec3	light_point_;
 	double	ratio_;
 	t_color	color_;
+	bool	is_pointed_;
 }	t_light;
 
 typedef struct s_sphere
@@ -97,9 +97,21 @@ typedef struct s_figure
 	double	h_;
 	double	albedo;
 	void	*obj_;
+	bool	is_pointed_;
 }	t_figure;
 
 /* ************************************************************************** */
+
+#define MODE_CNT_ 5
+
+typedef enum e_mode_type
+{
+	mode_normal_ = 1,
+	mode_figure_cntl_ = 2,
+	mode_camera_cntl_ = 3,
+	mode_light_cntl_ = 4,
+	mode_ambient_cntl_ = 5
+}	t_mode_type;
 
 typedef struct s_objects
 {
@@ -110,6 +122,7 @@ typedef struct s_objects
 	size_t		light_cnt_;
 	t_figure	*figures_;
 	size_t		figure_cnt_;
+	int			mode_;
 }	t_objs;
 
 /* ************************************************************************** */

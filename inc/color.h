@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put.c                                              :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 17:59:43 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 15:19:33 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/02/02 11:16:32 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/02/03 14:45:07 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minirt.h"
+#ifndef COLOR_H
+# define COLOR_H
 
-void	put_pixel(t_img *img, int i, int j, t_color color)
-{
-	char	*dst;
+typedef int		t_color;
+typedef t_vec3	t_rgb;
 
-	dst = img->addr_ + i * img->size_line_ + j * (img->bits_per_pixel_ / 8);
-	*(unsigned int *)dst = color;
-}
+// Popular hex color codes
+# define COLOR_BLACK_	0x000000
+# define COLOR_BLUE_	0x0000ff
+# define COLOR_GRAY_	0x808080
+# define COLOR_GREEN_	0x008000
+# define COLOR_PURPLE_	0x800080
+# define COLOR_RED_		0xff0000
+# define COLOR_WHITE_	0xffffff
+# define COLOR_CORAL_	0xff7f50
+
+#endif

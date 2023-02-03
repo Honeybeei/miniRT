@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   traverse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 00:06:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 13:19:01 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/03 14:59:10 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ void	check_sphere(t_figure *fg_, t_line3 sight_, t_cpnt *ct_)
 
 void	tmin_update(t_figure *fg_, t_line3 sight_, t_cpnt *ct_, double tval)
 {
-	if (ct_->ismeet_ == true_ && ct_->tmin < tval)
+	if (ct_->ismeet_ == true && ct_->tmin < tval)
 		return ;
 	ct_->tmin = tval;
-	ct_->ismeet_ = true_;
+	ct_->ismeet_ = true;
 	ct_->pos_ = add_vec3(sight_.pos_, times_vec3(sight_.dir_, tval));
 	ct_->fg_ = fg_;
 }
