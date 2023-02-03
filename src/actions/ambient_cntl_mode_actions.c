@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ambient_cntl_mode_actions.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 23:24:22 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 23:56:46 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 21:33:33 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	ambient_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs)
 		print_screen(ptrs, true);
 	}
 	else
-		printf("Nothing designated to key [%d] in ambient control mode\n", key_code);
+		printf("Nothing designated to key [%d] in ambient control mode\n", \
+		key_code);
 }
 
 static void	change_ambient_ratio(t_ambient *ambient, int key_code)

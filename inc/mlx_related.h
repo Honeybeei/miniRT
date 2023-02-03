@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:16:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 15:01:32 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 21:09:48 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define MLX_RELATED_H
 
 // window size
-# define WINDOW_WIDTH_	1920
-# define WINDOW_HEIGHT_	1080
+# define WINDOW_WIDTH_	1600
+# define WINDOW_HEIGHT_	900
 
 // define popular color
 # define COLOR_WHITE_ 0xffffff
@@ -37,6 +37,7 @@ enum e_key_code {
 	key_q_ = 12,
 	key_w_ = 13,
 	key_e_ = 14,
+	key_r_ = 15,
 	key_p_ = 35,
 	key_1_ = 18,
 	key_2_ = 19,

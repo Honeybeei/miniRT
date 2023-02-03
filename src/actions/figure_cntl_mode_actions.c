@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   figure_cntl_mode_actions.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 20:13:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 23:48:47 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 21:20:05 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	figure_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs)
 		print_screen(ptrs, true);
 	}
 	else
-		printf("Nothing designated to key [%d] in figure control mode\n", key_code);
+		printf("Nothing designated to key [%d] in figure control mode\n", \
+		key_code);
 }
 
 static void	change_figure_designation(t_objs *objs, int key_code)
@@ -57,17 +58,17 @@ static void	change_figure_designation(t_objs *objs, int key_code)
 static void	figure_parallel_translation(t_figure *figure, int key_code)
 {
 	if (key_code == key_w_)
-		figure->pos_.e[x_] += TRANSLATION_GAP_;
+		figure->pos_.e[x_] += FIGURE_TRANSLATION_GAP_;
 	else if (key_code == key_s_)
-		figure->pos_.e[x_] -= TRANSLATION_GAP_;
+		figure->pos_.e[x_] -= FIGURE_TRANSLATION_GAP_;
 	else if (key_code == key_d_)
-		figure->pos_.e[y_] += TRANSLATION_GAP_;
+		figure->pos_.e[z_] += FIGURE_TRANSLATION_GAP_;
 	else if (key_code == key_a_)
-		figure->pos_.e[y_] -= TRANSLATION_GAP_;
+		figure->pos_.e[z_] -= FIGURE_TRANSLATION_GAP_;
 	else if (key_code == key_e_)
-		figure->pos_.e[z_] += TRANSLATION_GAP_;
+		figure->pos_.e[y_] += FIGURE_TRANSLATION_GAP_;
 	else if (key_code == key_q_)
-		figure->pos_.e[z_] -= TRANSLATION_GAP_;
+		figure->pos_.e[y_] -= FIGURE_TRANSLATION_GAP_;
 }
 
 // rotation, radius, hight should also be managed. 

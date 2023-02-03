@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:59:13 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 17:27:20 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 21:37:12 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*vec3_to_str(t_vec3 vec, int precision)
 {
-    char	*str_arr[7];
+	char	*str_arr[7];
 	char	*vec_str;
 
 	str_arr[0] = "( ";

@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:29:46 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/30 13:39:12 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 21:59:59 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
+
+static void	print_customized_err(t_errno customized_errno);
 
 /**
  * @brief Print error message according to customized_errno(param1). 
@@ -27,18 +29,7 @@ void	error_management(bool is_customized_err, t_errno customized_errno, \
 	if (is_customized_err == false)
 		perror(NULL);
 	else
-	{
-		if (customized_errno == err_no_file_)
-			ft_putstr_fd("Where is my file you idot!!!", STDERR_FILENO);
-		else if (customized_errno == err_too_much_file_)
-			ft_putstr_fd("Its too much for me......", STDERR_FILENO);
-		else if (customized_errno == err_invalid_input_data_)
-			ft_putstr_fd("Your input data sucks", STDERR_FILENO);
-		else if (customized_errno == err_invalid_color_type_)
-			ft_putstr_fd("Invalid color type......", STDERR_FILENO);
-		else
-			ft_putstr_fd("Undefined error......", STDERR_FILENO);
-	}
+		print_customized_err(customized_errno);
 	if (additional_err_msg != NULL)
 	{
 		ft_putstr_fd(":: ", STDERR_FILENO);
@@ -47,4 +38,20 @@ void	error_management(bool is_customized_err, t_errno customized_errno, \
 	ft_putstr_fd("\n\n", STDERR_FILENO);
 	if (should_exit == true)
 		exit(1);
+}
+
+static void	print_customized_err(t_errno customized_errno)
+{
+	if (customized_errno == err_no_file_)
+		ft_putstr_fd("Where is my file you idot!!!", STDERR_FILENO);
+	else if (customized_errno == err_too_much_file_)
+		ft_putstr_fd("Its too much for me......", STDERR_FILENO);
+	else if (customized_errno == err_invalid_input_data_)
+		ft_putstr_fd("Your input data sucks", STDERR_FILENO);
+	else if (customized_errno == err_invalid_color_type_)
+		ft_putstr_fd("Invalid color type......", STDERR_FILENO);
+	else if (customized_errno == err_invalid_double_)
+		ft_putstr_fd("Invalid double syntax......", STDERR_FILENO);
+	else
+		ft_putstr_fd("Undefined error......", STDERR_FILENO);
 }

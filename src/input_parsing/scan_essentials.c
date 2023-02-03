@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scan_essentials.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:42:52 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 18:13:46 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/03 21:38:03 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ void	scan_ambient_lightning(t_ambient *ambient, char **str_arr)
 		"Invalid ambient lightning color data.", true);
 	ambient->increment_ = \
 		times_vec3(color_to_rgb(ambient->color_), ambient->ratio_);
-	double	*eee = ambient->increment_.e;
-	printf("[r] : %f,  [g] : %f, [b] : %f\n", eee[0], eee[1], eee[2]);
-	// ===========just for test======================
 	printf("Ambient lightning data scan complete!!\n");
 }
 

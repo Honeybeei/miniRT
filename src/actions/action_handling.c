@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action_handling.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 00:06:14 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 23:24:51 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 21:59:51 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ static int	handle_key_press_event(int key_code, t_ptrs *ptrs);
 static void	mlx_termination_protocol(t_mlx *mlx, t_img *img);
 static void	change_mode(t_ptrs *ptrs, int key_code);
 
+	// add mlx_something_hook to terminate mlx by pressing x top left frame
 void	mlx_hooks(t_ptrs *ptrs)
 {
 	mlx_key_hook(ptrs->mlx_.win_ptr_, handle_key_press_event, ptrs);
-	// add mlx_something_hook to terminate mlx by pressing x at the top left frame
 }
 
 static int	handle_key_press_event(int key_code, t_ptrs *ptrs)
@@ -28,7 +28,8 @@ static int	handle_key_press_event(int key_code, t_ptrs *ptrs)
 		mlx_termination_protocol(&ptrs->mlx_, &ptrs->img_);
 	else if (key_code == key_p_)
 		print_inputs(&ptrs->objs_);
-	else if (key_code == key_1_ || key_code == key_2_ || key_code == key_3_ || key_code == key_4_ || key_code == key_5_)
+	else if (key_code == key_1_ || key_code == key_2_ || key_code == key_3_ || \
+	key_code == key_4_ || key_code == key_5_)
 		change_mode(ptrs, key_code);
 	else if (ptrs->objs_.mode_ == mode_normal_)
 		normal_mode_key_press_event(key_code, ptrs);

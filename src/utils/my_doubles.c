@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:07:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 14:41:50 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 21:58:37 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @param precision 
  * @return char* 
  */
-char *my_dtostr(double n, int precision)
+char	*my_dtostr(double n, int precision)
 {
 	char	*str_arr[3];
 	int		decimal;
@@ -48,3 +48,18 @@ double	my_strtod(const char *nptr)
 	return (strtod(nptr, NULL));
 }
 
+// int	i;
+// int	sign;
+
+// if (ft_strlen(nptr) > 15)
+// 	error_management(true, err_invalid_double_, "Double is too long", true);
+// i = 0;
+// if (nptr[i] == '-')
+// {
+// 	sign = -1;
+// 	i++;
+// }
+// while (true)
+// {
+// 	if ()
+// }

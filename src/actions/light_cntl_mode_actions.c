@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light_cntl_mode_actions.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 21:42:50 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 13:01:46 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 20:10:40 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	change_light_designation(t_objs *objs, int key_code);
 
 void	light_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (ptrs->objs_.lights_[i].is_pointed_ == false)
@@ -40,23 +40,24 @@ void	light_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs)
 		print_screen(ptrs, false);
 	}
 	else
-		printf("Nothing designated to key [%d] in camera control mode\n", key_code);
+		printf("Nothing designated to key [%d] in camera control mode\n", \
+		key_code);
 }
 
-static void    light_parallel_translation(t_light *light, int key_code)
+static void	light_parallel_translation(t_light *light, int key_code)
 {
 	if (key_code == key_w_)
-		light->light_point_.e[x_] += TRANSLATION_GAP_;
+		light->light_point_.e[x_] += LIGHT_TRANSLATION_GAP_;
 	else if (key_code == key_s_)
-		light->light_point_.e[x_] -= TRANSLATION_GAP_;
+		light->light_point_.e[x_] -= LIGHT_TRANSLATION_GAP_;
 	else if (key_code == key_d_)
-		light->light_point_.e[y_] += TRANSLATION_GAP_;
+		light->light_point_.e[z_] += LIGHT_TRANSLATION_GAP_;
 	else if (key_code == key_a_)
-		light->light_point_.e[y_] -= TRANSLATION_GAP_;
+		light->light_point_.e[z_] -= LIGHT_TRANSLATION_GAP_;
 	else if (key_code == key_e_)
-		light->light_point_.e[z_] += TRANSLATION_GAP_;
+		light->light_point_.e[y_] += LIGHT_TRANSLATION_GAP_;
 	else if (key_code == key_q_)
-		light->light_point_.e[z_] -= TRANSLATION_GAP_;
+		light->light_point_.e[y_] -= LIGHT_TRANSLATION_GAP_;
 }
 
 static void	change_brightness(t_light *light, int key_code)

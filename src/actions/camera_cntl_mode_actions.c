@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera_cntl_mode_actions.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 20:46:44 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 23:56:12 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 21:33:26 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,33 @@ void	camera_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs)
 		print_screen(ptrs, true);
 	}
 	else
-		printf("Nothing designated to key [%d] in camera control mode\n", key_code);
+		printf("Nothing designated to key [%d] in camera control mode\n", \
+		key_code);
 }
 
 static void	camera_parallel_translation(t_camera *camera, int key_code)
 {
-	// should be improved. want to move 
+	t_vec3	front_ptr;
+	t_vec3	right_ptr;
+	t_vec3	y_axis;
+
+	y_axis = init_vec3(0, 1, 0);
+	front_ptr = times_vec3(normalize_vec3(normal_vec3(camera->dir_, y_axis)), \
+	CAMERA_TRANSLATION_GAP_RATIO_);
+	right_ptr = times_vec3(normalize_vec3(cross_product(camera->dir_, \
+	y_axis)), CAMERA_TRANSLATION_GAP_RATIO_);
 	if (key_code == key_w_)
-		camera->pos_.e[x_] += TRANSLATION_GAP_;
+		camera->pos_ = add_vec3(camera->pos_, front_ptr);
 	else if (key_code == key_s_)
-		camera->pos_.e[x_] -= TRANSLATION_GAP_;
+		camera->pos_ = sub_vec3(camera->pos_, front_ptr);
 	else if (key_code == key_d_)
-		camera->pos_.e[y_] += TRANSLATION_GAP_;
+		camera->pos_ = add_vec3(camera->pos_, right_ptr);
 	else if (key_code == key_a_)
-		camera->pos_.e[y_] -= TRANSLATION_GAP_;
+		camera->pos_ = sub_vec3(camera->pos_, right_ptr);
 	else if (key_code == key_e_)
-		camera->pos_.e[z_] += TRANSLATION_GAP_;
+		camera->pos_ = add_vec3(camera->pos_, y_axis);
 	else if (key_code == key_q_)
-		camera->pos_.e[z_] -= TRANSLATION_GAP_;
+		camera->pos_ = add_vec3(camera->pos_, y_axis);
 }
 
 static void	change_fov(t_camera *camera, int key_code)
@@ -66,5 +75,3 @@ static void	change_fov(t_camera *camera, int key_code)
 			camera->fov_ = FOV_MAX_;
 	}
 }
-
-// rotation should be added. 

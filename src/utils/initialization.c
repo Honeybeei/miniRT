@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:52:29 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 12:32:02 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 21:39:07 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
 static void	init_mlx(t_mlx *mlx, t_img *img);
-static void init_objs(t_objs *objs);
+static void	init_objs(t_objs *objs);
 
 void	init_ptrs(t_ptrs *ptrs)
 {
@@ -31,7 +31,7 @@ static void	init_mlx(t_mlx *mlx, t_img *img)
 	&img->size_line_, &img->endian_);
 }
 
-static void init_objs(t_objs *objs)
+static void	init_objs(t_objs *objs)
 {
 	size_t	i;
 

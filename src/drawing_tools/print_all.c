@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 02:00:12 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 15:18:43 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 21:34:55 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	print_screen(t_ptrs *ptrs, bool should_rerender)
 		printf("Rendering complete!!\n");
 	}
 	mlx_put_image_to_window(ptrs->mlx_.mlx_ptr_, ptrs->mlx_.win_ptr_, \
-    ptrs->img_.img_ptr_, 0, 0);
-    print_mode_info_to_screen(ptrs);
+	ptrs->img_.img_ptr_, 0, 0);
+	print_mode_info_to_screen(ptrs);
 	if (ptrs->objs_.mode_ == mode_normal_)
 		print_normal_mode_ui(ptrs);
 	else if (ptrs->objs_.mode_ == mode_figure_cntl_)
@@ -56,5 +56,5 @@ static void	print_mode_info_to_screen(t_ptrs *ptrs)
 	else
 		mode_str = "[?] MODE ERROR......";
 	mlx_string_put(ptrs->mlx_.mlx_ptr_, ptrs->mlx_.win_ptr_, MODE_TEXT_LOC_X_, \
-    MODE_TEXT_LOC_Y_, MODE_TEXT_COLOR_, mode_str);
+	MODE_TEXT_LOC_Y_, MODE_TEXT_COLOR_, mode_str);
 }
