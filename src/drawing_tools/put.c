@@ -6,11 +6,11 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:59:43 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 11:11:51 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 01:14:39 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "../../inc/minirt.h"
 
 void	put_pixel(t_img *img, int x, int y, t_color color)
 {

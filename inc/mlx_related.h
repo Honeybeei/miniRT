@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:16:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 11:17:06 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 12:54:53 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define MLX_RELATED_H
 
 // window size
-# define WINDOW_WIDTH_	1600
-# define WINDOW_HEIGHT_	900
+# define WINDOW_WIDTH_	1280
+# define WINDOW_HEIGHT_	720
 
 // events used in this projects
 enum e_x_events {

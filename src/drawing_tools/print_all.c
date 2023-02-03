@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_all.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 02:00:12 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 17:25:55 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 11:18:07 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,3 @@ static void	print_mode_info_to_screen(t_ptrs *ptrs)
 	mlx_string_put(ptrs->mlx_.mlx_ptr_, ptrs->mlx_.win_ptr_, MODE_TEXT_LOC_X_, \
     MODE_TEXT_LOC_Y_, MODE_TEXT_COLOR_, mode_str);
 }
-

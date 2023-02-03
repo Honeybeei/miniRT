@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
+#    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/02/02 20:09:59 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/02/03 11:19:08 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,8 +85,11 @@ ACTIONS_OBJ_DIR = $(OBJ_DIR)$(ACTIONS_DIR)
 
 ACTIONS_FILE = \
 		action_handling \
-		change_designation \
-		parallel_translation
+		ambient_cntl_mode_actions \
+		camera_cntl_mode_actions \
+		figure_cntl_mode_actions \
+		light_cntl_mode_actions \
+		normal_mode_actions
 
 ACTIONS_SRCS = $(addsuffix .c, $(addprefix $(ACTIONS_SRC_DIR), $(ACTIONS_FILE)))
 ACTIONS_OBJS = $(addsuffix .o, $(addprefix $(ACTIONS_OBJ_DIR), $(ACTIONS_FILE)))
@@ -102,6 +105,7 @@ DRAWING_TOOLS_OBJ_DIR = $(OBJ_DIR)$(DRAWING_TOOLS_DIR)
 
 DRAWING_TOOLS_FILE = \
 		color_related \
+		info_box \
 		print_all \
 		print_ambient_cntl \
 		print_camera_cntl \

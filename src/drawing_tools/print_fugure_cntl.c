@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_fugure_cntl.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 11:25:43 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 18:05:46 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 12:56:19 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,9 @@ void	print_figure_cntl_mode_ui(t_ptrs *ptrs)
 	else
 		line_cnt = set_cylinder_info_to_print(&ptrs->objs_.figures_[i], info_arr);
 	i = 0;
+	print_info_with_box(&ptrs->mlx_, info_arr, line_cnt);
 	while (i < line_cnt)
-	{
-		// draw_info_box(line_cnt);
-		mlx_string_put(ptrs->mlx_.mlx_ptr_, ptrs->mlx_.win_ptr_, \
-		INFO_TEXT_LOC_X_, INFO_TEXT_LOC_Y_ + i * INFO_STR_VER_GAP_, \
-		INFO_TEXT_COLOR_, info_arr[i]);
 		free(info_arr[i++]);
-	}
 }
 
 static int set_plane_info_to_print(t_figure *figure, char **info_arr)

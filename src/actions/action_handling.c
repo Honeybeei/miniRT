@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action_handling.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 00:06:14 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 21:01:17 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/02 23:24:51 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ static int	handle_key_press_event(int key_code, t_ptrs *ptrs)
 	else if (ptrs->objs_.mode_ == mode_figure_cntl_)
 		figure_cntl_mode_key_press_event(key_code, ptrs);
 	else if (ptrs->objs_.mode_ == mode_camera_cntl_)
-		camera_cntl_mode_key_press_event(key_code, ptrs);  // TODO
+		camera_cntl_mode_key_press_event(key_code, ptrs);
 	else if (ptrs->objs_.mode_ == mode_light_cntl_)
-		light_cntl_mode_key_press_event(key_code, ptrs);  // TODO
+		light_cntl_mode_key_press_event(key_code, ptrs);
 	else if (ptrs->objs_.mode_ == mode_ambient_cntl_)
-		ambient_cntl_mode_key_press_event(key_code, ptrs);  // TODO
+		ambient_cntl_mode_key_press_event(key_code, ptrs);
 	return (0);
 }
 

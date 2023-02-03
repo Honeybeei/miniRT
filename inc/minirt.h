@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 21:42:20 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 11:18:42 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 # include "../minimath/inc/minimath.h"
 
 // etc
-# include "defined_color.h"
+# include "actions.h"
+# include "color.h"
 # include "input.h"
 # include "mlx_related.h"
 # include "my_booleans.h"
@@ -51,11 +52,17 @@ typedef struct s_minirt_ptrs
 //		action_handling.c
 void	mlx_hooks(t_ptrs *ptrs);
 
+//		ambient_cntl_mode_actions.c
+void	ambient_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs);
+
 //		camera_cntl_mode_actions.c
 void	camera_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs);
 
 //		figure_cntl_mode_actions.c
 void	figure_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs);
+
+//		light_cntl_mode_actions.c
+void	light_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs);
 
 //		normal_mode_actions.c
 void    normal_mode_key_press_event(int key_code, t_ptrs *ptrs);
@@ -67,6 +74,9 @@ void    normal_mode_key_press_event(int key_code, t_ptrs *ptrs);
 //		color_related.c
 t_color	rgb_to_color(int r, int g, int b);
 int		color_to_rgb(t_color color, char type);
+
+//		info_box.c
+void	print_info_with_box(t_mlx *mlx, char **info_str_arr, int line_cnt);
 
 //		print_all.c
 void	print_screen(t_ptrs *ptrs, bool should_rerender);

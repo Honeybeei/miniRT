@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:20:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 02:13:53 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 01:09:58 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 
 # include "../minimath/inc/struct_vec.h"
 # include <stdlib.h>	// size_t
+# include "color.h"
 
 /* ************************************************************************** */
 
-typedef int	t_color;
+# define FOV_MAX_ 179.999
+# define FOV_MIN_ 000.001
 
 typedef struct s_ambient
 {

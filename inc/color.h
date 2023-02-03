@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defined_color.h                                    :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 11:16:32 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/02 11:17:09 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 01:09:44 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINED_COLOR_H
-# define DEFINED_COLOR_H
+#ifndef COLOR_H
+# define COLOR_H
+
+typedef int	t_color;
 
 // Popular hex color codes
 # define COLOR_BLACK_	0x000000
