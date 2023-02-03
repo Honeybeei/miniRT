@@ -12,10 +12,10 @@
 
 #include "../../inc/minirt.h"
 
-void	put_pixel(t_img *img, int x, int y, t_color color)
+void	put_pixel(t_img *img, int i, int j, t_color color)
 {
 	char	*dst;
 
-	dst = img->addr_ + x * img->size_line_ + y * (img->bits_per_pixel_ / 8);
+	dst = img->addr_ + i * img->size_line_ + j * (img->bits_per_pixel_ / 8);
 	*(unsigned int *)dst = color;
 }

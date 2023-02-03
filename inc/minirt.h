@@ -106,7 +106,7 @@ char	*join_str_and_double(char *str, double n, int precision);
 char	*get_bracketed_int(t_bracket_type type, int n);
 
 //		put.c
-void	put_pixel(t_img *img, int x, int y, t_color color);
+void	put_pixel(t_img *img, int i, int j, t_color color);
 
 /* ************************************************************************** */
 

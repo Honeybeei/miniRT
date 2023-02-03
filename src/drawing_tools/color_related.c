@@ -24,6 +24,11 @@ t_color	element_to_color(double r, double g, double b)
 	return (r_ << 16 | g_ << 8 | b_);
 }
 
+t_color	rgb_to_color(t_rgb rgb_)
+{
+	return (element_to_color(rgb_.e[0], rgb_.e[1], rgb_.e[2]));
+}
+
 int	color_to_element(t_color clr, char type)
 {
 	if (type == 'r')

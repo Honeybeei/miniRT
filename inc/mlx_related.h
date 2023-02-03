@@ -17,6 +17,11 @@
 # define WINDOW_WIDTH_	1920
 # define WINDOW_HEIGHT_	1080
 
+// define popular color
+# define COLOR_WHITE_ 0xffffff
+# define JCHOI_PICK_COLOR_ 0xd5eef7
+# define BACK_GROUND_COLOR_ JCHOI_PICK_COLOR_
+
 // events used in this projects
 enum e_x_events {
 	x_key_press_ = 2,
