@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/02/03 11:19:08 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/02/03 13:12:49 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,9 +105,9 @@ DRAWING_TOOLS_OBJ_DIR = $(OBJ_DIR)$(DRAWING_TOOLS_DIR)
 
 DRAWING_TOOLS_FILE = \
 		color_related \
-		info_box \
 		print_all \
 		print_ambient_cntl \
+		print_box \
 		print_camera_cntl \
 		print_fugure_cntl \
 		print_light_cntl \

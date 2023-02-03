@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 11:18:42 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 13:14:39 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,14 @@ void    normal_mode_key_press_event(int key_code, t_ptrs *ptrs);
 t_color	rgb_to_color(int r, int g, int b);
 int		color_to_rgb(t_color color, char type);
 
-//		info_box.c
-void	print_info_with_box(t_mlx *mlx, char **info_str_arr, int line_cnt);
-
 //		print_all.c
 void	print_screen(t_ptrs *ptrs, bool should_rerender);
 
 //		print_ambient_cntl.c
 void	print_ambient_light_cntl_mode_ui(t_ptrs *ptrs);
+
+//		print_box.c
+void	print_spec_with_box(t_mlx *mlx, char **info_str_arr, int line_cnt);
 
 //		print_camera_cntl.c
 void	print_camera_cntl_mode_ui(t_ptrs *ptrs);

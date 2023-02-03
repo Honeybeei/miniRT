@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 11:25:43 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 12:56:19 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 13:14:39 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	print_figure_cntl_mode_ui(t_ptrs *ptrs)
 	else
 		line_cnt = set_cylinder_info_to_print(&ptrs->objs_.figures_[i], info_arr);
 	i = 0;
-	print_info_with_box(&ptrs->mlx_, info_arr, line_cnt);
+	print_spec_with_box(&ptrs->mlx_, info_arr, line_cnt);
 	while (i < line_cnt)
 		free(info_arr[i++]);
 }

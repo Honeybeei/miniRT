@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 13:39:23 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 13:00:51 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 13:14:39 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_normal_mode_ui(t_ptrs *ptrs)
 		i++;
 	info_arr[0] = ft_strdup("Press 1 ~ 5 to change mode");
 	i = 0;
-	print_info_with_box(&ptrs->mlx_, info_arr, NORMAL_MODE_STR_CNT_);
+	print_spec_with_box(&ptrs->mlx_, info_arr, NORMAL_MODE_STR_CNT_);
 	while (i < NORMAL_MODE_STR_CNT_)
 		free(info_arr[i++]);
 }

@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:32:43 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 13:00:07 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/03 13:14:39 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void    print_light_cntl_mode_ui(t_ptrs *ptrs)
 	info_arr[1] = join_str_and_vector("Light point : ", ptrs->objs_.lights_[i].light_point_, VECTOR_PRECISION_);
     info_arr[2] = join_str_and_double("Brightness  : ", ptrs->objs_.lights_[i].ratio_, DOUBLE_PRECISION_);
 	i = 0;
-	print_info_with_box(&ptrs->mlx_, info_arr, LIGHT_CNTL_MODE_STR_CNT_);
+	print_spec_with_box(&ptrs->mlx_, info_arr, LIGHT_CNTL_MODE_STR_CNT_);
 	while (i < LIGHT_CNTL_MODE_STR_CNT_)
 		free(info_arr[i++]);
 }
