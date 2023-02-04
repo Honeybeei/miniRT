@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:41:10 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/30 13:44:39 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 01:50:43 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,16 @@ static void	plus_one_to_match(char *gnl_result, int input_cnt[])
 static void	set_elements(t_objs *objs, int fd)
 {
 	char	**splitted_str;
-	int		light_index;
-	int		figure_index;
+	int		idx[2];
+	char	*gnl_result;
 
 	objs->lights_ = my_calloc(objs->light_cnt_, sizeof(t_light));
 	objs->figures_ = my_calloc(objs->figure_cnt_, sizeof(t_figure));
-	light_index = 0;
-	figure_index = 0;
+	ft_bzero(idx, sizeof(int) * 2);
 	while (true)
 	{
-		splitted_str = my_split(get_next_line_without_new_line(fd), ' ');
+		gnl_result = get_next_line_without_new_line(fd);
+		splitted_str = my_split(gnl_result, ' ');
 		if (splitted_str == NULL)
 			break ;
 		else if (my_strcmp(splitted_str[0], "A") == 0)
@@ -100,9 +100,10 @@ static void	set_elements(t_objs *objs, int fd)
 		else if (my_strcmp(splitted_str[0], "C") == 0)
 			scan_camera(&objs->camera_, splitted_str);
 		else if (my_strcmp(splitted_str[0], "L") == 0)
-			scan_light(&objs->lights_[light_index++], splitted_str);
+			scan_light(&objs->lights_[idx[0]++], splitted_str);
 		else
-			scan_figures(&objs->figures_[figure_index++], splitted_str);
+			scan_figures(&objs->figures_[idx[1]++], splitted_str);
+		free(gnl_result);
 		free_str_arr(splitted_str);
 	}
 }

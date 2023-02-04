@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:07:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 21:58:37 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 01:53:59 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,3 @@ double	my_strtod(const char *nptr)
 	// TODO : MAKE MY OWN 
 	return (strtod(nptr, NULL));
 }
-
-// int	i;
-// int	sign;
-
-// if (ft_strlen(nptr) > 15)
-// 	error_management(true, err_invalid_double_, "Double is too long", true);
-// i = 0;
-// if (nptr[i] == '-')
-// {
-// 	sign = -1;
-// 	i++;
-// }
-// while (true)
-// {
-// 	if ()
-// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:53:33 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 14:10:22 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/05 01:45:23 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static t_bool	parse_fail(char **splitted_data)
 	i = 0;
 	while (splitted_data[i] != NULL)
 		free(splitted_data[i++]);
+	free(splitted_data);
 	return (fail_);
 }
 
@@ -37,9 +38,8 @@ t_bool	parse_rgb(t_color *dst, char *rgb_data)
 		if (is_valid_int_format(splitted_rgb[i]) == true)
 		{
 			temp_rgb[i] = ft_atoi(splitted_rgb[i]);
-			if (is_in_range(temp_rgb[i], 0, 255) == false)
+			if (is_in_range(temp_rgb[i++], 0, 255) == false)
 				return (parse_fail(splitted_rgb));
-			i++;
 		}
 		else
 			return (parse_fail(splitted_rgb));
@@ -47,6 +47,7 @@ t_bool	parse_rgb(t_color *dst, char *rgb_data)
 	i = 0;
 	while (splitted_rgb[i] != NULL)
 		free(splitted_rgb[i++]);
+	free(splitted_rgb);
 	*dst = element_to_color(temp_rgb[0], temp_rgb[1], temp_rgb[2]);
 	return (success_);
 }
@@ -100,4 +101,5 @@ void	free_str_arr(char **str_arr)
 	i = 0;
 	while (str_arr[i] != NULL)
 		free(str_arr[i++]);
+	free(str_arr);
 }
