@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:45:59 by jchoi             #+#    #+#             */
-/*   Updated: 2023/02/02 02:31:47 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/05 02:49:34 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ typedef struct s_3d_line
 	
 typedef struct s_3d_plane
 {
-	t_dot3	origin;
-	t_vec3	normal;
-	double	term;
+	t_dot3	pos_;
+	t_vec3	dir_;
 }	t_plane3;
 
 //	matrix.c
@@ -87,5 +86,35 @@ int		positive_solution(t_vec3 co_, double *tval);
 //	line.c
 t_line3	init_line3(t_dot3 origin_, t_dvec3 dir_);
 t_line3	line3_by_dots(t_dot3 origin_, t_dot3 dst_);
+t_plane3	init_plane3(t_dot3 origin_, t_dvec3 dir_);
 
+
+////////////////////////////////////////////////////
+double	dist_dot_dot(t_dot3 a, t_dot3 b);
+double	dist_dot_line(t_dot3 a, t_line3 l);
+double	dist_dot_plane(t_dot3 a, t_plane3 p);
+double	tocos_vec3(t_vec3 u, t_vec3 v);
+int		isparallel_vec3(t_vec3 u, t_vec3 v);
+int		isperpendic_vec3(t_vec3 u, t_vec3 v);
+double	dist_parallel_line(t_line3 l1_, t_line3 l2_);
+double	dist_skew_line(t_line3 l1_, t_line3 l2_);
+double	dist_line_line(t_line3 l1_, t_line3	l2_);
+t_dot3	dot_on_line3(t_line3 l_, double tval);
+int		sol_line3_plane3(t_line3 l_, t_plane3 p_, t_line3 *sol_, double *tval);
+/*
+t_bool	sol_plane3_plane3(t_plane3 p1_, t_plane3 p2_, t_line3 *sol_)
+{
+	if (
+}*/
+
+//	점과 점사이 거리
+//	점과 직선사이 거리, 교점
+//	점과 평면사이 거리
+
+//	직선과 직선사이 거리, 교점
+//	직선과 평면사이 거리, 교점
+
+//	평면과 평면 사이 거리, 교선
+
+//	rad <-> deg	함수
 #endif

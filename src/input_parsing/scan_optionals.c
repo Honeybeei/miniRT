@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:57:19 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 17:43:10 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/05 02:54:13 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	scan_figures(t_figure *figure, char **splitted_str)
 	else
 		error_management(true, err_invalid_input_data_, \
 		"Invalid type identifier", true);
-	figure->albedo = ALBEDO_;
 }
 
 static void	scan_sphere(t_figure *figure, char **str_arr)
@@ -68,6 +67,14 @@ static void	scan_plane(t_figure *figure, char **str_arr)
 	printf("Plane data scan complete!!\n");
 }
 
+
+
+
+
+
+
+
+
 static void	scan_cylinder(t_figure *figure, char **str_arr)
 {
 	if (is_valid_spec_cnt(str_arr, 6) == invalid_)
@@ -93,4 +100,6 @@ static void	scan_cylinder(t_figure *figure, char **str_arr)
 	if (parse_rgb(&figure->clr_, str_arr[5]) == fail_)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid plane color data", true);
+	figure->p_high_ = init_plane3(add_vec3(figure->pos_, times_vec3(figure->dir_, figure->h_)), figure->dir_);
+	figure->p_low_ = init_plane3(figure->pos_, figure->dir_);
 }

@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:20:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 14:58:39 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 02:30:47 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ typedef struct s_figure
 	t_dvec3	dir_;
 	double	r_;
 	double	h_;
-	double	albedo;
+	t_plane3	p_high_;
+	t_plane3	p_low_;
 	void	*obj_;
 	bool	is_pointed_;
 }	t_figure;

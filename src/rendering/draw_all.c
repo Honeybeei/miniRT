@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:30:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 17:56:55 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 02:20:50 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,14 @@ t_dot3	set_screen(t_screen *screen_, t_camera camera_)
 }
 
 /* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+
+
+/* ************************************************************************** */
 
 t_vec3	get_normal(t_pvec3 pos_, t_line3 sight_, t_figure *fg_)
 {
@@ -101,13 +109,32 @@ t_vec3	get_normal(t_pvec3 pos_, t_line3 sight_, t_figure *fg_)
 		tmp = dot_product(v_, sight_.dir_);
 		return (times_vec3(normalize_vec3(v_), (tmp <= 0.0) - (0.0 < tmp)));
 	}
-	else // 사실상 실행이 안되는 부분임 컴파일때문에 넣어 둠
+	else if (fg_->type_ == type_cy_)
 	{
+		double	dval;
+		t_bool	isinternal;
+		t_vec3	v_;
+		// 안에서 쏘는것도 고려해 줘야징..
+
+		v_ = sub_vec3(sight_.pos_, fg_->pos_);
+		dval = dot_product(v_, fg_->dir_);
+
+		isinternal = (0 < dval && dval < fg_->h_) && 
+		(length_vec3(normal_vec3(v_, fg_->dir_)) < fg_->r_);
+		dval = dot_product(sub_vec3(pos_, fg_->pos_), fg_->dir_);
+		if (dval == 0)
+			return (times_vec3(fg_->dir_, isinternal * 2 - 1));
+		else if (dval == fg_->h_)
+			return (times_vec3(fg_->dir_, 1 - isinternal * 2));
+		else
+			return (normalize_vec3(\
+			normal_vec3(sub_vec3(pos_, fg_->pos_), fg_->dir_)));
+	}
+	else
+	{// 사실상 실행이 안되는 부분임 컴파일때문에 넣어 둠 -> 근데 왜 뜨냐고 ㅅㅂ:;
 		printf("what the fuck this figure? I can't get a normal vector\n");
 		return (regular_vec3(STD_Y));
 	}
-//	else if (fg_->type_ == type_cy_)
-//		return ();
 }
 
 t_color	process_pixel(t_objs *objs_, t_line3 sight_, size_t y)
@@ -156,7 +183,6 @@ void	get_light(t_light light_, t_line3 sight_, t_cpnt *contact_)
 	(void)tmp_;
     raydir_ = normalize_vec3(sub_vec3(light_.light_point_, contact_->pos_));
 	diffuse = fmax(dot_product(contact_->normal_, raydir_), 0.0);
-	//increment = diffuse * light_.ratio_ * LUMEN;
 	tmp_ = times_vec3(tangent_vec3(raydir_, contact_->normal_), -2);
 	raydir_ = add_vec3(raydir_, tmp_);
 	specular = pow(fmax(dot_product(sight_.dir_, raydir_), 0.0), KSN_);

@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 15:39:12 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 02:23:51 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ void	get_light(t_light light_, t_line3 sight_, t_cpnt *contact_);
 t_bool	object_traverse(t_objs *objs_, t_line3 sight_, t_cpnt *contact_);
 void	check_plane(t_figure *fg_, t_line3 sight_, t_cpnt *ct_);
 void	check_sphere(t_figure *fg_, t_line3 sight_, t_cpnt *ct_);
+void	check_cylinder(t_figure *fg_, t_line3 sight_, t_cpnt *ct_);
 void	tmin_update(t_figure *fg_, t_line3 sight_, t_cpnt *ct_, double tval);
 
 /* ************************************************************************** */
