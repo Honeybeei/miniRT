@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 21:13:53 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 17:42:15 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,11 @@ void	light_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs);
 
 //		normal_mode_actions.c
 void    normal_mode_key_press_event(int key_code, t_ptrs *ptrs);
+
+//		vector_rotation.c
+t_vec3	rotate_vector(t_vec3 vec_to_rotate, t_vec3 rot_axis, double degree);
+// t_vec3	rotate_horizontally(t_vec3 orientation, double degree);
+// t_vec3	rotate_vertically(t_vec3 orientation, double degree);
 
 /* ************************************************************************** */
 

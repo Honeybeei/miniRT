@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 00:06:14 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/05 14:39:47 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 18:50:25 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ static int	handle_key_press_event(int key_code, t_ptrs *ptrs);
 static int	mlx_termination_protocol(t_ptrs *ptrs);
 static void	change_mode(t_ptrs *ptrs, int key_code);
 
-// add mlx_something_hook to terminate mlx by pressing x top left frame
 void	mlx_hooks(t_ptrs *ptrs)
 {
-	mlx_hook(ptrs->mlx_.win_ptr_, x_key_press_, 0, handle_key_press_event, ptrs);
-	mlx_hook(ptrs->mlx_.win_ptr_, x_destroy_notify_, 0, mlx_termination_protocol, ptrs);
+	mlx_hook(ptrs->mlx_.win_ptr_, x_key_press_, 0, \
+	handle_key_press_event, ptrs);
+	mlx_hook(ptrs->mlx_.win_ptr_, x_destroy_notify_, 0, \
+	mlx_termination_protocol, ptrs);
 }
 
 static int	handle_key_press_event(int key_code, t_ptrs *ptrs)

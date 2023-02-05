@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 20:46:44 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/05 14:10:19 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 18:49:59 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	camera_parallel_translation(t_camera *camera, int key_code);
 static void	change_fov(t_camera *camera, int key_code);
+static void	camera_rotation(t_camera *camera, int key_code);
 
 void	camera_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs)
 {
@@ -22,6 +23,9 @@ void	camera_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs)
 		camera_parallel_translation(&ptrs->objs_.camera_, key_code);
 	else if (key_code == key_minus_ || key_code == key_equal_)
 		change_fov(&ptrs->objs_.camera_, key_code);
+	else if (key_code == key_left_ || key_code == key_right_ || \
+	key_code == key_down_ || key_code == key_up_)
+		camera_rotation(&ptrs->objs_.camera_, key_code);
 	print_screen(ptrs, false);
 }
 
@@ -66,4 +70,20 @@ static void	change_fov(t_camera *camera, int key_code)
 		else
 			camera->fov_ = FOV_MAX_;
 	}
+}
+
+static void	camera_rotation(t_camera *camera, int key_code)
+{
+	if (key_code == key_left_)
+		camera->dir_ = rotate_vector(camera->dir_, regular_vec3(STD_Y), \
+		-CAMERA_ROTATION_DEGREE_);
+	else if (key_code == key_right_)
+		camera->dir_ = rotate_vector(camera->dir_, regular_vec3(STD_Y), \
+		+CAMERA_ROTATION_DEGREE_);
+	else if (key_code == key_up_)
+		camera->dir_ = rotate_vector(camera->dir_, cross_product(camera->dir_, \
+		regular_vec3(STD_Y)), -CAMERA_ROTATION_DEGREE_);
+	else if (key_code == key_down_)
+		camera->dir_ = rotate_vector(camera->dir_, cross_product(camera->dir_, \
+		regular_vec3(STD_Y)), +CAMERA_ROTATION_DEGREE_);
 }
