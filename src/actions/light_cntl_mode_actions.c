@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 21:42:50 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 20:10:40 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 14:13:13 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,12 @@ void	light_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs)
 		i++;
 	if (key_code == key_a_ || key_code == key_s_ || key_code == key_d_ || \
 	key_code == key_q_ || key_code == key_w_ || key_code == key_e_)
-	{
 		light_parallel_translation(&ptrs->objs_.lights_[i], key_code);
-		print_screen(ptrs, true);
-	}
 	else if (key_code == key_minus_ || key_code == key_equal_)
-	{
 		change_brightness(&ptrs->objs_.lights_[i], key_code);
-		print_screen(ptrs, true);
-	}
 	else if (key_code == key_comma_ || key_code == key_full_stop_)
-	{
 		change_light_designation(&ptrs->objs_, key_code);
-		print_screen(ptrs, false);
-	}
-	else
-		printf("Nothing designated to key [%d] in camera control mode\n", \
-		key_code);
+	print_screen(ptrs, false);
 }
 
 static void	light_parallel_translation(t_light *light, int key_code)

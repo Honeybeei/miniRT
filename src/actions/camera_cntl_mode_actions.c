@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 20:46:44 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 21:33:26 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 14:10:19 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,10 @@ void	camera_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs)
 {
 	if (key_code == key_a_ || key_code == key_s_ || key_code == key_d_ || \
 	key_code == key_q_ || key_code == key_w_ || key_code == key_e_)
-	{
 		camera_parallel_translation(&ptrs->objs_.camera_, key_code);
-		print_screen(ptrs, true);
-	}
 	else if (key_code == key_minus_ || key_code == key_equal_)
-	{
 		change_fov(&ptrs->objs_.camera_, key_code);
-		print_screen(ptrs, true);
-	}
-	else
-		printf("Nothing designated to key [%d] in camera control mode\n", \
-		key_code);
+	print_screen(ptrs, false);
 }
 
 static void	camera_parallel_translation(t_camera *camera, int key_code)

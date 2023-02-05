@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 20:13:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 21:20:05 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 14:12:38 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,11 @@ void	figure_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs)
 	while (ptrs->objs_.figures_[i].is_pointed_ == false)
 		i++;
 	if (key_code == key_comma_ || key_code == key_full_stop_)
-	{
 		change_figure_designation(&ptrs->objs_, key_code);
-		print_screen(ptrs, false);
-	}
 	else if (key_code == key_a_ || key_code == key_s_ || key_code == key_d_ || \
 	key_code == key_q_ || key_code == key_w_ || key_code == key_e_)
-	{
 		figure_parallel_translation(&ptrs->objs_.figures_[i], key_code);
-		print_screen(ptrs, true);
-	}
-	else
-		printf("Nothing designated to key [%d] in figure control mode\n", \
-		key_code);
+	print_screen(ptrs, false);
 }
 
 static void	change_figure_designation(t_objs *objs, int key_code)

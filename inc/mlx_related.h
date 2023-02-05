@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:16:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/05 13:43:33 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 14:36:16 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,13 @@ enum e_key_code {
 	key_3_ = 20,
 	key_4_ = 21,
 	key_5_ = 23,
+	key_equal_ = 24,
+	key_minus_ = 27,
+	key_square_bracket_end_ = 30,
+	key_square_bracket_start_ = 33,
+	key_enter_ = 36,
 	key_comma_ = 43,
 	key_full_stop_ = 47,
-	key_square_bracket_start_ = 33,
-	key_square_bracket_end_ = 30,
-	key_minus_ = 27,
-	key_equal_ = 24,
 	key_left_ = 123,
 	key_right_ = 124,
 	key_down_ = 125,

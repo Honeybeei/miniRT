@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 23:24:22 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 21:33:33 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 14:10:09 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,8 @@ static void	change_ambient_ratio(t_ambient *ambient, int key_code);
 void	ambient_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs)
 {
 	if (key_code == key_minus_ || key_code == key_equal_)
-	{
 		change_ambient_ratio(&ptrs->objs_.ambient_, key_code);
-		print_screen(ptrs, true);
-	}
-	else
-		printf("Nothing designated to key [%d] in ambient control mode\n", \
-		key_code);
+	print_screen(ptrs, false);
 }
 
 static void	change_ambient_ratio(t_ambient *ambient, int key_code)
