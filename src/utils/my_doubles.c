@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:07:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/05 18:50:37 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 21:34:25 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,36 @@ char	*my_dtostr(double n, int precision)
 	return (result);
 }
 
-double	my_strtod(const char *nptr)
+double	my_strtod(const char *num_str)
 {
-	// TODO : MAKE MY OWN 
+	if (check_num_str(num_str) == invalid_)
+		error_management(true, err_invalid_double_, num_str, true);
+	
 	return (strtod(nptr, NULL));
+}
+
+t_bool	check_num_str(const char *num_str)
+{
+	int		i;
+	t_flag	dot_flg;
+
+	i = 0;
+	dot_flg = down_;
+	if (num_str == '-')
+		i++;
+	if (ft_isdigit(num_str[i] == 0))
+		return (invalid_);
+	while (num_str[i] != '\0')
+	{
+		if (ft_isdigit(num_str[i]) == 1)
+			i++;
+		else if (num_str[i] == '.' && ft_isdigit(num_str[i + 1]) == 1 && dot_flg == down_)
+		{
+			i++;
+			dot_flg = up_;
+		}
+		else
+			return (invalid_);
+	}
+	return (valid_);
 }
