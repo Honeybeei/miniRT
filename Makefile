@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/02/03 14:55:48 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/02/05 15:01:11 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,8 @@ ACTIONS_FILE = \
 		camera_cntl_mode_actions \
 		figure_cntl_mode_actions \
 		light_cntl_mode_actions \
-		normal_mode_actions
+		normal_mode_actions \
+		vector_rotation
 
 ACTIONS_SRCS = $(addsuffix .c, $(addprefix $(ACTIONS_SRC_DIR), $(ACTIONS_FILE)))
 ACTIONS_OBJS = $(addsuffix .o, $(addprefix $(ACTIONS_OBJ_DIR), $(ACTIONS_FILE)))

@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 23:33:13 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/05 14:37:29 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 15:03:31 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ACTIONS_H
 
 # define CAMERA_TRANSLATION_GAP_RATIO_	1
+# define CAMERA_ROTATION_DEGREE_        1
 # define FIGURE_TRANSLATION_GAP_		1
 # define LIGHT_TRANSLATION_GAP_			1
 # define FOV_GAP_						1
