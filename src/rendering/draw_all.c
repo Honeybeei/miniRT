@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:30:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/05 02:20:50 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/05 22:21:50 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,17 +118,15 @@ t_vec3	get_normal(t_pvec3 pos_, t_line3 sight_, t_figure *fg_)
 
 		v_ = sub_vec3(sight_.pos_, fg_->pos_);
 		dval = dot_product(v_, fg_->dir_);
-
-		isinternal = (0 < dval && dval < fg_->h_) && 
-		(length_vec3(normal_vec3(v_, fg_->dir_)) < fg_->r_);
+		isinternal = ((0 < dval && dval < fg_->h_) && (length_vec3(normal_vec3(v_, fg_->dir_)) < fg_->r_));
+		
 		dval = dot_product(sub_vec3(pos_, fg_->pos_), fg_->dir_);
 		if (dval == 0)
 			return (times_vec3(fg_->dir_, isinternal * 2 - 1));
 		else if (dval == fg_->h_)
 			return (times_vec3(fg_->dir_, 1 - isinternal * 2));
 		else
-			return (normalize_vec3(\
-			normal_vec3(sub_vec3(pos_, fg_->pos_), fg_->dir_)));
+			return (times_vec3(normalize_vec3(normal_vec3(sub_vec3(pos_, fg_->pos_), fg_->dir_)), 1 - isinternal * 2));
 	}
 	else
 	{// 사실상 실행이 안되는 부분임 컴파일때문에 넣어 둠 -> 근데 왜 뜨냐고 ㅅㅂ:;

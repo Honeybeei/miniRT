@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:16:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 15:01:32 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 17:40:49 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MLX_RELATED_H
 
 // window size
-# define WINDOW_WIDTH_	1920
+# define WINDOW_WIDTH_	1960
 # define WINDOW_HEIGHT_	1080
 
 // define popular color

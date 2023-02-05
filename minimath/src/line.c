@@ -6,7 +6,7 @@
 /*   By: jchoi <jchoi@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:16:38 by jchoi             #+#    #+#             */
-/*   Updated: 2023/02/05 02:49:06 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/05 19:40:35 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_plane3	init_plane3(t_dot3 origin_, t_dvec3 dir_)
 	t_plane3	p_;
 
 	p_.pos_ = origin_;
-	p_.dir_ = dir_;
+	p_.dir_ = normalize_vec3(dir_);
 	return (p_);
 }
 int		sol_line3_plane3(t_line3 l_, t_plane3 p_, t_line3 *sol_, double *tval);
@@ -48,7 +48,7 @@ double	dist_dot_line(t_dot3 a, t_line3 l_)
 
 double	dist_dot_plane(t_dot3 a, t_plane3 p)
 {
-	return (length_vec3(tangent_vec3(sub_vec3(p.pos_, a), p.dir_)));
+	return (fabs(dot_product(sub_vec3(p.pos_, a), p.dir_)));
 }
 
 double	tocos_vec3(t_vec3 u, t_vec3 v)
@@ -107,9 +107,15 @@ int	sol_line3_plane3(t_line3 l_, t_plane3 p_, t_line3 *sol_, double *tval)
 	}
 	else
 	{
-		sol_->dir_ = regular_vec3(ZERO);
-		*tval = dist_dot_plane(l_.pos_, p_) / cos;
-		sol_->pos_ = dot_on_line3(l_, *tval);
+		if (tval)
+		{
+			*tval = dist_dot_plane(l_.pos_, p_) / cos;
+			if (sol_)
+			{
+				sol_->dir_ = regular_vec3(ZERO);
+				sol_->pos_ = dot_on_line3(l_, *tval);
+			}
+		}
 		return (1);
 	}
 }

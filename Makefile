@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/02/05 02:56:15 by jchoi            ###   ########.fr        #
+#    Updated: 2023/02/05 11:01:47 by jchoi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,8 +48,8 @@ NAME = miniRT
 
 # compiler
 CC = cc
-DBFLAGS = -g
-CFLAGS = -Wall -Wextra -Werror
+DBFLAGS = 
+CFLAGS = -Wall -Wextra -Werror -g
 
 # basic directories
 SRC_DIR = ./src/
