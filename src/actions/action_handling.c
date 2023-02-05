@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 00:06:14 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/05 13:44:20 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 14:39:47 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	change_mode(t_ptrs *ptrs, int key_code);
 // add mlx_something_hook to terminate mlx by pressing x top left frame
 void	mlx_hooks(t_ptrs *ptrs)
 {
-	mlx_key_hook(ptrs->mlx_.win_ptr_, handle_key_press_event, ptrs);
+	mlx_hook(ptrs->mlx_.win_ptr_, x_key_press_, 0, handle_key_press_event, ptrs);
 	mlx_hook(ptrs->mlx_.win_ptr_, x_destroy_notify_, 0, mlx_termination_protocol, ptrs);
 }
 
@@ -32,6 +32,8 @@ static int	handle_key_press_event(int key_code, t_ptrs *ptrs)
 	else if (key_code == key_1_ || key_code == key_2_ || key_code == key_3_ || \
 	key_code == key_4_ || key_code == key_5_)
 		change_mode(ptrs, key_code);
+	else if (key_code == key_r_ || key_code == key_enter_)
+		print_screen(ptrs, true);
 	else if (ptrs->objs_.mode_ == mode_normal_)
 		normal_mode_key_press_event(key_code, ptrs);
 	else if (ptrs->objs_.mode_ == mode_figure_cntl_)
