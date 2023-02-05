@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:16:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 21:09:48 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/05 13:43:33 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 // events used in this projects
 enum e_x_events {
 	x_key_press_ = 2,
-	x_key_release_
+	x_key_release_,
+	x_destroy_notify_ = 17
 };
 
 // add key code here 
