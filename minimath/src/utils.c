@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchoi <jchoi@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:15:28 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/31 15:19:22 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/06 14:06:26 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 double	rad_to_deg(double radian)
 {
-	return	((radian * 180.0) / M_PI);
+	return ((radian * 180.0) / M_PI);
 }
 
 double	deg_to_rad(double degree)
 {
-	return	((degree * M_PI) / 180.0);
+	return ((degree * M_PI) / 180.0);
 }
 
 int	positive_solution(t_vec3 co_, double *tval)
@@ -46,4 +46,3 @@ int	positive_solution(t_vec3 co_, double *tval)
 		return (1);
 	}
 }
-

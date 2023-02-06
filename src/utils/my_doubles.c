@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:07:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/06 13:58:33 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 14:25:33 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,11 @@ static t_bool	check_num_str(const char *num_str)
 	i = 0;
 	dot_flg = down_;
 	if (num_str[i] == '-')
-		num_str++;;
+		num_str++;
 	while (num_str[i] != '\0')
 	{
-		if (num_str[i] == '.' && i > 0 && ft_isdigit(num_str[i + 1]) == true && dot_flg == down_)
+		if (num_str[i] == '.' && i > 0 && ft_isdigit(num_str[i + 1]) == true \
+		&& dot_flg == down_)
 		{
 			dot_flg = up_;
 			i++;

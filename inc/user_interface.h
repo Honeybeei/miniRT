@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   user_interface.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 11:01:51 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 15:04:26 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 14:24:26 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,11 @@
 
 # define INFO_TEXT_COLOR_	COLOR_BLACK_
 
-# define INFO_BOX_IN_PADDING_	10	
-# define INFO_BOX_OUT_PADDING_	30
-# define INFO_BOX_LOC_X_		WINDOW_WIDTH_ * 0.7
-# define INFO_BOX_LOC_Y_		INFO_BOX_OUT_PADDING_
-# define INFO_BOX_WIDTH_		WINDOW_WIDTH_ - INFO_BOX_LOC_X_ - INFO_BOX_OUT_PADDING_
-# define INFO_BOX_COLOR_		COLOR_WHITE_
+# define INFO_BOX_IN_PADDING_		10	
+# define INFO_BOX_OUT_PADDING_		30
+# define INFO_BOX_LOC_X_RELATIVE_	0.7
+# define INFO_BOX_LOC_Y_			INFO_BOX_OUT_PADDING_
+# define INFO_BOX_COLOR_			COLOR_WHITE_
 
 typedef enum e_bracket_type
 {

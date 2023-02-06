@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:20:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 14:58:39 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 14:09:22 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,17 @@ typedef struct s_light
 
 typedef struct s_sphere
 {
-	// TODO
+	void	*tood_;
 }	t_sp;
 
 typedef struct s_cylinder
 {
-	// TODO
+	void	*tood_;
 }	t_cy;
 
 typedef struct s_plane
 {
-	// TODO
+	void	*tood_;
 }	t_pl;
 
 /* ************************************************************************** */
@@ -102,7 +102,7 @@ typedef struct s_figure
 
 /* ************************************************************************** */
 
-#define MODE_CNT_ 5
+# define MODE_CNT_ 5
 
 typedef enum e_mode_type
 {

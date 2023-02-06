@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 14:49:13 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 14:53:40 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 14:09:35 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define ALBEDO_ 0.5
 
 // structs and define for rendering
-typedef	struct s_contacting_point
+typedef struct s_contacting_point
 {
 	t_dot3		pos_;
 	double		tmin;

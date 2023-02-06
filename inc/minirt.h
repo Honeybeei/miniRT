@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/06 13:57:29 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 14:08:27 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	figure_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs);
 void	light_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs);
 
 //		normal_mode_actions.c
-void    normal_mode_key_press_event(int key_code, t_ptrs *ptrs);
+void	normal_mode_key_press_event(int key_code, t_ptrs *ptrs);
 
 //		vector_rotation.c
 t_vec3	rotate_vector(t_vec3 vec_to_rotate, t_vec3 rot_axis, double degree);
@@ -99,7 +99,7 @@ void	print_camera_cntl_mode_ui(t_ptrs *ptrs);
 void	print_figure_cntl_mode_ui(t_ptrs *ptrs);
 
 //		print_light_cntl.c
-void    print_light_cntl_mode_ui(t_ptrs *ptrs);
+void	print_light_cntl_mode_ui(t_ptrs *ptrs);
 
 //		print_normal.c
 void	print_normal_mode_ui(t_ptrs *ptrs);
@@ -150,7 +150,7 @@ void	scan_figures(t_figure *figure, char **splitted_str);
 //		draw_all.c
 void	draw_all(t_mlx *mlx_, t_img *img_, t_objs *objs_);
 t_dot3	set_screen(t_screen *screen_, t_camera camera_);
-t_color process_pixel(t_objs *objs_, t_line3 sight_, size_t	y);
+t_color	process_pixel(t_objs *objs_, t_line3 sight_, size_t	y);
 t_vec3	get_normal(t_pvec3 pos_, t_line3 sight_, t_figure *fg_);
 void	get_light(t_light light_, t_line3 sight_, t_cpnt *contact_);
 
@@ -171,7 +171,7 @@ void	error_management(bool is_customized_err, t_errno customized_errno, \
 void	init_ptrs(t_ptrs *ptrs);
 
 //		my_doubles.c
-char 	*my_dtostr(double n, int precision);
+char	*my_dtostr(double n, int precision);
 double	my_strtod(char *num_str);
 
 /* ************************************************************************** */

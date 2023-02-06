@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:45:59 by jchoi             #+#    #+#             */
-/*   Updated: 2023/02/02 02:31:47 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/06 14:07:23 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@
 # define STD_Y 2
 # define STD_Z 3
 
-typedef	t_vec3	t_dot3;
+typedef t_vec3	t_dot3;
 
 typedef struct s_3d_line
 {
 	t_dot3	pos_;
 	t_vec3	dir_;
 }	t_line3;
-	
+
 typedef struct s_3d_plane
 {
 	t_dot3	origin;

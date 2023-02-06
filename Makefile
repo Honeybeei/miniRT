@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+         #
+#    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/02/05 15:01:11 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/02/06 14:27:45 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -220,5 +220,6 @@ mini_math :
 
 norm :
 	@norminette src inc minimath my_lib | grep Error
+# @norminette src inc minimath my_lib
 
-.PONEY : all mkobjdir clean fclean re ree run mylib minilibx MINI_MATH norm
+.PONEY : all mkobjdir clean fclean re ree run mylib minilibx mini_math norm
