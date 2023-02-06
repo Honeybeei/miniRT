@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 11:25:43 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 21:36:11 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:58:49 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,24 +51,36 @@ static int	set_plane_info_to_print(t_figure *figure, char **info_arr)
 
 static int	set_sphere_info_to_print(t_figure *figure, char **info_arr)
 {
-	info_arr[1] = ft_strdup("Type   : sphere");
-	info_arr[2] = join_str_and_vector("Center : ", figure->pos_, \
+	info_arr[1] = ft_strdup("Type     : sphere");
+	info_arr[2] = join_str_and_vector("Center   : ", figure->pos_, \
 	VECTOR_PRECISION_);
-	info_arr[3] = join_str_and_double("Radius : ", figure->r_, \
-	DOUBLE_PRECISION_);
+	if (figure->scalar_to_change_ == scalar_type_r_)
+		info_arr[3] = join_str_and_double("> Radius : ", figure->r_, \
+		DOUBLE_PRECISION_);
+	else
+		info_arr[3] = join_str_and_double("Radius   : ", figure->r_, \
+		DOUBLE_PRECISION_);
 	return (4);
 }
 
 static int	set_cylinder_info_to_print(t_figure *figure, char **info_arr)
 {
-	info_arr[1] = ft_strdup("Type        : cylinder");
-	info_arr[2] = join_str_and_vector("Center      : ", figure->pos_, \
+	info_arr[1] = ft_strdup("Type          : cylinder");
+	info_arr[2] = join_str_and_vector("Center        : ", figure->pos_, \
 	VECTOR_PRECISION_);
-	info_arr[3] = join_str_and_vector("Orientation : ", figure->dir_, \
+	info_arr[3] = join_str_and_vector("Orientation   : ", figure->dir_, \
 	VECTOR_PRECISION_);
-	info_arr[4] = join_str_and_double("Radius      : ", figure->r_, \
-	DOUBLE_PRECISION_);
-	info_arr[5] = join_str_and_double("Height      : ", figure->h_, \
-	DOUBLE_PRECISION_);
+	if (figure->scalar_to_change_ == scalar_type_r_)
+		info_arr[4] = join_str_and_double("> Radius      : ", figure->r_, \
+		DOUBLE_PRECISION_);
+	else
+		info_arr[4] = join_str_and_double("Radius        : ", figure->r_, \
+		DOUBLE_PRECISION_);
+	if (figure->scalar_to_change_ == scalar_type_h_)
+		info_arr[5] = join_str_and_double("> Height      : ", figure->h_, \
+		DOUBLE_PRECISION_);
+	else
+		info_arr[5] = join_str_and_double("Height        : ", figure->h_, \
+		DOUBLE_PRECISION_);
 	return (6);
 }

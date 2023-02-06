@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 14:49:13 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/06 14:09:35 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:41:24 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../minimath/inc/struct_vec.h"
 
 # define SCALE_ 0.1
-# define ALBEDO_ 0.5
 
 // structs and define for rendering
 typedef struct s_contacting_point
