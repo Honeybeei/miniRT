@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_doubles.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:07:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/05 21:34:25 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 11:59:21 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ double	my_strtod(const char *num_str)
 	if (check_num_str(num_str) == invalid_)
 		error_management(true, err_invalid_double_, num_str, true);
 	
-	return (strtod(nptr, NULL));
+	
 }
 
 t_bool	check_num_str(const char *num_str)
@@ -59,19 +59,9 @@ t_bool	check_num_str(const char *num_str)
 	dot_flg = down_;
 	if (num_str == '-')
 		i++;
-	if (ft_isdigit(num_str[i] == 0))
-		return (invalid_);
-	while (num_str[i] != '\0')
+	while (num_str[i])
 	{
-		if (ft_isdigit(num_str[i]) == 1)
-			i++;
-		else if (num_str[i] == '.' && ft_isdigit(num_str[i + 1]) == 1 && dot_flg == down_)
-		{
-			i++;
-			dot_flg = up_;
-		}
-		else
-			return (invalid_);
+		/* code */
 	}
-	return (valid_);
+		
 }
