@@ -6,14 +6,15 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:52:29 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/06 16:48:39 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 21:26:31 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "../../inc/minirt.h"
 
 static void	init_mlx(t_mlx *mlx, t_img *img);
 static void	init_objs(t_objs *objs);
+static void	init_cy(t_figure *cy_);
 
 void	init_ptrs(t_ptrs *ptrs)
 {
@@ -50,9 +51,23 @@ static void	init_objs(t_objs *objs)
 		else if (objs->figures_[i].type_ == type_sp_)
 			objs->figures_[i].obj_ = my_calloc(1, sizeof(t_sp));
 		else if (objs->figures_[i].type_ == type_cy_)
+		{
 			objs->figures_[i].obj_ = my_calloc(1, sizeof(t_cy));
+			init_cy(objs->figures_ + i);
+		}
 		i++;
 	}
 	if (objs->figure_cnt_ > 0)
 		objs->figures_[0].is_pointed_ = true;
+}
+
+static void	init_cy(t_figure *cy_)
+{
+	t_cy	*cyobj_;
+
+	cyobj_ = cy_->obj_;
+	cyobj_->axis_ = init_line3(cy_->pos_, cy_->dir_);
+	cyobj_->btm_ = init_plane3(cy_->pos_, cy_->dir_);
+	cyobj_->top_ = init_plane3(add_vec3(cy_->pos_
+		, times_vec3(cy_->dir_, cy_->h_)), cy_->dir_);
 }

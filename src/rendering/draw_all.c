@@ -3,40 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:30:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 17:56:55 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 21:45:25 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
-/*
-typedef	struct s_contacting_point
-{
-	t_dot3		pos_;
-	double		tmin;
-	t_bool		ismeet_;
-	t_figure	*fg_;
-	t_rgb		rgb_;
-
-		// albedo라든지...	// color라든지....	// nearest light라든지..
-	// ultimate environment에 대한 참조포인터라든지..
-}	t_cpnt;
-
-//	draw_all.c
-void	draw_all(t_mlx *mlx_, t_img *img_, t_objs *objs_);
-t_dot3	set_screen(t_screen *screen_, t_camera camera_);
-t_color process_pixel(t_objs *objs_, t_line3 sight_);
-t_vec3	get_normal(t_pvec3 pos_, t_line3 sight_, t_figure *fg_);
-
-//	traverse.c
-t_bool	object_traverse(t_objs *objs_, t_line3 sight_, t_cpnt *contact_)
-void	check_plane(t_figure *fg_, t_line3 sight_, t_cpnt *ct_);
-void	check_sphere(t_figure *fg_, t_line3 sight_, t_cpnt *ct_);
-void	tmin_update(t_figure *fg_, t_line3 sight_, t_cpnt *ct_, double tval);
-*/
-
 
 void	draw_all(t_mlx *mlx_, t_img *img_, t_objs *objs_)
 {
@@ -83,8 +57,6 @@ t_dot3	set_screen(t_screen *screen_, t_camera camera_)
 	return (screen_->start_);
 }
 
-/* ************************************************************************** */
-
 t_vec3	get_normal(t_pvec3 pos_, t_line3 sight_, t_figure *fg_)
 {
 	t_vec3	v_;
@@ -101,13 +73,29 @@ t_vec3	get_normal(t_pvec3 pos_, t_line3 sight_, t_figure *fg_)
 		tmp = dot_product(v_, sight_.dir_);
 		return (times_vec3(normalize_vec3(v_), (tmp <= 0.0) - (0.0 < tmp)));
 	}
-	else // 사실상 실행이 안되는 부분임 컴파일때문에 넣어 둠
+	else if (fg_->type_ == type_cy_)
+	{
+		double	dval;
+		t_bool	isinternal;
+		t_vec3	v_;
+
+		v_ = sub_vec3(sight_.pos_, fg_->pos_);
+		dval = dot_product(v_, fg_->dir_);
+		isinternal = ((0 < dval && dval < fg_->h_) && (length_vec3(normal_vec3(v_, fg_->dir_)) < fg_->r_));
+		
+		dval = dot_product(sub_vec3(pos_, fg_->pos_), fg_->dir_);
+		if (-0.00001 < dval && dval < 0.00001)
+			return (times_vec3(fg_->dir_, isinternal * 2 - 1));
+		else if (fg_->h_ - 0.00001 < dval && dval < fg_->h_ + 0.00001)
+			return (times_vec3(fg_->dir_, 1 - isinternal * 2));
+		else
+			return (times_vec3(normalize_vec3(normal_vec3(sub_vec3(pos_, fg_->pos_), fg_->dir_)), 1 - isinternal * 2));
+	}
+	else
 	{
 		printf("what the fuck this figure? I can't get a normal vector\n");
 		return (regular_vec3(STD_Y));
 	}
-//	else if (fg_->type_ == type_cy_)
-//		return ();
 }
 
 t_color	process_pixel(t_objs *objs_, t_line3 sight_, size_t y)
@@ -117,18 +105,18 @@ t_color	process_pixel(t_objs *objs_, t_line3 sight_, size_t y)
 	size_t	i;
 	double	tval;
 
-	// albedo가 아니라 그냥 그게 figure_clr 이었어 시발..
 	if (object_traverse(objs_, sight_, &contact_))
 	{
 		contact_.rgb_ = regular_vec3(ZERO);
 		contact_.normal_ = get_normal(contact_.pos_, sight_, contact_.fg_);
 		i = 0;
 		while (i < objs_->light_cnt_)
-			get_light(objs_->lights_[i++], sight_, &contact_);
+			get_light(objs_, i++, sight_, &contact_);
 		delta_ = add_vec3(contact_.rgb_, objs_->ambient_.increment_);
 		delta_ = times_vec3(delta_, 1.0 / 256);
 		contact_.rgb_ = mul_vec3(delta_, color_to_rgb(contact_.fg_->clr_));
 		return (rgb_to_color(contact_.rgb_));
+		return (contact_.fg_->clr_);
 	}
 	else
 	{
@@ -142,8 +130,9 @@ t_color	process_pixel(t_objs *objs_, t_line3 sight_, size_t y)
 # define KS_ 0.5
 # define LUMEN 2
 
-void	get_light(t_light light_, t_line3 sight_, t_cpnt *contact_)
+void	get_light(t_objs *objs_, size_t i, t_line3 sight_, t_cpnt *contact_)
 {
+	t_light	light_;
 	t_vec3	raydir_;
 	t_vec3	tmp_;
 	t_rgb	light_rgb_;
@@ -151,12 +140,19 @@ void	get_light(t_light light_, t_line3 sight_, t_cpnt *contact_)
     double	specular;
 	double	increment;
 
+	double	tval;
+
 	(void)sight_;
-	(void)specular;
-	(void)tmp_;
-    raydir_ = normalize_vec3(sub_vec3(light_.light_point_, contact_->pos_));
+
+	light_ = objs_->lights_[i];
+	tval = dist_dot_dot(contact_->pos_, light_.light_point_);
+
+	t_cpnt	cpnt_;
+	if (object_traverse(objs_, line3_by_dots(light_.light_point_, contact_->pos_)
+		, &cpnt_) && cpnt_.tmin + 0.00001 < tval)
+		return ;
+	raydir_ = normalize_vec3(sub_vec3(light_.light_point_, contact_->pos_));
 	diffuse = fmax(dot_product(contact_->normal_, raydir_), 0.0);
-	//increment = diffuse * light_.ratio_ * LUMEN;
 	tmp_ = times_vec3(tangent_vec3(raydir_, contact_->normal_), -2);
 	raydir_ = add_vec3(raydir_, tmp_);
 	specular = pow(fmax(dot_product(sight_.dir_, raydir_), 0.0), KSN_);

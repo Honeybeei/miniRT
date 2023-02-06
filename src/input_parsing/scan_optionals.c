@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:57:19 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/06 16:38:46 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 20:58:17 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static void	scan_plane(t_figure *figure, char **str_arr)
 		"Invalid plane color data", true);
 	printf("Plane data scan complete!!\n");
 }
-
 static void	scan_cylinder(t_figure *figure, char **str_arr)
 {
 	if (is_valid_spec_cnt(str_arr, 6) == invalid_)
