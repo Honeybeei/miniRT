@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:52:29 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 21:39:07 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:48:39 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,16 @@ static void	init_objs(t_objs *objs)
 		objs->lights_[0].is_pointed_ = true;
 	i = 0;
 	while (i < objs->figure_cnt_)
-		objs->figures_[i++].is_pointed_ = false;
+	{
+		objs->figures_[i].is_pointed_ = false;
+		if (objs->figures_[i].type_ == type_pl_)
+			objs->figures_[i].obj_ = my_calloc(1, sizeof(t_pl));
+		else if (objs->figures_[i].type_ == type_sp_)
+			objs->figures_[i].obj_ = my_calloc(1, sizeof(t_sp));
+		else if (objs->figures_[i].type_ == type_cy_)
+			objs->figures_[i].obj_ = my_calloc(1, sizeof(t_cy));
+		i++;
+	}
 	if (objs->figure_cnt_ > 0)
 		objs->figures_[0].is_pointed_ = true;
 }

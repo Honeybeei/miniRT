@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:56:53 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 20:34:26 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 17:08:24 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdio.h> //  perror()
 
 /* ************************************************************************** */
+
+# define ITOA_BUFF_SIZE 1000
 
 void	*my_calloc(size_t count, size_t size);
 void	*my_malloc(size_t size);

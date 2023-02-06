@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:20:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/06 14:09:22 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:40:52 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,23 @@ typedef struct s_light
 	bool	is_pointed_;
 }	t_light;
 
+/* ************************************************************************** */
+
 typedef struct s_sphere
 {
-	void	*tood_;
+	void	*todo_;  // TODO
 }	t_sp;
 
 typedef struct s_cylinder
 {
-	void	*tood_;
+	t_plane3	btm_;
+	t_plane3	top_;
+	t_line3		axis_;
 }	t_cy;
 
 typedef struct s_plane
 {
-	void	*tood_;
+	void	*todo_;  // TODO
 }	t_pl;
 
 /* ************************************************************************** */
@@ -95,12 +99,14 @@ typedef struct s_figure
 	t_dvec3	dir_;
 	double	r_;
 	double	h_;
-	double	albedo;
+	int		scalar_to_change_;
 	void	*obj_;
 	bool	is_pointed_;
 }	t_figure;
 
 /* ************************************************************************** */
+
+// Mode designation
 
 # define MODE_CNT_ 5
 
@@ -112,6 +118,17 @@ typedef enum e_mode_type
 	mode_light_cntl_ = 4,
 	mode_ambient_cntl_ = 5
 }	t_mode_type;
+
+# define SCALAR_TYPE_CNT_ 3
+
+typedef enum e_scalar_type
+{
+	scalar_type_clr_ = 0,
+	scalar_type_r_ = 1,
+	scalar_type_h_ = 2
+}	t_sc_type;
+
+/* ************************************************************************** */
 
 typedef struct s_objects
 {

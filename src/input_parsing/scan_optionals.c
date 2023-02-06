@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scan_optionals.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:57:19 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/01 17:43:10 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/06 16:38:46 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	scan_figures(t_figure *figure, char **splitted_str)
 	else
 		error_management(true, err_invalid_input_data_, \
 		"Invalid type identifier", true);
-	figure->albedo = ALBEDO_;
 }
 
 static void	scan_sphere(t_figure *figure, char **str_arr)

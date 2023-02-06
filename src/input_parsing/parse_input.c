@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:41:10 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/05 01:50:43 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 20:15:38 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ static void	set_elements(t_objs *objs, int fd)
 	while (true)
 	{
 		gnl_result = get_next_line_without_new_line(fd);
+		if (ft_strlen(gnl_result) == 0)
+			continue ;
 		splitted_str = my_split(gnl_result, ' ');
 		if (splitted_str == NULL)
 			break ;
