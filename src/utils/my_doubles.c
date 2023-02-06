@@ -6,11 +6,14 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:07:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/06 11:59:21 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 13:58:33 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
+
+static t_bool	check_num_str(const char *num_str);
+static int		count_digits_for_positive_n(int n);
 
 /**
  * @brief Double to number string. Max precision will be 10
@@ -42,26 +45,65 @@ char	*my_dtostr(double n, int precision)
 	return (result);
 }
 
-double	my_strtod(const char *num_str)
+double	my_strtod(char *num_str)
 {
+	char	**str_arr;
+	double	result;
+	int		digit;
+	int		decimal_part;
+
 	if (check_num_str(num_str) == invalid_)
 		error_management(true, err_invalid_double_, num_str, true);
-	
-	
+	str_arr = my_split(num_str, '.');
+	if (str_arr[1] == NULL)
+		result = (double)ft_atoi(str_arr[0]);
+	else
+	{
+		result = ft_atoi(str_arr[0]);
+		decimal_part = ft_atoi(str_arr[1]);
+		digit = count_digits_for_positive_n(decimal_part);
+		if (result >= 0)
+			result += decimal_part * pow(10, -digit);
+		else
+			result -= decimal_part * pow(10, -digit);
+	}
+	free_str_arr(str_arr);
+	return (result);
 }
 
-t_bool	check_num_str(const char *num_str)
+static t_bool	check_num_str(const char *num_str)
 {
 	int		i;
 	t_flag	dot_flg;
 
 	i = 0;
 	dot_flg = down_;
-	if (num_str == '-')
-		i++;
-	while (num_str[i])
+	if (num_str[i] == '-')
+		num_str++;;
+	while (num_str[i] != '\0')
 	{
-		/* code */
+		if (num_str[i] == '.' && i > 0 && ft_isdigit(num_str[i + 1]) == true && dot_flg == down_)
+		{
+			dot_flg = up_;
+			i++;
+		}
+		else if (ft_isdigit(num_str[i]) == true)
+			i++;
+		else
+			return (invalid_);
 	}
-		
+	return (valid_);
+}
+
+static int	count_digits_for_positive_n(int n)
+{
+	int	digit;
+
+	digit = 0;
+	while (n > 0)
+	{
+		n = n / 10;
+		digit++;
+	}
+	return (digit);
 }
