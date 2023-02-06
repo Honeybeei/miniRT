@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/05 17:42:15 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/06 13:57:29 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ void	init_ptrs(t_ptrs *ptrs);
 
 //		my_doubles.c
 char 	*my_dtostr(double n, int precision);
-double	my_strtod(const char *nptr);
+double	my_strtod(char *num_str);
 
 /* ************************************************************************** */
 
