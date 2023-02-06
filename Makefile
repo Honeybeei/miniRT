@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/02/06 14:27:45 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/02/07 00:10:01 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,6 +132,7 @@ INPUT_PARSING_FILE = \
 		parse_input \
 		parsing_utils1 \
 		parsing_utils2 \
+		parsing_utils3 \
 		print_inputs \
 		scan_essentials \
 		scan_optionals

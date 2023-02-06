@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:53:33 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/05 01:45:23 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/07 00:11:47 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
+
+static t_bool	parse_fail(char **splitted_data);
+static t_vec3	check_and_normalize(t_vec3 vec);
 
 static t_bool	parse_fail(char **splitted_data)
 {
@@ -74,10 +77,18 @@ t_bool	parse_vec3(t_vec3 *dst, bool is_orientation_vec, char *vec_data)
 		else
 			return (parse_fail(splitted_vec));
 	}
-	if (is_orientation_vec == true)
-		*dst = normalize_vec3(*dst);
 	free_str_arr(splitted_vec);
+	if (is_orientation_vec == true)
+		*dst = check_and_normalize(*dst);
 	return (success_);
+}
+
+static t_vec3	check_and_normalize(t_vec3 vec)
+{
+	if (vec.e[x_] == 0 && vec.e[y_] == 0 && vec.e[z_] == 0)
+		error_management(true, err_invalid_input_data_, \
+		"(0, 0, 0) Is not suitable for directional vector.", true);
+	return (normalize_vec3(vec));
 }
 
 t_bool	is_valid_spec_cnt(char **str_arr, int expected_cnt)
@@ -90,16 +101,4 @@ t_bool	is_valid_spec_cnt(char **str_arr, int expected_cnt)
 	if (i == expected_cnt)
 		return (valid_);
 	return (invalid_);
-}
-
-void	free_str_arr(char **str_arr)
-{
-	int	i;
-
-	if (str_arr == NULL)
-		return ;
-	i = 0;
-	while (str_arr[i] != NULL)
-		free(str_arr[i++]);
-	free(str_arr);
 }

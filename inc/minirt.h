@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/06 20:53:39 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/06 23:59:50 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ bool	is_in_range(double target, double min, double max);
 t_bool	parse_rgb(t_color *dst, char *rgb_data);
 t_bool	parse_vec3(t_vec3 *dst, bool is_orientation_vec, char *vec_data);
 t_bool	is_valid_spec_cnt(char **str_arr, int expected_cnt);
+
+//		parsing_utils3.c
 void	free_str_arr(char **str_arr);
 
 //		print_inputs.c
