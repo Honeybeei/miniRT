@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:46:50 by jchoi             #+#    #+#             */
-/*   Updated: 2023/01/30 00:21:34 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/07 02:25:15 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,14 @@ void	print_vec3(t_vec3 v)
 	printf("y : %f\t", v.e[y_]);
 	printf("z : %f\t", v.e[z_]);
 	printf("\n");
+}
+
+int	isparallel_vec3(t_vec3 u, t_vec3 v)
+{
+	return (fabs(tocos_vec3(u, v)) == 1.0);
+}
+
+int	isperpendic_vec3(t_vec3 u, t_vec3 v)
+{
+	return (tocos_vec3(u, v) == 0.0);
 }

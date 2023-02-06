@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:15:28 by jchoi             #+#    #+#             */
-/*   Updated: 2023/02/06 14:06:26 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/07 02:23:43 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,14 @@ int	positive_solution(t_vec3 co_, double *tval)
 		*tval = val;
 		return (1);
 	}
+}
+
+double	dist_dot_dot(t_dot3 a, t_dot3 b)
+{
+	return (length_vec3(sub_vec3(a, b)));
+}
+
+double	tocos_vec3(t_vec3 u, t_vec3 v)
+{
+	return (dot_product(u, v) / (length_vec3(u) * length_vec3(v)));
 }
