@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:30:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/07 21:22:54 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/07 21:46:58 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ t_color	process_pixel(t_objs *objs_, t_line3 sight_, size_t y)
 	size_t	i;
 	double	tval;
 
+	contact_.ismeet_ = false_;
 	if (object_traverse(objs_, sight_, &contact_))
 	{
 		contact_.rgb_ = regular_vec3(ZERO);

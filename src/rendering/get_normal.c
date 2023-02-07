@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:30:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/07 21:24:12 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/07 21:51:40 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ t_vec3	get_normal(t_pvec3 pos_, t_line3 sight_, t_figure *fg_)
 	else if (fg_->type_ == type_cy_)
 		return (normal_cylinder(pos_, &sight_, fg_));
 	else
+	{
+		printf("mooyaho");
 		return (regular_vec3(ZERO));
+	}
 }
 
 static t_vec3	normal_plane(t_line3 *sight_, t_figure *fg_)
