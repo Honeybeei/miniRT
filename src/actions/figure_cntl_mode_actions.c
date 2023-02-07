@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   figure_cntl_mode_actions.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 20:13:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/07 21:34:12 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/08 00:17:20 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	change_figure_designation(t_objs *objs, int key_code);
 static void	figure_parallel_translation(t_figure *figure, int key_code);
 static void	change_scalar_designation(t_figure *figure, int key_code);
 static void change_scalar_value(t_figure *figure, int key_code);
+static void	figure_rotation(t_figure *figure, int key_code);
 
 void	figure_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs)
 {
@@ -33,6 +34,9 @@ void	figure_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs)
 		change_scalar_designation(&ptrs->objs_.figures_[i], key_code);
 	else if (key_code == key_minus_ || key_code == key_equal_)
 		change_scalar_value(&ptrs->objs_.figures_[i], key_code);
+	else if (key_code == key_left_ || key_code == key_right_ || \
+	key_code == key_down_ || key_code == key_up_)
+		figure_rotation(&ptrs->objs_.figures_[i], key_code);
 	if (ptrs->objs_.figures_[i].type_ == type_cy_)
 		init_cy(&ptrs->objs_.figures_[i]);
 	print_screen(ptrs, false);
@@ -103,4 +107,20 @@ static void change_scalar_value(t_figure *figure, int key_code)
 		else if (key_code == key_equal_)
 			figure->h_++;
 	}
+}
+
+static void	figure_rotation(t_figure *figure, int key_code)
+{
+	if (key_code == key_left_)
+		figure->dir_ = rotate_vector(figure->dir_, regular_vec3(STD_Y), \
+		-FIGURE_ROTATION_DEGREE_);
+	else if (key_code == key_right_)
+		figure->dir_ = rotate_vector(figure->dir_, regular_vec3(STD_Y), \
+		+FIGURE_ROTATION_DEGREE_);
+	else if (key_code == key_up_)
+		figure->dir_ = rotate_vector(figure->dir_, cross_product(figure->dir_, \
+		regular_vec3(STD_Y)), -FIGURE_ROTATION_DEGREE_);
+	else if (key_code == key_down_)
+		figure->dir_ = rotate_vector(figure->dir_, cross_product(figure->dir_, \
+		regular_vec3(STD_Y)), +FIGURE_ROTATION_DEGREE_);
 }
