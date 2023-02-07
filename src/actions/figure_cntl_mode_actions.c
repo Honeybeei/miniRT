@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 20:13:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/06 16:50:27 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/07 21:34:12 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	figure_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs)
 		change_scalar_designation(&ptrs->objs_.figures_[i], key_code);
 	else if (key_code == key_minus_ || key_code == key_equal_)
 		change_scalar_value(&ptrs->objs_.figures_[i], key_code);
+	if (ptrs->objs_.figures_[i].type_ == type_cy_)
+		init_cy(&ptrs->objs_.figures_[i]);
 	print_screen(ptrs, false);
 }
 

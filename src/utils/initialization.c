@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:52:29 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/06 21:26:31 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/07 21:33:02 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	init_mlx(t_mlx *mlx, t_img *img);
 static void	init_objs(t_objs *objs);
-static void	init_cy(t_figure *cy_);
+// static void	init_cy(t_figure *cy_);
 
 void	init_ptrs(t_ptrs *ptrs)
 {
@@ -61,13 +61,13 @@ static void	init_objs(t_objs *objs)
 		objs->figures_[0].is_pointed_ = true;
 }
 
-static void	init_cy(t_figure *cy_)
+void	init_cy(t_figure *cy_)
 {
 	t_cy	*cyobj_;
 
 	cyobj_ = cy_->obj_;
 	cyobj_->axis_ = init_line3(cy_->pos_, cy_->dir_);
 	cyobj_->btm_ = init_plane3(cy_->pos_, cy_->dir_);
-	cyobj_->top_ = init_plane3(add_vec3(cy_->pos_
-		, times_vec3(cy_->dir_, cy_->h_)), cy_->dir_);
+	cyobj_->top_ = init_plane3(add_vec3(cy_->pos_, \
+	times_vec3(cy_->dir_, cy_->h_)), cy_->dir_);
 }

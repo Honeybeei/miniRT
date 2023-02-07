@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_normal.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:30:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/07 20:32:41 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/07 21:24:12 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ static t_vec3	normal_cylinder(t_pvec3 pos_, t_line3 *sight_, t_figure *fg_)
 	else if (fg_->h_ - 0.00001 < dval && dval < fg_->h_ + 0.00001)
 		return (times_vec3(fg_->dir_, 1 - in_out * 2));
 	else
-		return (times_vec3(normalize_vec3(normal_vec3(sub_vec3(pos_
-							, fg_->pos_), fg_->dir_)), 1 - in_out * 2));
+		return (times_vec3(normalize_vec3(normal_vec3(sub_vec3(pos_, \
+		fg_->pos_), fg_->dir_)), 1 - in_out * 2));
 }

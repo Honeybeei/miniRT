@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:30:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/07 20:20:38 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/07 21:22:54 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ void	get_light(t_objs *objs_, size_t i, t_line3 sight_, t_cpnt *contact_)
 
 	light_ = objs_->lights_[i];
 	cpnt_.tval = dist_dot_dot(contact_->pos_, light_.light_point_);
-	if (object_traverse(objs_, line3_by_dots(light_.light_point_
-				, contact_->pos_), &cpnt_) && cpnt_.tmin + 0.0001 < cpnt_.tval)
+	if (object_traverse(objs_, line3_by_dots(light_.light_point_, \
+	contact_->pos_), &cpnt_) && cpnt_.tmin + 0.0001 < cpnt_.tval)
 		return ;
 	raydir_ = normalize_vec3(sub_vec3(light_.light_point_, contact_->pos_));
 	cpnt_.dffs = fmax(dot_product(contact_->normal_, raydir_), 0.0);

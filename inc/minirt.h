@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/07 16:48:30 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/07 21:30:33 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ void	error_management(bool is_customized_err, t_errno customized_errno, \
 
 //		initialization.c
 void	init_ptrs(t_ptrs *ptrs);
+void	init_cy(t_figure *cy_);
 
 //		my_doubles.c
 char	*my_dtostr(double n, int precision);
