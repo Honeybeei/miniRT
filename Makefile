@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/02/07 00:10:01 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/02/07 20:42:27 by jchoi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -151,8 +151,8 @@ RENDERING_OBJ_DIR = $(OBJ_DIR)$(RENDERING_DIR)
 
 RENDERING_FILE = \
 		draw_all \
-		traverse
-
+		traverse \
+		get_normal
 RENDERING_SRCS = $(addsuffix .c, $(addprefix $(RENDERING_SRC_DIR), $(RENDERING_FILE)))
 RENDERING_OBJS = $(addsuffix .o, $(addprefix $(RENDERING_OBJ_DIR), $(RENDERING_FILE)))
 OBJS += $(RENDERING_OBJS)

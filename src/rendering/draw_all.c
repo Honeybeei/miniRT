@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:30:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/06 21:45:25 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/07 20:20:38 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	draw_all(t_mlx *mlx_, t_img *img_, t_objs *objs_)
 		onscreen_ = times_vec3(screen_.ver_unit_, ++i[y_]);
 		onscreen_ = add_vec3(screen_.start_, onscreen_);
 	}
-	mlx_put_image_to_window(mlx_->mlx_ptr_, mlx_->win_ptr_, img_->img_ptr_, 0, 0);
+	mlx_put_image_to_window(mlx_->mlx_ptr_,
+		mlx_->win_ptr_, img_->img_ptr_, 0, 0);
 }
 
 t_dot3	set_screen(t_screen *screen_, t_camera camera_)
@@ -57,47 +58,6 @@ t_dot3	set_screen(t_screen *screen_, t_camera camera_)
 	return (screen_->start_);
 }
 
-t_vec3	get_normal(t_pvec3 pos_, t_line3 sight_, t_figure *fg_)
-{
-	t_vec3	v_;
-	double	tmp;
-
-	if (fg_->type_ == type_pl_)
-	{
-		tmp = dot_product(fg_->dir_, sight_.dir_);
-		return (times_vec3(fg_->dir_, (tmp < 0.0) - (0.0 < tmp)));
-	}
-	else if (fg_->type_ == type_sp_)
-	{
-		v_ = sub_vec3(pos_, fg_->pos_);
-		tmp = dot_product(v_, sight_.dir_);
-		return (times_vec3(normalize_vec3(v_), (tmp <= 0.0) - (0.0 < tmp)));
-	}
-	else if (fg_->type_ == type_cy_)
-	{
-		double	dval;
-		t_bool	isinternal;
-		t_vec3	v_;
-
-		v_ = sub_vec3(sight_.pos_, fg_->pos_);
-		dval = dot_product(v_, fg_->dir_);
-		isinternal = ((0 < dval && dval < fg_->h_) && (length_vec3(normal_vec3(v_, fg_->dir_)) < fg_->r_));
-		
-		dval = dot_product(sub_vec3(pos_, fg_->pos_), fg_->dir_);
-		if (-0.00001 < dval && dval < 0.00001)
-			return (times_vec3(fg_->dir_, isinternal * 2 - 1));
-		else if (fg_->h_ - 0.00001 < dval && dval < fg_->h_ + 0.00001)
-			return (times_vec3(fg_->dir_, 1 - isinternal * 2));
-		else
-			return (times_vec3(normalize_vec3(normal_vec3(sub_vec3(pos_, fg_->pos_), fg_->dir_)), 1 - isinternal * 2));
-	}
-	else
-	{
-		printf("what the fuck this figure? I can't get a normal vector\n");
-		return (regular_vec3(STD_Y));
-	}
-}
-
 t_color	process_pixel(t_objs *objs_, t_line3 sight_, size_t y)
 {
 	t_cpnt	contact_;
@@ -116,19 +76,32 @@ t_color	process_pixel(t_objs *objs_, t_line3 sight_, size_t y)
 		delta_ = times_vec3(delta_, 1.0 / 256);
 		contact_.rgb_ = mul_vec3(delta_, color_to_rgb(contact_.fg_->clr_));
 		return (rgb_to_color(contact_.rgb_));
-		return (contact_.fg_->clr_);
 	}
 	else
 	{
 		tval = ((double)y / WINDOW_HEIGHT_);
-		return (rgb_to_color(times_vec3(add_vec3(times_vec3(init_vec3(1, 1, 1)
-			, 1 - tval), times_vec3(init_vec3(0.5, 0.7, 1.0), tval)), 256)));
+		return (rgb_to_color(times_vec3(add_vec3(times_vec3(init_vec3(1, 1, 1), 1 - tval), times_vec3(init_vec3(0.5, 0.7, 1.0), tval)), 256)));
 	}
 }
 
-# define KSN_ 64
-# define KS_ 0.5
-# define LUMEN 2
+t_bool	object_traverse(t_objs *objs_, t_line3 sight_, t_cpnt *contact_)
+{
+	t_figure	*fg_;
+	size_t		i;
+
+	i = 0;
+	while (i < objs_->figure_cnt_)
+	{
+		fg_ = objs_->figures_ + i++;
+		if (fg_->type_ == type_pl_)
+			check_plane(fg_, sight_, contact_);
+		else if (fg_->type_ == type_sp_)
+			check_sphere(fg_, sight_, contact_);
+		else if (fg_->type_ == type_cy_)
+			check_cylinder(fg_, sight_, contact_);
+	}
+	return (contact_->ismeet_);
+}
 
 void	get_light(t_objs *objs_, size_t i, t_line3 sight_, t_cpnt *contact_)
 {
@@ -136,27 +109,19 @@ void	get_light(t_objs *objs_, size_t i, t_line3 sight_, t_cpnt *contact_)
 	t_vec3	raydir_;
 	t_vec3	tmp_;
 	t_rgb	light_rgb_;
-	double	diffuse;
-    double	specular;
-	double	increment;
-
-	double	tval;
-
-	(void)sight_;
+	t_cpnt	cpnt_;
 
 	light_ = objs_->lights_[i];
-	tval = dist_dot_dot(contact_->pos_, light_.light_point_);
-
-	t_cpnt	cpnt_;
-	if (object_traverse(objs_, line3_by_dots(light_.light_point_, contact_->pos_)
-		, &cpnt_) && cpnt_.tmin + 0.00001 < tval)
+	cpnt_.tval = dist_dot_dot(contact_->pos_, light_.light_point_);
+	if (object_traverse(objs_, line3_by_dots(light_.light_point_
+				, contact_->pos_), &cpnt_) && cpnt_.tmin + 0.0001 < cpnt_.tval)
 		return ;
 	raydir_ = normalize_vec3(sub_vec3(light_.light_point_, contact_->pos_));
-	diffuse = fmax(dot_product(contact_->normal_, raydir_), 0.0);
+	cpnt_.dffs = fmax(dot_product(contact_->normal_, raydir_), 0.0);
 	tmp_ = times_vec3(tangent_vec3(raydir_, contact_->normal_), -2);
 	raydir_ = add_vec3(raydir_, tmp_);
-	specular = pow(fmax(dot_product(sight_.dir_, raydir_), 0.0), KSN_);
-	increment = (specular * KS_ + diffuse) * light_.ratio_ * LUMEN;
-	light_rgb_ = times_vec3(color_to_rgb(light_.color_), increment);
+	cpnt_.spclr = pow(fmax(dot_product(sight_.dir_, raydir_), 0.0), KSN_);
+	cpnt_.incrm = (cpnt_.spclr * KS_ + cpnt_.dffs) * light_.ratio_ * LUMEN;
+	light_rgb_ = times_vec3(color_to_rgb(light_.color_), cpnt_.incrm);
 	contact_->rgb_ = add_vec3(contact_->rgb_, light_rgb_);
 }
