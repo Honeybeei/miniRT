@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:30:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/07 21:46:58 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/07 22:16:04 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,9 @@ t_color	process_pixel(t_objs *objs_, t_line3 sight_, size_t y)
 	else
 	{
 		tval = ((double)y / WINDOW_HEIGHT_);
-		return (rgb_to_color(times_vec3(add_vec3(times_vec3(init_vec3(1, 1, 1), 1 - tval), times_vec3(init_vec3(0.5, 0.7, 1.0), tval)), 256)));
+		return (rgb_to_color(times_vec3(add_vec3(times_vec3(init_vec3(1, 1, 1),
+							1 - tval), times_vec3(init_vec3(0.5, 0.7, 1.0),
+							tval)), 256)));
 	}
 }
 
