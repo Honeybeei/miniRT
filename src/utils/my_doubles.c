@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:07:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/08 14:39:31 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/08 15:35:08 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,16 @@ char	*my_dtostr(double n, int precision)
 	char	*str_arr[3];
 	int		decimal;
 	char	*result;
+	char	*temp;
 
-	if (precision < 0 || 10 < precision)
+	if ((precision < 0 || 10 < precision) || (n > INT_MAX || n < INT_MIN))
 		return (NULL);
-	if (n > INT_MAX || n < INT_MIN)
-		return (NULL);
-	str_arr[0] = ft_itoa((int)n);
+	temp = ft_itoa((int)n);
+	if (n < 0)
+		str_arr[0] = ft_strjoin("-", temp);
+	else
+		str_arr[0] = ft_strdup(temp);
+	free(temp);
 	str_arr[1] = ".";
 	decimal = (int)((fabs(n) - floor(fabs(n))) * pow(10, precision));
 	str_arr[2] = ft_itoa(decimal);
