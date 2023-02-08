@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   my_doubles.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:07:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/06 14:25:33 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/08 14:39:31 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
 static t_bool	check_num_str(const char *num_str);
+static double	handle_decimal_part(char *num_str);
 static int		count_digits_for_positive_n(int n);
 
 /**
@@ -49,8 +50,7 @@ double	my_strtod(char *num_str)
 {
 	char	**str_arr;
 	double	result;
-	int		digit;
-	int		decimal_part;
+	int		sign;
 
 	if (check_num_str(num_str) == invalid_)
 		error_management(true, err_invalid_double_, num_str, true);
@@ -59,13 +59,13 @@ double	my_strtod(char *num_str)
 		result = (double)ft_atoi(str_arr[0]);
 	else
 	{
-		result = ft_atoi(str_arr[0]);
-		decimal_part = ft_atoi(str_arr[1]);
-		digit = count_digits_for_positive_n(decimal_part);
-		if (result >= 0)
-			result += decimal_part * pow(10, -digit);
+		if (*str_arr[0] == '-')
+			sign = -1;
 		else
-			result -= decimal_part * pow(10, -digit);
+			sign = 1;
+		result = abs(ft_atoi(str_arr[0]));
+		result += handle_decimal_part(str_arr[1]);
+		result *= sign;
 	}
 	free_str_arr(str_arr);
 	return (result);
@@ -94,6 +94,14 @@ static t_bool	check_num_str(const char *num_str)
 			return (invalid_);
 	}
 	return (valid_);
+}
+
+static double	handle_decimal_part(char *num_str)
+{
+	int	temp_result;
+
+	temp_result = ft_atoi(num_str);
+	return (pow(10, -count_digits_for_positive_n(temp_result)) * temp_result);
 }
 
 static int	count_digits_for_positive_n(int n)
