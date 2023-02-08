@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 20:46:44 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/05 18:49:59 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/08 16:48:44 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	camera_parallel_translation(t_camera *camera, int key_code)
 	else if (key_code == key_e_)
 		camera->pos_ = add_vec3(camera->pos_, y_axis);
 	else if (key_code == key_q_)
-		camera->pos_ = add_vec3(camera->pos_, y_axis);
+		camera->pos_ = sub_vec3(camera->pos_, y_axis);
 }
 
 static void	change_fov(t_camera *camera, int key_code)
