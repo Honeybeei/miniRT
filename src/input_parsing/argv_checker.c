@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_errno.h                                         :+:      :+:    :+:   */
+/*   argv_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 14:45:49 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/08 21:57:26 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/02/08 21:51:57 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/02/08 22:03:32 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MY_ERRNO_H
-# define MY_ERRNO_H
+#include "../../inc/minirt.h"
 
-/**
- * customized error number. It will be pared up with error_msg defined in 
- * error_management.c
- */
-typedef enum e_customized_errno
+check_argv(int argc, char **argv)
 {
-	err_no_file_ = 0,
-	err_too_much_file_,
-	err_invalid_input_file_,
-	err_invalid_input_data_,
-	err_invalid_color_type_,
-	err_invalid_double_
-}	t_errno;
+	int	argv_len;
 
-#endif
+	if (argc < 2)
+		error_management(true, err_no_file_, NULL, true);
+	else if (argc > 2)
+		error_management(true, err_too_much_file_, NULL, true);
+	argv_len = ft_strlen(argv[1]);
+	if (argv_len < 3)
+		error_management(true, err_invalid_input_file_, NULL, true);
+	ft_memcmp(argv[1])
+}
