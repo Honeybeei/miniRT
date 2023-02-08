@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:41:10 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/08 11:25:25 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/08 11:43:54 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ static void	count_elements(t_objs *objs, int fd, int input_cnt[])
 	if (input_cnt[input_camera_] != 1)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid camera element count", true);
+	if (IS_MANDATORY_ == true && input_cnt[input_light_] != 1)
+		error_management(true, err_invalid_input_data_, \
+		"Only a single light needed in mandatory", true);
 	objs->light_cnt_ = input_cnt[input_light_];
 	objs->figure_cnt_ = input_cnt[input_sphere_] + input_cnt[input_plane_] + \
 	input_cnt[input_cylinder];

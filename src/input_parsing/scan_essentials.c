@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scan_essentials.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:42:52 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/03 21:38:03 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/08 11:48:25 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,13 @@ void	scan_light(t_light *light, char **str_arr)
 	if (is_in_range(light->ratio_, 0, 1) == false)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid light brightness ratio data", true);
-	if (parse_rgb(&light->color_, str_arr[3]) == fail_)
-		error_management(true, err_invalid_input_data_, \
-		"Invalid light color data.", true);
+	if (IS_MANDATORY_ == true)
+		parse_rgb(&light->color_, "255,255,255");
+	else
+	{
+		if (parse_rgb(&light->color_, str_arr[3]) == fail_)
+			error_management(true, err_invalid_input_data_, \
+			"Invalid light color data.", true);
+	}
 	printf("Light data scan complete!!\n");
 }

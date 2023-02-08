@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/08 11:28:13 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/08 11:53:48 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,19 @@
 
 /* ************************************************************************** */
 
-# include <fcntl.h>	//	open(),
-# include <stdio.h>	//	perror(),
+// MANDATORY / BONUS switch 
+//	if mandatory -> 1
+//	if bonus -> 0
 
-// archived files
+# define IS_MANDATORY_ 1
+
+/* ************************************************************************** */
+
+// std libraries
+# include <fcntl.h>
+# include <stdio.h>
+
+// archived libraries
 # include "../my_lib/inc/improved_libft.h"
 # include "../my_lib/inc/get_next_line.h"
 # include "../mlx/mlx.h"
@@ -167,6 +176,7 @@ void	tmin_update(t_figure *fg_, t_line3 sight_, t_cpnt *ct_, double tval);
 t_vec3	get_normal(t_pvec3 pos_, t_line3 sight_, t_figure *fg_);
 
 /* ************************************************************************** */
+
 //	utils
 
 //		error_management.c
