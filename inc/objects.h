@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:20:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/06 21:25:04 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/08 11:25:05 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_light
 
 typedef struct s_sphere
 {
-	void	*todo_;  // TODO
+	void	*todo_;
 }	t_sp;
 
 typedef struct s_cylinder
@@ -78,7 +78,7 @@ typedef struct s_cylinder
 
 typedef struct s_plane
 {
-	void	*todo_;  // TODO
+	void	*todo_;
 }	t_pl;
 
 /* ************************************************************************** */

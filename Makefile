@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/02/07 20:42:27 by jchoi            ###   ########.fr        #
+#    Updated: 2023/02/08 11:30:49 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,8 @@ ACTIONS_FILE = \
 		action_handling \
 		ambient_cntl_mode_actions \
 		camera_cntl_mode_actions \
-		figure_cntl_mode_actions \
+		figure_cntl_mode_actions1 \
+		figure_cntl_mode_actions2 \
 		light_cntl_mode_actions \
 		normal_mode_actions \
 		vector_rotation
@@ -116,8 +117,10 @@ DRAWING_TOOLS_FILE = \
 		print_utils \
 		put
 
-DRAWING_TOOLS_SRCS = $(addsuffix .c, $(addprefix $(DRAWING_TOOLS_SRC_DIR), $(DRAWING_TOOLS_FILE)))
-DRAWING_TOOLS_OBJS = $(addsuffix .o, $(addprefix $(DRAWING_TOOLS_OBJ_DIR), $(DRAWING_TOOLS_FILE)))
+DRAWING_TOOLS_SRCS = $(addsuffix .c, $(addprefix $(DRAWING_TOOLS_SRC_DIR), \
+$(DRAWING_TOOLS_FILE)))
+DRAWING_TOOLS_OBJS = $(addsuffix .o, $(addprefix $(DRAWING_TOOLS_OBJ_DIR), \
+$(DRAWING_TOOLS_FILE)))
 OBJS += $(DRAWING_TOOLS_OBJS)
 OBJ_DIRS += $(DRAWING_TOOLS_OBJ_DIR)
 
@@ -137,8 +140,10 @@ INPUT_PARSING_FILE = \
 		scan_essentials \
 		scan_optionals
 
-INPUT_PARSING_SRCS = $(addsuffix .c, $(addprefix $(INPUT_PARSING_SRC_DIR), $(INPUT_PARSING_FILE)))
-INPUT_PARSING_OBJS = $(addsuffix .o, $(addprefix $(INPUT_PARSING_OBJ_DIR), $(INPUT_PARSING_FILE)))
+INPUT_PARSING_SRCS = $(addsuffix .c, $(addprefix $(INPUT_PARSING_SRC_DIR), \
+$(INPUT_PARSING_FILE)))
+INPUT_PARSING_OBJS = $(addsuffix .o, $(addprefix $(INPUT_PARSING_OBJ_DIR), \
+$(INPUT_PARSING_FILE)))
 OBJS += $(INPUT_PARSING_OBJS)
 OBJ_DIRS += $(INPUT_PARSING_OBJ_DIR)
 
@@ -153,8 +158,10 @@ RENDERING_FILE = \
 		draw_all \
 		traverse \
 		get_normal
-RENDERING_SRCS = $(addsuffix .c, $(addprefix $(RENDERING_SRC_DIR), $(RENDERING_FILE)))
-RENDERING_OBJS = $(addsuffix .o, $(addprefix $(RENDERING_OBJ_DIR), $(RENDERING_FILE)))
+RENDERING_SRCS = $(addsuffix .c, $(addprefix $(RENDERING_SRC_DIR), \
+$(RENDERING_FILE)))
+RENDERING_OBJS = $(addsuffix .o, $(addprefix $(RENDERING_OBJ_DIR), \
+$(RENDERING_FILE)))
 OBJS += $(RENDERING_OBJS)
 OBJ_DIRS += $(RENDERING_OBJ_DIR)
 
@@ -220,7 +227,7 @@ mini_math :
 	@make -C $(MINI_MATH_DIR)
 
 norm :
-	@norminette src inc minimath my_lib | grep Error
-# @norminette src inc minimath my_lib
+	@norminette src inc minimath my_lib
+# @norminette src inc minimath my_lib | grep Error
 
 .PONEY : all mkobjdir clean fclean re ree run mylib minilibx mini_math norm
