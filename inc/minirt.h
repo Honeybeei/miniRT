@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/07 21:30:33 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/08 11:28:13 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,11 @@ void	ambient_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs);
 //		camera_cntl_mode_actions.c
 void	camera_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs);
 
-//		figure_cntl_mode_actions.c
+//		figure_cntl_mode_actions1.c
 void	figure_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs);
+
+//		figure_cntl_mode_actions2.c
+void	figure_rotation(t_figure *figure, int key_code);
 
 //		light_cntl_mode_actions.c
 void	light_cntl_mode_key_press_event(int key_code, t_ptrs *ptrs);
@@ -70,8 +73,6 @@ void	normal_mode_key_press_event(int key_code, t_ptrs *ptrs);
 
 //		vector_rotation.c
 t_vec3	rotate_vector(t_vec3 vec_to_rotate, t_vec3 rot_axis, double degree);
-// t_vec3	rotate_horizontally(t_vec3 orientation, double degree);
-// t_vec3	rotate_vertically(t_vec3 orientation, double degree);
 
 /* ************************************************************************** */
 
