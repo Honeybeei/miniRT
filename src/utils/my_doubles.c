@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:07:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/08 15:35:08 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/08 16:05:14 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*my_dtostr(double n, int precision)
 
 	if ((precision < 0 || 10 < precision) || (n > INT_MAX || n < INT_MIN))
 		return (NULL);
-	temp = ft_itoa((int)n);
+	temp = ft_itoa(abs((int)n));
 	if (n < 0)
 		str_arr[0] = ft_strjoin("-", temp);
 	else
