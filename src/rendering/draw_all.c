@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:30:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/07 22:16:04 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/09 18:13:59 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ t_color	process_pixel(t_objs *objs_, t_line3 sight_, size_t y)
 	size_t	i;
 	double	tval;
 
-	contact_.ismeet_ = false_;
 	if (object_traverse(objs_, sight_, &contact_))
 	{
 		contact_.rgb_ = regular_vec3(ZERO);
@@ -92,6 +91,7 @@ t_bool	object_traverse(t_objs *objs_, t_line3 sight_, t_cpnt *contact_)
 	t_figure	*fg_;
 	size_t		i;
 
+	contact_->ismeet_ = false_;
 	i = 0;
 	while (i < objs_->figure_cnt_)
 	{
@@ -106,6 +106,9 @@ t_bool	object_traverse(t_objs *objs_, t_line3 sight_, t_cpnt *contact_)
 	return (contact_->ismeet_);
 }
 
+#define CHECKERED_SP 0
+
+
 void	get_light(t_objs *objs_, size_t i, t_line3 sight_, t_cpnt *contact_)
 {
 	t_light	light_;
@@ -113,12 +116,22 @@ void	get_light(t_objs *objs_, size_t i, t_line3 sight_, t_cpnt *contact_)
 	t_vec3	tmp_;
 	t_rgb	light_rgb_;
 	t_cpnt	cpnt_;
-
+	
+	if (i == 0 && CHECKERED_SP && contact_->fg_->type_ == type_sp_)
+	{ 
+		tmp_ = normalize_vec3(sub_vec3(contact_->pos_, contact_->fg_->pos_));
+		double th = acos(tmp_.e[y_]);
+		if (sin(th) == 0)
+			return ;
+		double pi = acos(tmp_.e[z_] / sin(th));
+		double d = pow(-1, (0 < tmp_.e[x_]) + (int)(pi / M_PI_4) + (int)(th / (M_PI / 6)));
+		contact_->rgb_ = add_vec3(init_vec3(125, 125, 125), times_vec3(init_vec3(105, 105, 105), d));
+	}
 	light_ = objs_->lights_[i];
 	cpnt_.tval = dist_dot_dot(contact_->pos_, light_.light_point_);
 	if (object_traverse(objs_, line3_by_dots(light_.light_point_, \
 	contact_->pos_), &cpnt_) && cpnt_.tmin + 0.0001 < cpnt_.tval)
-		return ;
+		return ;	
 	raydir_ = normalize_vec3(sub_vec3(light_.light_point_, contact_->pos_));
 	cpnt_.dffs = fmax(dot_product(contact_->normal_, raydir_), 0.0);
 	tmp_ = times_vec3(tangent_vec3(raydir_, contact_->normal_), -2);
