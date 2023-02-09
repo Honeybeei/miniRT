@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 23:29:46 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/06 16:49:36 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/09 12:09:48 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void	print_customized_err(t_errno customized_errno)
 		ft_putstr_fd("Where is my file you idot!!!", STDERR_FILENO);
 	else if (customized_errno == err_too_much_file_)
 		ft_putstr_fd("Its too much for me......", STDERR_FILENO);
+	else if (customized_errno == err_invalid_input_file_)
+		ft_putstr_fd("Your sample file seems not valid......", STDERR_FILENO);
 	else if (customized_errno == err_invalid_input_data_)
 		ft_putstr_fd("Your input data sucks", STDERR_FILENO);
 	else if (customized_errno == err_invalid_color_type_)

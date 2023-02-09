@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:02:01 by seoyoo            #+#    #+#              #
-#    Updated: 2023/02/08 11:53:18 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/02/09 12:14:56 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,6 +132,7 @@ INPUT_PARSING_SRC_DIR = $(SRC_DIR)$(INPUT_PARSING_DIR)
 INPUT_PARSING_OBJ_DIR = $(OBJ_DIR)$(INPUT_PARSING_DIR)
 
 INPUT_PARSING_FILE = \
+		argv_checker \
 		parse_input \
 		parsing_utils1 \
 		parsing_utils2 \

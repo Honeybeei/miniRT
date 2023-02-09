@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/08 11:53:48 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/09 12:06:20 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 //	if mandatory -> 1
 //	if bonus -> 0
 
-# define IS_MANDATORY_ 1
+# define IS_MANDATORY_ 0
 
 /* ************************************************************************** */
 
@@ -126,6 +126,9 @@ void	put_pixel(t_img *img, int i, int j, t_color color);
 /* ************************************************************************** */
 
 //	input_parsing
+
+//		argv_checker.c
+void	check_argv(int argc, char **argv);
 
 //		parse_input.c
 void	parse_input(t_objs *objs, char *src_file);

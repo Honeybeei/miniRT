@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   argv_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 21:51:57 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/08 22:03:32 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/09 12:12:16 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-check_argv(int argc, char **argv)
+void	check_argv(int argc, char **argv)
 {
-	int	argv_len;
+	int		argv_len;
+	char	*expected_file_extension_point;
 
 	if (argc < 2)
 		error_management(true, err_no_file_, NULL, true);
@@ -23,5 +24,8 @@ check_argv(int argc, char **argv)
 	argv_len = ft_strlen(argv[1]);
 	if (argv_len < 3)
 		error_management(true, err_invalid_input_file_, NULL, true);
-	ft_memcmp(argv[1])
+	expected_file_extension_point = &argv[1][argv_len - 3];
+	if (my_strcmp(expected_file_extension_point, ".rt") != 0)
+		error_management(true, err_invalid_input_file_, \
+		"It should have \".rt\" type file extension.", true);
 }
