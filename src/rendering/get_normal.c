@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:30:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/09 18:23:36 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/10 00:05:39 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,6 @@
 static t_vec3	normal_plane(t_line3 *sight_, t_figure *fg_);
 static t_vec3	normal_sphere(t_pvec3 pos_, t_line3 *sight_, t_figure *fg_);
 static t_vec3	normal_cylinder(t_pvec3 pos_, t_line3 *sight_, t_figure *fg_);
-
-#define BUMP_MAP	1 
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
-t_vec3	bump(t_vec3 original_)
-{
-	t_vec3	v_;
-	for (int i = 0; i < 3; i++)
-	{
-		srand (time(NULL));
-		v_.e[i] += (double)rand()/RAND_MAX*2.0-1.0;//float in range -1 to 1
-	}
-	if (v_.e[0] == 0 && v_.e[1] == 0 && v_.e[2] == 0)
-		return (original_);
-	else
-		return (normalize_vec3(v_));
-}
 
 t_vec3	get_normal(t_pvec3 pos_, t_line3 sight_, t_figure *fg_)
 {
@@ -69,10 +50,7 @@ static t_vec3	normal_sphere(t_pvec3 pos_, t_line3 *sight_, t_figure *fg_)
 	v_ = sub_vec3(pos_, fg_->pos_);
 	in_out = dot_product(v_, sight_->dir_);
 	direction = (in_out < 0.0) - (0.0 < in_out);
-	if (BUMP_MAP)
-		return (bump(times_vec3(normalize_vec3(v_), direction)));
-	else
-		return (times_vec3(normalize_vec3(v_), direction));
+	return (times_vec3(normalize_vec3(v_), direction));
 }
 
 static t_vec3	normal_cylinder(t_pvec3 pos_, t_line3 *sight_, t_figure *fg_)
@@ -93,4 +71,23 @@ static t_vec3	normal_cylinder(t_pvec3 pos_, t_line3 *sight_, t_figure *fg_)
 	else
 		return (times_vec3(normalize_vec3(normal_vec3(sub_vec3(pos_, \
 		fg_->pos_), fg_->dir_)), 1 - in_out * 2));
+}
+
+int	checkered_sphere(t_cpnt *contact_)
+{
+	t_vec3	v_;
+	double	theta;
+	double	angular;
+	int		checker;
+
+	v_ = normalize_vec3(sub_vec3(contact_->pos_, contact_->fg_->pos_));
+	theta = acos(v_.e[y_]);
+	if (sin(theta) == 0)
+		return (0);
+	angular = acos(v_.e[z_] / sin(theta));
+	checker = pow(-1, (0 < v_.e[x_]) + (int)(angular / M_PI_4)
+			+ (int)(theta / (M_PI / 6)));
+	contact_->rgb_ = add_vec3(init_vec3(125, 125, 125),
+			times_vec3(init_vec3(105, 105, 105), checker));
+	return (1);
 }

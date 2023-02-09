@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:48:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/09 12:06:20 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/10 00:06:38 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 //	if bonus -> 0
 
 # define IS_MANDATORY_ 0
+# define CHECKERED_SP 1
 
 /* ************************************************************************** */
 
@@ -177,6 +178,7 @@ void	tmin_update(t_figure *fg_, t_line3 sight_, t_cpnt *ct_, double tval);
 
 //		get_normal.c
 t_vec3	get_normal(t_pvec3 pos_, t_line3 sight_, t_figure *fg_);
+int		checkered_sphere(t_cpnt *contact_);
 
 /* ************************************************************************** */
 
