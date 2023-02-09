@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 10:30:00 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/07 22:16:04 by jchoi            ###   ########.fr       */
+/*   Updated: 2023/02/10 00:03:15 by jchoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ t_color	process_pixel(t_objs *objs_, t_line3 sight_, size_t y)
 	size_t	i;
 	double	tval;
 
-	contact_.ismeet_ = false_;
 	if (object_traverse(objs_, sight_, &contact_))
 	{
 		contact_.rgb_ = regular_vec3(ZERO);
@@ -92,6 +91,7 @@ t_bool	object_traverse(t_objs *objs_, t_line3 sight_, t_cpnt *contact_)
 	t_figure	*fg_;
 	size_t		i;
 
+	contact_->ismeet_ = false_;
 	i = 0;
 	while (i < objs_->figure_cnt_)
 	{
@@ -114,6 +114,9 @@ void	get_light(t_objs *objs_, size_t i, t_line3 sight_, t_cpnt *contact_)
 	t_rgb	light_rgb_;
 	t_cpnt	cpnt_;
 
+	if (i == 0 && CHECKERED_SP && contact_->fg_->type_ == type_sp_)
+		if (!checkered_sphere(contact_))
+			return ;
 	light_ = objs_->lights_[i];
 	cpnt_.tval = dist_dot_dot(contact_->pos_, light_.light_point_);
 	if (object_traverse(objs_, line3_by_dots(light_.light_point_, \
