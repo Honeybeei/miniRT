@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:57:19 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/02/08 11:25:32 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/02/09 12:21:47 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,5 @@ static void	scan_cylinder(t_figure *figure, char **str_arr)
 	if (parse_rgb(&figure->clr_, str_arr[5]) == fail_)
 		error_management(true, err_invalid_input_data_, \
 		"Invalid plane color data", true);
+	printf("Cylinder data scan complete!!\n");
 }
